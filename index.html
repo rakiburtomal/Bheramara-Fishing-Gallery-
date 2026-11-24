@@ -114,4 +114,14 @@ function deletePost(i){const p=getPosts();p.splice(i,1);savePosts(p);renderAdmin
 function orderProduct(name){toast(name+' অর্ডার করতে যোগাযোগ ফর্ম ব্যবহার করুন')}
 renderPosts();
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "এখানে তোমার Project URL বসবে";
+  const SUPABASE_KEY = "এখানে তোমার Publishable Key বসবে";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
 </body></html>
