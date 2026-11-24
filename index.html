@@ -89,7 +89,15 @@
 
 <footer class="footer"><div class="wrap"><div class="footgrid"><div><a class="brand" href="#home"><span class="brandmark">🎣</span><span>BHERAMARA FISHING<small>GALLERY</small></span></a><p>ভেড়ামারা ও আশপাশের মাছ শিকারিদের জন্য তথ্য, অভিজ্ঞতা ও ভালোবাসার একটি কমিউনিটি।</p></div><div><h3>দ্রুত লিংক</h3><p><a href="#spots">ফিশিং স্পট</a><br><a href="#reports">দৈনিক রিপোর্ট</a><br><a href="#records">বড় মাছের রেকর্ড</a><br><a href="#shop">পণ্য ও অর্ডার</a></p></div><div><h3>অ্যাডমিন</h3><p><a href="#" onclick="openModal('adminModal');return false">অ্যাডমিন প্যানেল</a><br><a href="#contact">যোগাযোগ</a><br><a href="#community">কমিউনিটি</a></p></div></div><div class="copyright"><span>© 2026 Bheramara Fishing Gallery. সর্বস্বত্ব সংরক্ষিত।</span><span>Made with 🎣 for local anglers</span></div></div></footer>
 
-<div class="modal" id="loginModal"><div class="modalbox"><div class="modalhead"><h3>ব্যবহারকারী অ্যাকাউন্ট</h3><button class="close" onclick="closeModal('loginModal')">×</button></div><form id="loginForm"><input class="field" name="name" placeholder="আপনার নাম" required style="margin:8px 0"><input class="field" name="email" type="email" placeholder="ইমেইল" required style="margin:8px 0"><button class="btn" style="width:100%;margin-top:8px">ডেমো লগইন</button></form><p class="notice">এটি শুধু ডিজাইন প্রিভিউ। নিরাপদ অ্যাকাউন্ট, পাসওয়ার্ড ও লগইন চালু করতে Supabase Auth সংযোগ করতে হবে।</p></div></div>
+<div class="modal" id="loginModal"><div class="modalbox"><div class="modalhead"><h3>ব্যবহারকারী অ্যাকাউন্ট</h3><button class="close" onclick="closeModal('loginModal')">×</button></div><<form id="loginForm">
+  <input class="field" name="name" placeholder="আপনার নাম" required style="margin:8px 0">
+
+  <input class="field" name="email" type="email" placeholder="আপনার ইমেইল" required style="margin:8px 0">
+
+  <input class="field" name="password" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)" minlength="6" required style="margin:8px 0">
+
+  <button class="btn" type="submit" style="width:100%;margin-top:8px">অ্যাকাউন্ট খুলুন / লগইন</button>
+</form>>ডেমো লগইন</button></form><p class="notice">এটি শুধু ডিজাইন প্রিভিউ। নিরাপদ অ্যাকাউন্ট, পাসওয়ার্ড ও লগইন চালু করতে Supabase Auth সংযোগ করতে হবে।</p></div></div>
 <div class="modal" id="adminModal"><div class="modalbox"><div class="modalhead"><h3>অ্যাডমিন প্যানেল</h3><button class="close" onclick="closeModal('adminModal')">×</button></div><div id="adminLogin"><p class="muted">ডেমো প্যানেল দেখতে পাসকোড দিন।</p><input class="field" id="adminPass" type="password" placeholder="ডেমো পাসকোড"><button class="btn" style="width:100%;margin-top:12px" onclick="adminEnter()">প্রবেশ করুন</button><p class="notice">ডেমো পাসকোড: fishing123 — এটি আসল নিরাপত্তা নয়। লাইভ সাইটে অবশ্যই সার্ভার-সাইড অ্যাডমিন অথেনটিকেশন লাগবে।</p></div><div class="adminarea" id="adminArea"><h3>জমা পড়া পোস্ট</h3><div id="adminPosts"></div><button class="btn secondary" onclick="closeModal('adminModal')">বন্ধ করুন</button></div></div></div>
 <div class="toast" id="toast">সম্পন্ন হয়েছে</div>
 
@@ -107,7 +115,38 @@ function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;',
 function safeUrl(u){try{const x=new URL(u);return ['http:','https:'].includes(x.protocol)?x.href:'#'}catch(e){return '#'}}
 $('#postForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const p=getPosts();p.unshift({name:f.get('name'),type:f.get('type'),title:f.get('title'),message:f.get('message'),photo:f.get('photo'),status:'pending',date:new Date().toISOString()});savePosts(p);e.target.reset();toast('পোস্ট অনুমোদনের জন্য জমা হয়েছে');renderAdmin()});
 $('#contactForm').addEventListener('submit',e=>{e.preventDefault();toast('ধন্যবাদ! যোগাযোগ ফর্মের সার্ভার সংযোগ পরের ধাপে হবে।');e.target.reset()});
-$('#loginForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);localStorage.setItem('bfg_user',f.get('name'));closeModal('loginModal');toast('স্বাগতম, '+f.get('name')+'! (ডেমো)');e.target.reset()});
+$('#loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const form = new FormData(e.target);
+  const name = form.get('name').trim();
+  const email = form.get('email').trim();
+  const password = form.get('password');
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: {
+        full_name: name
+      }
+    }
+  });
+
+  if (error) {
+    toast('সমস্যা: ' + error.message);
+    return;
+  }
+
+  if (data.session) {
+    toast('স্বাগতম, ' + name + '!');
+  } else {
+    toast('অ্যাকাউন্ট তৈরি হয়েছে। ইমেইল চেক করে নিশ্চিত করো।');
+  }
+
+  e.target.reset();
+  closeModal('loginModal');
+});
 function adminEnter(){if($('#adminPass').value==='fishing123'){$('#adminLogin').style.display='none';$('#adminArea').classList.add('show');renderAdmin()}else toast('পাসকোড সঠিক নয়')}
 function approvePost(i){const p=getPosts();if(p[i])p[i].status='approved';savePosts(p);renderAdmin();renderPosts();toast('পোস্ট অনুমোদিত হয়েছে')}
 function deletePost(i){const p=getPosts();p.splice(i,1);savePosts(p);renderAdmin();renderPosts();toast('পোস্ট মুছে ফেলা হয়েছে')}
@@ -124,4 +163,18 @@ renderPosts();
     SUPABASE_KEY
   );
 
+async function loginWithEmail(email, password) {
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    toast('লগইন সমস্যা: ' + error.message);
+    return;
+  }
+
+  toast('সফলভাবে লগইন হয়েছে!');
+  closeModal('loginModal');
+}
 </body></html>
