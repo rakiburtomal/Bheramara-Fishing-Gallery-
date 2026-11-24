@@ -4,629 +4,832 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#062c2b">
-<meta name="description" content="ভেড়ামারা ফিশিং গ্যালারি — মাছ ধরার স্পট, দৈনিক রিপোর্ট, রেকর্ড ক্যাচ ও ফিশিং কমিউনিটি।">
-<title> Bheramara Fishing Gallery | মাছ ধরার গল্প</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="ভেড়ামারা ফিশিং গ্যালারি — মাছ ধরার স্পট, রিপোর্ট, রেকর্ড ক্যাচ ও ফিশিং কমিউনিটি।">
+<title>Bheramara Fishing Gallery</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{--bg:#061f20;--panel:#0b3030;--panel2:#103b39;--mint:#b9f5d0;--lime:#d4ff68;--white:#f4fff8;--muted:#a8c5bb;--line:rgba(207,255,226,.13);--orange:#ffb36b}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--white);font-family:'Hind Siliguri',sans-serif}
+:root{
+  --bg:#061c1b;
+  --panel:#0b2927;
+  --panel2:#103532;
+  --green:#b5e853;
+  --text:#f1f7ef;
+  --muted:#a8bdb4;
+  --border:#244943;
+  --danger:#ff7777;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Hind Siliguri',sans-serif;
+  line-height:1.65;
+}
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit}
-.wrap{width:min(1160px,92%);margin:auto}
-.topbar{background:#041718;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
-.topinner{display:flex;justify-content:space-between;gap:12px;padding:9px 0}
-.nav{position:sticky;top:0;z-index:20;background:rgba(5,31,31,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.navinner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-family:Outfit,sans-serif;font-weight:800}
-.brandmark{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,var(--lime),#66d9a2);display:grid;place-items:center;color:#092b25;font-size:23px}
-.brand small{display:block;font-family:'Hind Siliguri';font-weight:400;color:var(--muted);font-size:11px}
-.links{display:flex;align-items:center;gap:17px;color:#d5e9df;font-size:14px}
-.links a:hover{color:var(--lime)}
-.navbtn,.btn{border:0;border-radius:999px;padding:12px 19px;background:var(--lime);color:#102b20;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.btn.secondary{background:rgba(255,255,255,.08);color:white;border:1px solid var(--line)}
-.menu{display:none;background:none;color:white;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:22px}
-.hero{min-height:610px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(3,24,23,.96),rgba(3,24,23,.65),rgba(3,24,23,.15)),url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=90') center/cover}
-.hero-content{max-width:670px;padding:85px 0}
-.eyebrow,.kicker{color:var(--lime);font-weight:700;font-size:13px}
-h1{font-family:Outfit,'Hind Siliguri',sans-serif;font-size:clamp(43px,7vw,76px);line-height:1.08;margin:20px 0}
-h1 span{color:var(--lime)}
-.hero p{max-width:560px;color:#d0e5dc;font-size:18px;line-height:1.8}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:35px;margin-top:40px}
-.stat strong{font:700 27px Outfit;color:var(--lime);display:block}
-.stat span{font-size:13px;color:#c1d9ce}
-.section{padding:75px 0}
-.section.alt{background:#082727}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
-.section h2{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:8px 0}
-.section-head p{color:var(--muted);max-width:430px;margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.card{transition:.25s}
-.card:hover{transform:translateY(-4px);border-color:rgba(212,255,104,.4)}
-.photo{height:220px;overflow:hidden;background:#164441;position:relative}
-.photo img{width:100%;height:100%;object-fit:cover}
-.tag{position:absolute;top:14px;left:14px;background:rgba(4,25,24,.85);padding:6px 11px;border-radius:999px;font-size:12px;color:var(--lime)}
-.cardbody{padding:19px}
-.cardbody h3{margin:0 0 7px;font-size:21px}
-.muted{color:var(--muted);font-size:14px;line-height:1.7}
-.meta{display:flex;justify-content:space-between;gap:10px;margin-top:16px;color:#d4e9dd;font-size:13px}
-.price{color:var(--lime);font-weight:700}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.splitimg{height:440px;border-radius:24px;overflow:hidden}
-.splitimg img{width:100%;height:100%;object-fit:cover}
-.featurelist{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:26px 0}
-.feature{padding:15px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px}
-.feature b{display:block;color:var(--mint)}
-.feature span{font-size:12px;color:var(--muted)}
-.mapbox{min-height:300px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(135deg,#103d38,#0b292b);display:grid;place-items:center;text-align:center;padding:30px}
-.pin{font-size:40px}
-.report{display:flex;gap:14px;padding:17px;border-bottom:1px solid var(--line)}
-.reporticon{width:43px;height:43px;flex:none;border-radius:13px;background:#194b3d;display:grid;place-items:center;font-size:21px}
-.report h3{font-size:17px;margin:0 0 3px}
-.report p{margin:0;color:var(--muted);font-size:13px}
-.record{display:grid;grid-template-columns:1.1fr .9fr;background:linear-gradient(120deg,#143f37,#092b2b);border:1px solid var(--line);border-radius:25px;overflow:hidden}
-.recordimg{min-height:360px}
-.recordimg img{width:100%;height:100%;object-fit:cover}
-.recordbody{padding:35px;display:flex;flex-direction:column;justify-content:center}
-.recordbody h2{font-size:34px}
-.bigweight{font:800 48px Outfit;color:var(--lime)}
-.community{background:linear-gradient(110deg,rgba(4,26,25,.96),rgba(4,26,25,.72)),url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1600&q=85') center/cover;border-radius:25px;padding:45px}
-.community h2{max-width:550px;font-size:36px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.field{width:100%;padding:13px 14px;background:#061f20;border:1px solid var(--line);border-radius:12px;color:white;outline:none}
-.field:focus{border-color:var(--lime)}
-textarea.field{min-height:105px;resize:vertical}
-.wide{grid-column:1/-1}
-.panel{padding:22px}
-.tabs{padding:9px 14px;border:1px solid var(--line);background:transparent;color:#d9eee4;border-radius:999px;cursor:pointer}
-.communitypost{padding:16px;border:1px solid var(--line);border-radius:15px;margin:10px 0;background:rgba(255,255,255,.025);overflow-wrap:anywhere}
-.communitypost strong{color:var(--mint)}
-.footer{padding:45px 0 25px;background:#041718;border-top:1px solid var(--line)}
-.footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
-.footer p,.footer a{color:var(--muted);font-size:14px;line-height:1.9}
-.copyright{border-top:1px solid var(--line);margin-top:25px;padding-top:18px;color:#7f9e92;font-size:12px;display:flex;justify-content:space-between}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;align-items:center;justify-content:center;padding:18px}
-.modal.show{display:flex}
-.modalbox{width:min(480px,100%);background:#0b3030;border:1px solid var(--line);border-radius:20px;padding:24px;max-height:90vh;overflow:auto}
-.modalhead{display:flex;justify-content:space-between;align-items:center}
-.close{background:none;border:0;color:white;font-size:25px;cursor:pointer}
-.notice{color:var(--orange);font-size:12px;line-height:1.6}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,150px);background:var(--lime);color:#102b20;padding:12px 20px;border-radius:999px;font-weight:700;z-index:90;transition:.3s;max-width:90%;text-align:center}
-.toast.show{transform:translate(-50%,0)}
-.small{font-size:12px;color:var(--muted)}
-@media(max-width:900px){
-.links{display:none;position:absolute;top:76px;left:0;right:0;background:#062322;padding:20px;flex-direction:column;align-items:flex-start}
-.links.open{display:flex}.menu{display:block}.navbtn{display:none}
-.grid{grid-template-columns:repeat(2,1fr)}
+button{cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:100;
+  background:#061c1bf2;backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
-@media(max-width:650px){
-.topinner{font-size:11px}.hero{min-height:600px;background-position:58% center}
-.hero-content{padding:65px 0}h1{font-size:46px}.hero p{font-size:16px}
-.hero-stats{gap:20px}.stat strong{font-size:23px}
-.section-head{display:block}.section-head p{margin-top:12px}
-.grid,.split,.record,.footgrid{grid-template-columns:1fr}
-.photo{height:205px}.splitimg{height:280px;order:-1}
-.recordimg{min-height:250px}.recordbody{padding:24px}
-.community{padding:28px 20px}.community h2{font-size:29px}
-.formgrid{grid-template-columns:1fr}.wide{grid-column:auto}
-.copyright{display:block}.copyright span{display:block;margin-top:8px}
+.nav{
+  min-height:70px;display:flex;align-items:center;
+  justify-content:space-between;gap:15px;
+}
+.logo{font-family:Outfit,sans-serif;font-weight:800;font-size:19px}
+.logo span{color:var(--green)}
+.navlinks{display:flex;gap:17px;align-items:center;flex-wrap:wrap}
+.navlinks a{font-size:14px;color:var(--muted)}
+.navlinks a:hover{color:var(--green)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 17px;border:0;border-radius:9px;
+  background:var(--green);color:#142313;font-weight:700;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
+.btn-small{padding:7px 12px;font-size:13px}
+.menu-btn{display:none;background:none;color:white;border:0;font-size:25px}
+section{padding:65px 0}
+.hero{
+  min-height:520px;display:flex;align-items:center;
+  background:linear-gradient(90deg,#061c1bf5,#061c1b9c),
+  url('https://images.unsplash.com/photo-1498654200943-1088dd4438ae?auto=format&fit=crop&w=1600&q=85') center/cover;
+}
+.hero-content{max-width:680px}
+.tag{color:var(--green);font-weight:700;letter-spacing:1px}
+h1{font-family:Outfit,'Hind Siliguri',sans-serif;font-size:clamp(35px,7vw,65px);line-height:1.15;margin:15px 0}
+.hero p{font-size:18px;color:#d2e0d9;max-width:570px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:clamp(26px,4vw,36px);line-height:1.3}
+.section-head p{color:var(--muted);margin-top:7px}
+.green{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:15px;overflow:hidden;
+}
+.card-body{padding:18px}
+.card h3{font-size:20px;margin-bottom:7px}
+.card p{color:var(--muted);font-size:15px}
+.card img{width:100%;height:185px;object-fit:cover;display:block}
+.card .btn{margin-top:14px}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-top:30px;
+}
+.stat{background:#103532d9;padding:17px;border-radius:12px;text-align:center}
+.stat strong{display:block;color:var(--green);font:700 27px Outfit}
+.stat span{color:var(--muted);font-size:13px}
+.map-box{
+  padding:25px;border:1px solid var(--border);
+  background:var(--panel);border-radius:15px;
+}
+.form-card{
+  max-width:720px;background:var(--panel);
+  border:1px solid var(--border);border-radius:15px;padding:22px;
+}
+.field{margin-bottom:15px}
+.field label{display:block;margin-bottom:6px;font-weight:600}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px;border-radius:8px;
+  background:#061c1b;color:white;border:1px solid var(--border);
+  outline:none;
+}
+.field input:focus,.field textarea:focus{border-color:var(--green)}
+.field textarea{min-height:105px;resize:vertical}
+.post-list{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.post-item{background:var(--panel);border:1px solid var(--border);padding:18px;border-radius:12px}
+.post-item p{color:var(--muted);white-space:pre-wrap}
+.status{font-size:12px;color:var(--green)}
+footer{padding:35px 0;border-top:1px solid var(--border);color:var(--muted)}
+.footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.modal{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:#000b;align-items:center;justify-content:center;
+  padding:15px;overflow-y:auto;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:min(480px,100%);max-height:90vh;overflow-y:auto;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:16px;padding:23px;position:relative;
+}
+.modal-close{
+  position:absolute;right:14px;top:10px;
+  background:none;border:0;color:white;font-size:25px;
+}
+.modal-box h2{margin-bottom:15px}
+.notice{padding:12px;border-radius:8px;background:#103532;color:var(--muted);margin:12px 0}
+.hidden{display:none!important}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn-danger{background:#a83c3c;color:white}
+.empty{color:var(--muted);padding:20px;text-align:center}
+#toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:500;background:var(--green);color:#142313;
+  padding:11px 20px;border-radius:10px;font-weight:700;
+  display:none;max-width:90%;text-align:center;
+}
+@media(max-width:800px){
+  .navlinks{
+    display:none;position:absolute;top:70px;left:0;right:0;
+    background:#061c1b;padding:20px;
+    border-bottom:1px solid var(--border);
+    flex-direction:column;align-items:stretch;
+  }
+  .navlinks.open{display:flex}
+  .menu-btn{display:block}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:540px){
+  section{padding:48px 0}
+  .grid,.post-list{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat strong{font-size:21px}
+  .hero{min-height:470px}
+  .logo{font-size:16px}
 }
 </style>
 </head>
+
 <body>
 
-<div class="topbar"><div class="wrap topinner">
-<span>🎣 ভেড়ামারার মাছ ধরার খবর, স্পট ও অভিজ্ঞতার ঠিকানা</span>
-<span>বাংলাদেশ • কুষ্টিয়া</span>
-</div></div>
+<header>
+ <div class="container nav">
+  <a class="logo" href="#home">🎣 BHERAMARA <span>FISHING</span></a>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav class="navlinks" id="navlinks">
+   <a href="#home" onclick="closeMenu()">Home</a>
+   <a href="#spots" onclick="closeMenu()">Fishing Spots</a>
+   <a href="#reports" onclick="closeMenu()">Reports</a>
+   <a href="#records" onclick="closeMenu()">Records</a>
+   <a href="#community" onclick="closeMenu()">Community</a>
+   <a href="#shop" onclick="closeMenu()">Shop</a>
+   <a href="#contact" onclick="closeMenu()">Contact</a>
+   <button class="btn btn-small" onclick="openLogin()">Login / Sign Up</button>
+   <button class="btn btn-small btn-outline" onclick="openAdmin()">Admin</button>
+  </nav>
+ </div>
+</header>
 
-<nav class="nav"><div class="wrap navinner">
-<a class="brand" href="#home"><span class="brandmark">🎣</span><span>BHERAMARA FISHING<small>GALLERY • মাছ ধরার গল্প</small></span></a>
-<div class="links" id="navlinks">
-<a href="#home">হোম</a><a href="#about">আমাদের সম্পর্কে</a><a href="#spots">ফিশিং স্পট</a><a href="#reports">আজকের রিপোর্ট</a><a href="#records">রেকর্ড মাছ</a><a href="#community">কমিউনিটি</a><a href="#shop">শপ</a>
+<main>
+<section class="hero" id="home">
+ <div class="container hero-content">
+  <div class="tag">WELCOME TO BH​​ERAMARA FISHING GALLERY</div>
+  <h1>মাছ ধরার গল্প,<br><span class="green">আমাদের ভালোবাসা</span></h1>
+  <p>ভেড়ামারার মাছ শিকারিদের জন্য একটি উন্মুক্ত ফিশিং কমিউনিটি। নিজের ক্যাচ শেয়ার করুন, স্পট সম্পর্কে জানুন এবং যুক্ত থাকুন সবার সঙ্গে।</p>
+  <div class="hero-actions">
+   <a class="btn" href="#community">ক্যাচ শেয়ার করুন</a>
+   <a class="btn btn-outline" href="#spots">ফিশিং স্পট দেখুন</a>
+  </div>
+  <div class="stats">
+   <div class="stat"><strong>01</strong><span>Fishing Community</span></div>
+   <div class="stat"><strong>24/7</strong><span>Open Gallery</span></div>
+   <div class="stat"><strong>∞</strong><span>Fishing Memories</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="spots">
+ <div class="container">
+  <div class="section-head">
+   <h2>🎯 Fishing <span class="green">Spots</span></h2>
+   <p>ভেড়ামারা ও আশপাশের পরিচিত মাছ ধরার জায়গা।</p>
+  </div>
+  <div class="grid">
+   <article class="card">
+    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80" alt="River">
+    <div class="card-body">
+     <h3>পদ্মা নদী</h3>
+     <p>নদীতে মাছ ধরার অভিজ্ঞতা ও পরিবেশ উপভোগ করুন।</p>
+     <button class="btn btn-small" onclick="showSpot('পদ্মা নদী','নদীর পরিবেশ ও পানির অবস্থা দেখে নিরাপদ জায়গায় মাছ ধরুন। স্রোত ও নৌযান চলাচলের দিকে সতর্ক থাকুন।')">বিস্তারিত</button>
+    </div>
+   </article>
+   <article class="card">
+    <img src="https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=800&q=80" alt="Water">
+    <div class="card-body">
+     <h3>স্থানীয় জলাশয়</h3>
+     <p>স্থানীয় পুকুর ও জলাশয়ে শৌখিন মাছ শিকার।</p>
+     <button class="btn btn-small" onclick="showSpot('স্থানীয় জলাশয়','মালিকের অনুমতি নিয়ে মাছ ধরুন। জলাশয়ের নিয়ম ও পরিবেশের প্রতি সম্মান রাখুন।')">বিস্তারিত</button>
+    </div>
+   </article>
+   <article class="card">
+    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Water nature">
+    <div class="card-body">
+     <h3>ভেড়ামারা অঞ্চল</h3>
+     <p>এলাকার বিভিন্ন মাছ ধরার জায়গার অভিজ্ঞতা।</p>
+     <button class="btn btn-small" onclick="showSpot('ভেড়ামারা অঞ্চল','নিজের জানা স্পটের তথ্য কমিউনিটিতে শেয়ার করুন। অন্যের ব্যক্তিগত জায়গায় অনুমতি ছাড়া প্রবেশ করবেন না।')">বিস্তারিত</button>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="reports">
+ <div class="container">
+  <div class="section-head">
+   <h2>📋 Fishing <span class="green">Reports</span></h2>
+   <p>কমিউনিটির অনুমোদিত সাম্প্রতিক ক্যাচ ও মাছ ধরার রিপোর্ট।</p>
+  </div>
+  <div id="reportList" class="post-list">
+   <div class="empty">রিপোর্ট লোড হচ্ছে...</div>
+  </div>
+ </div>
+</section>
+
+<section id="records">
+ <div class="container">
+  <div class="section-head">
+   <h2>🏆 Hall of <span class="green">Fame</span></h2>
+   <p>মাছ ধরার স্মরণীয় মুহূর্তগুলো এখানে তুলে ধরুন।</p>
+  </div>
+  <div id="recordList" class="post-list">
+   <div class="empty">অনুমোদিত রেকর্ড ক্যাচ এখানে দেখা যাবে।</div>
+  </div>
+ </div>
+</section>
+
+<section id="community">
+ <div class="container">
+  <div class="section-head">
+   <h2>🎣 Fishing <span class="green">Community</span></h2>
+   <p>আপনার মাছ ধরার অভিজ্ঞতা ও ক্যাচের তথ্য সবার সঙ্গে শেয়ার করুন।</p>
+  </div>
+  <div class="form-card">
+   <form id="postForm">
+    <div class="field">
+     <label>আপনার নাম *</label>
+     <input id="postName" required maxlength="70" placeholder="নাম লিখুন">
+    </div>
+    <div class="field">
+     <label>পোস্টের শিরোনাম *</label>
+     <input id="postTitle" required maxlength="120" placeholder="যেমন: আজকের বড় ক্যাচ">
+    </div>
+    <div class="field">
+     <label>মাছের নাম</label>
+     <input id="fishName" maxlength="70" placeholder="যেমন: কাতলা">
+    </div>
+    <div class="field">
+     <label>মাছের ওজন</label>
+     <input id="fishWeight" maxlength="50" placeholder="যেমন: ৫ কেজি">
+    </div>
+    <div class="field">
+     <label>মাছ ধরার স্থান</label>
+     <input id="postLocation" maxlength="120" placeholder="স্থান লিখুন">
+    </div>
+    <div class="field">
+     <label>ছবির লিংক (ঐচ্ছিক)</label>
+     <input id="imageUrl" type="url" placeholder="https://example.com/photo.jpg">
+    </div>
+    <div class="field">
+     <label>আপনার অভিজ্ঞতা / বিবরণ *</label>
+     <textarea id="postDescription" required maxlength="1500" placeholder="কীভাবে মাছটি ধরলেন লিখুন..."></textarea>
+    </div>
+    <button class="btn" id="postSubmit" type="submit">পোস্ট জমা দিন</button>
+    <div class="notice">আপনার পোস্ট প্রথমে Admin-এর কাছে যাবে। অনুমোদনের পর সবাই দেখতে পারবেন।</div>
+   </form>
+  </div>
+ </div>
+</section>
+
+<section id="shop">
+ <div class="container">
+  <div class="section-head">
+   <h2>🛒 Fishing <span class="green">Shop</span></h2>
+   <p>মাছ ধরার সরঞ্জাম সম্পর্কে জানতে যোগাযোগ করুন।</p>
+  </div>
+  <div class="grid">
+   <article class="card"><div class="card-body">
+    <h3>Fishing Rod</h3><p>মাছ ধরার ছিপ ও প্রয়োজনীয় সরঞ্জাম।</p>
+    <button class="btn btn-small" onclick="shopMessage('Fishing Rod')">বিস্তারিত জানতে</button>
+   </div></article>
+   <article class="card"><div class="card-body">
+    <h3>Fishing Reel</h3><p>রিল ও মাছ ধরার আনুষঙ্গিক পণ্য।</p>
+    <button class="btn btn-small" onclick="shopMessage('Fishing Reel')">বিস্তারিত জানতে</button>
+   </div></article>
+   <article class="card"><div class="card-body">
+    <h3>Fishing Accessories</h3><p>বড়শি, সুতা, ফিডার ও অন্যান্য সামগ্রী।</p>
+    <button class="btn btn-small" onclick="shopMessage('Fishing Accessories')">বিস্তারিত জানতে</button>
+   </div></article>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="section-head">
+   <h2>📩 Contact <span class="green">Us</span></h2>
+   <p>আপনার মতামত বা প্রশ্ন আমাদের জানান।</p>
+  </div>
+  <div class="form-card">
+   <form id="contactForm">
+    <div class="field"><label>আপনার নাম</label><input id="contactName" required></div>
+    <div class="field"><label>আপনার ইমেইল</label><input id="contactEmail" type="email" required></div>
+    <div class="field"><label>মেসেজ</label><textarea id="contactMessage" required></textarea></div>
+    <button class="btn" type="submit">মেসেজ পাঠান</button>
+   </form>
+   <p class="notice">মেসেজ পাঠালে আপনার ডিভাইসের ইমেইল অ্যাপ খুলবে।</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-row">
+  <div><strong>Bheramara Fishing Gallery 🎣</strong><br>ভেড়ামারার মাছ শিকারিদের মিলনস্থল।</div>
+  <div>© 2026 Bheramara Fishing Gallery</div>
+ </div>
+</footer>
+
+<!-- Spot details modal -->
+<div class="modal" id="spotModal">
+ <div class="modal-box">
+  <button class="modal-close" onclick="closeModal('spotModal')">×</button>
+  <h2 id="spotTitle">Spot</h2>
+  <p id="spotDetails"></p>
+ </div>
 </div>
-<button class="navbtn" onclick="openModal('loginModal')">লগইন / অ্যাকাউন্ট</button>
-<button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
-</div></nav>
 
-<header class="hero" id="home"><div class="wrap"><div class="hero-content">
-<div class="eyebrow">THE HOME OF LOCAL ANGLERS</div>
-<h1>মাছ ধরার আনন্দ,<br><span>এক জায়গায়।</span></h1>
-<p>ভেড়ামারা ও আশপাশের নদী-পুকুরের ফিশিং স্পট, মাছ ধরার আপডেট, বড় ক্যাচের গল্প এবং শৌখিন মাছ শিকারিদের মিলনমেলা।</p>
-<div class="hero-actions">
-<a class="btn" href="#spots">🎯 ফিশিং স্পট দেখুন</a>
-<a class="btn secondary" href="#community">কমিউনিটিতে যোগ দিন ↗️</a>
-</div>
-<div class="hero-stats">
-<div class="stat"><strong>১৪+</strong><span>ওয়েবসাইট ফিচার</span></div>
-<div class="stat"><strong>২৪/৭</strong><span>ফিশিং কমিউনিটি</span></div>
-<div class="stat"><strong>১</strong><span>আমাদের ভেড়ামারা</span></div>
-</div>
-</div></div></header>
-
-<section class="section" id="spots"><div class="wrap">
-<div class="section-head"><div><div class="kicker">EXPLORE FISHING SPOTS</div><h2>জনপ্রিয় ফিশিং স্পট</h2></div><p>পুকুর, নদী কিংবা পরিচিত মাছ ধরার জায়গা—স্পটের তথ্য দেখে আপনার পরবর্তী মাছ ধরার পরিকল্পনা করুন।</p></div>
-<div class="grid">
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="নদীর পানি"><span class="tag">নদী</span></div><div class="cardbody"><h3>পদ্মা নদী অঞ্চল</h3><div class="muted">ভেড়ামারা ও আশপাশের নদী তীরের সম্ভাব্য মাছ ধরার এলাকা। যাওয়ার আগে স্থানীয় অবস্থা জেনে নিন।</div><div class="meta"><span>📍 ভেড়ামারা অঞ্চল</span><span class="price">স্পট তথ্য</span></div></div></article>
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="জলাশয়"><span class="tag">পুকুর</span></div><div class="cardbody"><h3>স্থানীয় পুকুর</h3><div class="muted">টিকিট, মাছের ধরন, সময় ও নিয়ম জেনে মাছ ধরতে যান। মালিকের অনুমতি ছাড়া মাছ ধরা যাবে না।</div><div class="meta"><span>🎟️ টিকিটের তথ্য</span><span class="price">যোগাযোগ সাপেক্ষে</span></div></div></article>
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=900&q=85" alt="শান্ত জলাশয়"><span class="tag">শৌখিন স্পট</span></div><div class="cardbody"><h3>স্থানীয় জলাশয়</h3><div class="muted">আপনার পরিচিত মাছ ধরার জায়গার নাম, ছবি ও বিস্তারিত তথ্য আমাদের পাঠান।</div><div class="meta"><span>⭐ রেটিং ও রিভিউ</span><span class="price">তথ্য যোগ করুন</span></div></div></article>
-</div></div></section>
-
-<section class="section alt" id="about"><div class="wrap split">
-<div><div class="kicker">ABOUT OUR COMMUNITY</div><h2>মাছ ধরা শুধু শখ নয়, এটা ভালোবাসা।</h2>
-<p class="muted">Bheramara Fishing Gallery হলো ভেড়ামারা ও আশপাশের শৌখিন মাছ শিকারিদের জন্য একটি তথ্য ও কমিউনিটি প্ল্যাটফর্ম। এখানে মাছ ধরার স্পট, দৈনিক আপডেট, বড় মাছের রেকর্ড, অভিজ্ঞতা এবং প্রয়োজনীয় ফিশিং পণ্যের তথ্য এক জায়গায় পাওয়া যাবে।</p>
-<div class="featurelist">
-<div class="feature">🎣 <b>ফিশিং স্পট</b><span>নদী ও পুকুরের তথ্য</span></div>
-<div class="feature">📍 <b>লোকেশন</b><span>স্পট খুঁজে পাওয়ার সহায়তা</span></div>
-<div class="feature">🐟 <b>বড় ক্যাচ</b><span>মাছ ধরার রেকর্ড</span></div>
-<div class="feature">🤝 <b>কমিউনিটি</b><span>শিকারিদের অভিজ্ঞতা</span></div>
-</div>
-<a class="btn" href="#community">আমাদের সঙ্গে থাকুন ↗️</a></div>
-<div class="splitimg"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1100&q=90" alt="নদী ও পানি"></div>
-</div></section>
-<section class="section" id="map"><div class="wrap">
-<div class="section-head"><div><div class="kicker">FIND YOUR NEXT SPOT</div><h2>নদীর মাছ ধরার লোকেশন ম্যাপ</h2></div><p>নিরাপদ ও অনুমতিপ্রাপ্ত জায়গা বেছে নিন। নির্দিষ্ট স্পটের যাচাইকৃত লোকেশন ধাপে ধাপে যুক্ত করা হবে।</p></div>
-<div class="mapbox"><div><div class="pin">📍</div><h3>ভেড়ামারা ও আশপাশের ফিশিং লোকেশন</h3><p class="muted">ম্যাপ ও নির্দিষ্ট স্পট পিন যুক্ত করার জন্য যাচাইকৃত লোকেশন প্রয়োজন।</p><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/fishing+spots+near+Bheramara+Bangladesh">Google Maps-এ এলাকা দেখুন ↗️</a></div></div>
-</div></section>
-
-<section class="section alt" id="reports"><div class="wrap">
-<div class="section-head"><div><div class="kicker">LATEST FISHING REPORTS</div><h2>কোথায় ভালো মাছ পাওয়া যাচ্ছে?</h2></div><p>বাস্তব রিপোর্ট সদস্য বা অ্যাডমিন যাচাই করে প্রকাশ করবেন।</p></div>
-<div class="panel">
-<div class="report"><div class="reporticon">🐟</div><div><h3>আজকের মাছ ধরার আপডেট</h3><p>নতুন রিপোর্ট এখনো যোগ করা হয়নি। আপনার অভিজ্ঞতা শেয়ার করুন।</p></div></div>
-<div class="report"><div class="reporticon">🌊</div><div><h3>নদীর পানির অবস্থা</h3><p>পানির স্রোত, উচ্চতা ও আবহাওয়ার তথ্য স্থানীয়ভাবে যাচাই করে নিন।</p></div></div>
-<div class="report"><div class="reporticon">🎣</div><div><h3>সেরা টোপ ও কৌশল</h3><p>কোন টোপে কোন মাছ উঠছে—আপনার অভিজ্ঞতা কমিউনিটিতে জানান।</p></div></div>
-</div>
-<div style="margin-top:18px"><a class="btn" href="#community">নতুন রিপোর্ট পাঠান</a></div>
-</div></section>
-
-<section class="section" id="records"><div class="wrap">
-<div class="record">
-<div class="recordimg"><img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1100&q=85" alt="প্রকৃতি"></div>
-<div class="recordbody"><div class="kicker">HALL OF FAME</div><h2>সবচেয়ে বড় মাছের রেকর্ড</h2><div class="bigweight">আপনার ক্যাচ?</div><p class="muted">আপনার ধরা সবচেয়ে বড় মাছের ছবি, ওজন, মাছের নাম, তারিখ ও স্পটের তথ্য পাঠান। যাচাইয়ের পর রেকর্ড বোর্ডে প্রকাশ করা হবে।</p><a class="btn" href="#community">রেকর্ড জমা দিন ↗️</a></div>
-</div></div></section>
-
-<section class="section alt" id="community"><div class="wrap">
-<div class="community">
-<div class="kicker">JOIN THE ANGLERS</div>
-<h2>আপনার মাছ ধরার গল্প সবাইকে জানান।</h2>
-<p class="muted" style="max-width:540px">নতুন স্পট, মাছের ছবি, টোপের কৌশল, রিভিউ কিংবা বড় ক্যাচ—আপনার অভিজ্ঞতা শেয়ার করুন। পোস্টগুলো প্রকাশের আগে যাচাই করা হবে।</p>
-
-<form id="postForm" class="formgrid" style="max-width:720px;margin-top:22px">
-<input class="field" name="name" placeholder="আপনার নাম" required>
-<select class="field" name="type">
-<option value="দৈনিক মাছ ধরার আপডেট">দৈনিক মাছ ধরার আপডেট</option>
-<option value="ফিশিং স্পটের রিভিউ">ফিশিং স্পটের রিভিউ</option>
-<option value="বড় মাছের রেকর্ড">বড় মাছের রেকর্ড</option>
-<option value="টোপ ও কৌশল">টোপ ও কৌশল</option>
-<option value="অন্যান্য">অন্যান্য</option>
-</select>
-<input class="field wide" name="title" placeholder="পোস্টের শিরোনাম" required>
-<textarea class="field wide" name="message" placeholder="আপনার বিস্তারিত তথ্য লিখুন..." required></textarea>
-<input class="field wide" name="photo" type="url" placeholder="ছবির লিংক (ঐচ্ছিক)">
-<button class="btn wide" type="submit">📨 পোস্ট অনুমোদনের জন্য পাঠান</button>
-</form>
-<p class="small">পোস্ট জমা হলে অ্যাডমিন অনুমোদনের অপেক্ষায় থাকবে। অনুমোদিত পোস্ট সবার জন্য দেখা যাবে।</p>
+<!-- Login modal -->
+<div class="modal" id="loginModal">
+ <div class="modal-box">
+  <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+  <h2>Login / Sign Up</h2>
+  <div class="field"><label>Email</label><input id="authEmail" type="email" placeholder="আপনার ইমেইল"></div>
+  <div class="field"><label>Password</label><input id="authPassword" type="password" placeholder="পাসওয়ার্ড"></div>
+  <button class="btn" onclick="signIn()">Login</button>
+  <button class="btn btn-outline" onclick="signUp()">Sign Up</button>
+  <p id="authMessage" class="notice">নতুন হলে Sign Up করুন।</p>
+  <button class="btn btn-outline btn-small" onclick="signOut()">Logout</button>
+ </div>
 </div>
 
-<div class="panel" style="margin-top:22px"><h3>কমিউনিটি পোস্ট</h3><div id="posts"><p class="muted">পোস্ট লোড হচ্ছে...</p></div></div>
-</div></section>
-
-<section class="section" id="shop"><div class="wrap">
-<div class="section-head"><div><div class="kicker">FISHING GEAR</div><h2>ফিশিং পণ্য ও সরঞ্জাম</h2></div><p>প্রয়োজনীয় সরঞ্জামের তালিকা। পণ্যের আসল দাম ও স্টক অ্যাডমিন যুক্ত করবেন।</p></div>
-<div class="grid">
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85" alt="ফিশিং সরঞ্জাম"><span class="tag">সরঞ্জাম</span></div><div class="cardbody"><h3>ফিশিং রিল ও রড</h3><p class="muted">বিভিন্ন ধরনের রড ও রিলের তথ্য এখানে যুক্ত হবে।</p><div class="meta"><span>দাম: পরে যুক্ত হবে</span><button class="tabs" onclick="orderProduct('ফিশিং রিল ও রড')">অর্ডার</button></div></div></article>
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=85" alt="অ্যাক্সেসরিজ"><span class="tag">অ্যাক্সেসরিজ</span></div><div class="cardbody"><h3>ফিশিং অ্যাক্সেসরিজ</h3><p class="muted">হুক, সুতা, ফ্লোট ও প্রয়োজনীয় অন্যান্য সামগ্রী।</p><div class="meta"><span>দাম: পরে যুক্ত হবে</span><button class="tabs" onclick="orderProduct('ফিশিং অ্যাক্সেসরিজ')">অর্ডার</button></div></div></article>
-<article class="card"><div class="photo"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="আউটডোর"><span class="tag">আউটডোর</span></div><div class="cardbody"><h3>আউটডোর প্রয়োজনীয় পণ্য</h3><p class="muted">মাছ ধরার সময় কাজে লাগে এমন নির্বাচিত পণ্য।</p><div class="meta"><span>দাম: পরে যুক্ত হবে</span><button class="tabs" onclick="orderProduct('আউটডোর পণ্য')">অর্ডার</button></div></div></article>
-</div></div></section>
-
-<section class="section alt" id="contact"><div class="wrap split">
-<div><div class="kicker">GET IN TOUCH</div><h2>যোগাযোগ করুন</h2><p class="muted">নতুন স্পট, পণ্যের তথ্য, সহযোগিতা অথবা ওয়েবসাইটে কোনো ভুল জানাতে যোগাযোগ করুন।</p><p>📍 ভেড়ামারা, কুষ্টিয়া, বাংলাদেশ</p><p>📘 Facebook পেজ: <a href="#" id="fbLink" style="color:var(--lime)">লিংক অ্যাডমিন যুক্ত করবেন</a></p></div>
-<form class="panel formgrid" id="contactForm">
-<h3 class="wide">মেসেজ পাঠান</h3>
-<input class="field wide" name="name" placeholder="আপনার নাম" required>
-<input class="field wide" type="email" name="email" placeholder="ইমেইল (ঐচ্ছিক)">
-<textarea class="field wide" name="message" placeholder="আপনার মেসেজ..." required></textarea>
-<button class="btn wide" type="submit">মেসেজ জমা দিন</button>
-</form>
-</div></section>
-
-<footer class="footer"><div class="wrap">
-<div class="footgrid">
-<div><a class="brand" href="#home"><span class="brandmark">🎣</span><span>BHERAMARA FISHING<small>GALLERY</small></span></a><p>ভেড়ামারা ও আশপাশের মাছ শিকারিদের জন্য তথ্য, অভিজ্ঞতা ও ভালোবাসার একটি কমিউনিটি।</p></div>
-<div><h3>দ্রুত লিংক</h3><p><a href="#spots">ফিশিং স্পট</a><br><a href="#reports">দৈনিক রিপোর্ট</a><br><a href="#records">বড় মাছের রেকর্ড</a><br><a href="#shop">পণ্য ও অর্ডার</a></p></div>
-<div><h3>অ্যাডমিন</h3><p><a href="#" onclick="openModal('adminModal');return false">অ্যাডমিন প্যানেল</a><br><a href="#contact">যোগাযোগ</a><br><a href="#community">কমিউনিটি</a></p></div>
+<!-- Admin modal -->
+<div class="modal" id="adminModal">
+ <div class="modal-box">
+  <button class="modal-close" onclick="closeModal('adminModal')">×</button>
+  <h2>Admin Panel</h2>
+  <div id="adminLoginArea">
+   <p class="notice">Admin অ্যাকাউন্ট দিয়ে Login করুন।</p>
+   <div class="field"><label>Email</label><input id="adminEmail" type="email"></div>
+   <div class="field"><label>Password</label><input id="adminPassword" type="password"></div>
+   <button class="btn" onclick="adminLogin()">Admin Login</button>
+  </div>
+  <div id="adminArea" class="hidden">
+   <p class="notice">Admin হিসেবে প্রবেশ করেছেন। Pending পোস্টগুলো এখানে দেখা যাবে।</p>
+   <button class="btn btn-outline btn-small" onclick="loadPending()">Refresh Posts</button>
+   <button class="btn btn-outline btn-small" onclick="signOut()">Logout</button>
+   <div id="pendingList" style="margin-top:15px"></div>
+  </div>
+ </div>
 </div>
-<div class="copyright"><span>© 2026 Bheramara Fishing Gallery. সর্বস্বত্ব সংরক্ষিত।</span><span>Made with 🎣 for local anglers</span></div>
-</div></footer>
 
-<div class="modal" id="loginModal"><div class="modalbox">
-<div class="modalhead"><h3>ব্যবহারকারী অ্যাকাউন্ট</h3><button class="close" onclick="closeModal('loginModal')">×</button></div>
-<form id="loginForm">
-<select class="field" name="action" id="authAction" style="margin:8px 0">
-<option value="signup">নতুন অ্যাকাউন্ট খুলুন</option>
-<option value="login">আগের অ্যাকাউন্টে লগইন</option>
-</select>
-<input class="field" name="name" id="signupName" placeholder="আপনার নাম" style="margin:8px 0">
-<input class="field" name="email" type="email" placeholder="আপনার ইমেইল" required style="margin:8px 0">
-<input class="field" name="password" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)" minlength="6" required style="margin:8px 0">
-<button class="btn" type="submit" style="width:100%;margin-top:8px">এগিয়ে যান</button>
-</form>
-<p class="notice">অ্যাকাউন্ট তৈরি করার পর ইমেইল নিশ্চিত করতে হতে পারে।</p>
-</div></div>
+<div id="toast"></div>
 
-<div class="modal" id="adminModal"><div class="modalbox">
-<div class="modalhead"><h3>অ্যাডমিন প্যানেল</h3><button class="close" onclick="closeModal('adminModal')">×</button></div>
-<div id="adminLogin"><p class="muted">অ্যাডমিন অ্যাকাউন্ট দিয়ে লগইন করুন।</p><button class="btn" onclick="openModal('loginModal')">লগইন / অ্যাকাউন্ট</button></div>
-<div id="adminArea" style="display:none"><h3>জমা পড়া পোস্ট</h3><div id="adminPosts"></div><button class="btn secondary" onclick="closeModal('adminModal')">বন্ধ করুন</button></div>
-</div></div>
 
-<div class="toast" id="toast">সম্পন্ন হয়েছে</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 /* SUPABASE CONNECTION */
 const SUPABASE_URL = "https://onuaxegnzfyxzdwwoxvp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_RjA74-eEkHkSJ_gwgdztIg_XyLwq_-m";
 
-const supabaseClient = window.supabase.createClient(
+const db = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
-const $ = selector => document.querySelector(selector);
+/* ADMIN USER ID */
+const ADMIN_USER_ID = "dc7f28f5-a565-4477-98b4-c3664d1c3da5";
 
-function toast(message) {
-  const element = $('#toast');
-  element.textContent = message;
-  element.classList.add('show');
-  setTimeout(() => element.classList.remove('show'), 3000);
+/* GENERAL HELPERS */
+function el(id){
+  return document.getElementById(id);
 }
 
-function openModal(id) {
-  $('#' + id).classList.add('show');
-}
-
-function closeModal(id) {
-  $('#' + id).classList.remove('show');
-}
-
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.addEventListener('click', event => {
-    if (event.target === modal) modal.classList.remove('show');
-  });
-});
-
-/* SIGNUP / LOGIN FORM */
-$('#authAction').addEventListener('change', () => {
-  const isSignup = $('#authAction').value === 'signup';
-  $('#signupName').style.display = isSignup ? 'block' : 'none';
-  $('#signupName').required = isSignup;
-});
-
-$('#loginForm').addEventListener('submit', async event => {
-  event.preventDefault();
-
-  const form = new FormData(event.target);
-  const action = form.get('action');
-  const name = (form.get('name') || '').trim();
-  const email = form.get('email').trim();
-  const password = form.get('password');
-
-  if (action === 'signup' && !name) {
-    toast('আপনার নাম লিখুন।');
-    return;
-  }
-
-  const submitButton = event.target.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  submitButton.textContent = 'অপেক্ষা করুন...';
-
-  try {
-    let result;
-
-    if (action === 'login') {
-      result = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
-    } else {
-      result = await supabaseClient.auth.signUp({
-        email,
-        password,
-        options: {
-          data: { full_name: name }
-        }
-      });
-    }
-
-    if (result.error) throw result.error;
-
-    if (action === 'login') {
-      toast('সফলভাবে লগইন হয়েছে!');
-    } else if (result.data.session) {
-      toast('স্বাগতম, ' + name + '!');
-    } else {
-      toast('অ্যাকাউন্ট তৈরি হয়েছে। ইমেইল নিশ্চিত করুন।');
-    }
-
-    event.target.reset();
-    $('#signupName').style.display = 'block';
-    $('#signupName').required = true;
-    closeModal('loginModal');
-    await checkAdmin();
-  } catch (error) {
-    toast('সমস্যা: ' + error.message);
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = 'এগিয়ে যান';
-  }
-});
-
-/* SUBMIT FISHING POST TO SUPABASE */
-$('#postForm').addEventListener('submit', async event => {
-  event.preventDefault();
-
-  const form = new FormData(event.target);
-  const name = form.get('name').trim();
-  const type = form.get('type');
-  const title = form.get('title').trim();
-  const message = form.get('message').trim();
-  const photo = form.get('photo').trim();
-
-  if (photo && !/^https?:\/\//i.test(photo)) {
-    toast('ছবির সঠিক URL দিন।');
-    return;
-  }
-
-  const button = event.target.querySelector('button[type="submit"]');
-  button.disabled = true;
-  button.textContent = 'পোস্ট পাঠানো হচ্ছে...';
-
-  try {
-    const { error } = await supabaseClient
-      .from('fishing_posts')
-      .insert({
-        title: title,
-        description: 'প্রেরক: ' + name + '\nধরন: ' + type + '\n\n' + message,
-        location: type,
-        image_url: photo || null,
-        status: 'pending'
-      });
-
-    if (error) throw error;
-
-    event.target.reset();
-    toast('পোস্ট জমা হয়েছে। অ্যাডমিন অনুমোদনের অপেক্ষায় থাকুন।');
-  } catch (error) {
-    toast('পোস্ট জমা হয়নি: ' + error.message);
-  } finally {
-    button.disabled = false;
-    button.textContent = '📨 পোস্ট অনুমোদনের জন্য পাঠান';
-  }
-});
-
-/* LOAD APPROVED POSTS */
-async function renderPosts() {
-  const container = $('#posts');
-  container.innerHTML = '<p class="muted">পোস্ট লোড হচ্ছে...</p>';
-
-  const { data, error } = await supabaseClient
-    .from('fishing_posts')
-    .select('*')
-    .eq('status', 'approved')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    container.innerHTML = '<p class="muted">পোস্ট লোড করা যায়নি। পরে আবার চেষ্টা করুন।</p>';
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    container.innerHTML = '<p class="muted">এখনো কোনো অনুমোদিত পোস্ট নেই। প্রথম পোস্টটি আপনিই করুন!</p>';
-    return;
-  }
-
-  container.innerHTML = '';
-
-  data.forEach(post => {
-    const article = document.createElement('article');
-    article.className = 'communitypost';
-
-    const title = document.createElement('strong');
-    title.textContent = post.title || 'শিরোনাম নেই';
-
-    const description = document.createElement('p');
-    description.textContent = post.description || '';
-    description.style.whiteSpace = 'pre-wrap';
-
-    const category = document.createElement('div');
-    category.className = 'small';
-    category.textContent = post.location || 'কমিউনিটি পোস্ট';
-
-    article.append(title, category, description);
-
-    if (post.image_url) {
-      const link = document.createElement('a');
-      link.href = post.image_url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'ছবি দেখুন ↗️';
-      link.style.color = 'var(--lime)';
-      article.appendChild(link);
-    }
-
-    container.appendChild(article);
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, function(c){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[c];
   });
 }
 
-/* CONTACT FORM */
-$('#contactForm').addEventListener('submit', event => {
-  event.preventDefault();
-  toast('ধন্যবাদ! আপনার মেসেজ গ্রহণ করা হয়েছে।');
-  event.target.reset();
-});
+function showToast(message){
+  const t = el("toast");
+  t.textContent = message;
+  t.style.display = "block";
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(()=>{
+    t.style.display = "none";
+  },3500);
+}
 
-/* ADMIN ACCOUNT CHECK */
-async function checkAdmin() {
-  const { data: authData } = await supabaseClient.auth.getUser();
-  const user = authData?.user;
+function toggleMenu(){
+  el("navlinks").classList.toggle("open");
+}
 
-  if (!user) {
-    $('#adminLogin').style.display = 'block';
-    $('#adminArea').style.display = 'none';
+function closeMenu(){
+  el("navlinks").classList.remove("open");
+}
+
+function openLogin(){
+  el("loginModal").classList.add("show");
+}
+
+function openAdmin(){
+  el("adminModal").classList.add("show");
+  checkAdmin();
+}
+
+function closeModal(id){
+  el(id).classList.remove("show");
+}
+
+function showSpot(name, details){
+  el("spotTitle").textContent = name;
+  el("spotDetails").textContent = details;
+  el("spotModal").classList.add("show");
+}
+
+function shopMessage(product){
+  const subject = encodeURIComponent("Fishing Shop - " + product);
+  const body = encodeURIComponent(
+    "আমি " + product + " সম্পর্কে জানতে চাই।"
+  );
+  window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+}
+
+/* AUTHENTICATION */
+async function signUp(){
+  const email = el("authEmail").value.trim();
+  const password = el("authPassword").value;
+
+  if(!email || password.length < 6){
+    el("authMessage").textContent =
+      "সঠিক ইমেইল দিন এবং কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড দিন।";
+    return;
+  }
+
+  const {data,error} = await db.auth.signUp({
+    email,
+    password
+  });
+
+  if(error){
+    el("authMessage").textContent = error.message;
+    return;
+  }
+
+  el("authMessage").textContent =
+    "অ্যাকাউন্ট তৈরি হয়েছে। ইমেইল Confirmation চাইলে ইনবক্স পরীক্ষা করুন।";
+}
+
+async function signIn(){
+  const email = el("authEmail").value.trim();
+  const password = el("authPassword").value;
+
+  const {data,error} = await db.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if(error){
+    el("authMessage").textContent = error.message;
+    return;
+  }
+
+  el("authMessage").textContent =
+    "Login সফল হয়েছে: " + data.user.email;
+
+  showToast("Login সফল হয়েছে");
+  checkAdmin();
+}
+
+async function signOut(){
+  const {error} = await db.auth.signOut();
+
+  if(error){
+    showToast(error.message);
+    return;
+  }
+
+  el("adminArea").classList.add("hidden");
+  el("adminLoginArea").classList.remove("hidden");
+  closeModal("adminModal");
+
+  showToast("Logout সফল হয়েছে");
+}
+
+async function getCurrentUser(){
+  const {data,error} = await db.auth.getUser();
+  if(error) return null;
+  return data.user;
+}
+
+/* ADMIN CHECK */
+async function checkAdmin(){
+  const user = await getCurrentUser();
+
+  if(!user){
+    el("adminArea").classList.add("hidden");
+    el("adminLoginArea").classList.remove("hidden");
     return false;
   }
 
-  const { data, error } = await supabaseClient
-    .from('admin_users')
-    .select('user_id')
-    .eq('user_id', user.id)
+  const {data,error} = await db
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id",user.id)
     .maybeSingle();
 
-  const isAdmin = !error && !!data;
+  if(error || !data){
+    el("adminArea").classList.add("hidden");
+    el("adminLoginArea").classList.remove("hidden");
+    return false;
+  }
 
-  $('#adminLogin').style.display = isAdmin ? 'none' : 'block';
-  $('#adminArea').style.display = isAdmin ? 'block' : 'none';
+  el("adminLoginArea").classList.add("hidden");
+  el("adminArea").classList.remove("hidden");
 
-  if (isAdmin) await renderAdminPosts();
-
-  return isAdmin;
+  await loadPending();
+  return true;
 }
 
-/* ADMIN: LOAD PENDING POSTS */
-async function renderAdminPosts() {
-  const container = $('#adminPosts');
-  container.innerHTML = '<p class="muted">পোস্ট লোড হচ্ছে...</p>';
+async function adminLogin(){
+  const email = el("adminEmail").value.trim();
+  const password = el("adminPassword").value;
 
-  const { data, error } = await supabaseClient
-    .from('fishing_posts')
-    .select('*')
-    .eq('status', 'pending')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    container.textContent = 'অ্যাডমিন পোস্ট লোড করা যায়নি। ডেটাবেজের অনুমতি পরীক্ষা করতে হবে।';
+  if(!email || !password){
+    showToast("ইমেইল ও পাসওয়ার্ড দিন");
     return;
   }
 
-  if (!data || data.length === 0) {
-    container.innerHTML = '<p class="muted">অনুমোদনের অপেক্ষায় কোনো পোস্ট নেই।</p>';
-    return;
-  }
-
-  container.innerHTML = '';
-
-  data.forEach(post => {
-    const article = document.createElement('div');
-    article.className = 'communitypost';
-
-    const title = document.createElement('strong');
-    title.textContent = post.title;
-
-    const description = document.createElement('p');
-    description.textContent = post.description || '';
-    description.style.whiteSpace = 'pre-wrap';
-
-    const actions = document.createElement('div');
-    actions.style.display = 'flex';
-    actions.style.gap = '8px';
-    actions.style.marginTop = '12px';
-
-    const approve = document.createElement('button');
-    approve.className = 'tabs';
-    approve.textContent = 'অনুমোদন';
-    approve.onclick = () => approvePost(post.id);
-
-    const remove = document.createElement('button');
-    remove.className = 'tabs';
-    remove.textContent = 'মুছুন';
-    remove.onclick = () => deletePost(post.id);
-
-    actions.append(approve, remove);
-    article.append(title, description);
-
-    if (post.image_url) {
-      const imageLink = document.createElement('a');
-      imageLink.href = post.image_url;
-      imageLink.target = '_blank';
-      imageLink.rel = 'noopener noreferrer';
-      imageLink.textContent = 'ছবি দেখুন';
-      imageLink.style.color = 'var(--lime)';
-      article.appendChild(imageLink);
-    }
-
-    article.appendChild(actions);
-    container.appendChild(article);
+  const {error} = await db.auth.signInWithPassword({
+    email,
+    password
   });
+
+  if(error){
+    showToast("Login হয়নি: " + error.message);
+    return;
+  }
+
+  const user = await getCurrentUser();
+
+  if(!user || user.id !== ADMIN_USER_ID){
+    await db.auth.signOut();
+    showToast("এই অ্যাকাউন্টটি নির্ধারিত Admin নয়");
+    return;
+  }
+
+  const allowed = await checkAdmin();
+
+  if(allowed){
+    showToast("Admin Login সফল হয়েছে");
+  }else{
+    showToast("Admin অনুমতি পাওয়া যায়নি");
+  }
 }
 
-/* ADMIN: APPROVE POST */
-async function approvePost(id) {
-  const isAdmin = await checkAdmin();
+/* SUBMIT COMMUNITY POST */
+el("postForm").addEventListener("submit",async function(event){
+  event.preventDefault();
 
-  if (!isAdmin) {
-    toast('অ্যাডমিন অনুমতি পাওয়া যায়নি।');
+  const submitButton = el("postSubmit");
+  submitButton.disabled = true;
+  submitButton.textContent = "জমা হচ্ছে...";
+
+  const name = el("postName").value.trim();
+  const title = el("postTitle").value.trim();
+  const fishName = el("fishName").value.trim();
+  const fishWeight = el("fishWeight").value.trim();
+  const location = el("postLocation").value.trim();
+  const image = el("imageUrl").value.trim();
+  const description = el("postDescription").value.trim();
+
+  if(image){
+    try{
+      const parsed = new URL(image);
+      if(!["http:","https:"].includes(parsed.protocol)){
+        throw new Error("Invalid image URL");
+      }
+    }catch(e){
+      showToast("সঠিক ছবির লিংক দিন");
+      submitButton.disabled = false;
+      submitButton.textContent = "পোস্ট জমা দিন";
+      return;
+    }
+  }
+
+  const fullDescription =
+    "শিকারির নাম: " + name +
+    "\n\n" + description;
+
+  const {error} = await db
+    .from("fishing_posts")
+    .insert({
+      title:title,
+      description:fullDescription,
+      location:location,
+      fish_name:fishName || null,
+      fish_weight:fishWeight || null,
+      image_url:image || null,
+      status:"pending"
+    });
+
+  submitButton.disabled = false;
+  submitButton.textContent = "পোস্ট জমা দিন";
+
+  if(error){
+    showToast("পোস্ট জমা হয়নি: " + error.message);
     return;
   }
 
-  const { error } = await supabaseClient
-    .from('fishing_posts')
-    .update({ status: 'approved' })
-    .eq('id', id);
+  el("postForm").reset();
+  showToast("পোস্ট জমা হয়েছে। Admin অনুমোদনের অপেক্ষায় আছে।");
+});
 
-  if (error) {
-    toast('অনুমোদন করা যায়নি: ' + error.message);
-    return;
-  }
+/* LOAD APPROVED POSTS */
+function postCard(post){
+  const image = post.image_url;
+  const safeImage = image && /^https?:\/\//i.test(image)
+    ? escapeHTML(image)
+    : "";
 
-  toast('পোস্ট অনুমোদিত হয়েছে!');
-  await renderAdminPosts();
-  await renderPosts();
+  return `
+    <article class="post-item">
+      ${safeImage ? `<img src="${safeImage}" alt="Fishing catch" style="width:100%;max-height:220px;object-fit:cover;border-radius:9px;margin-bottom:12px">` : ""}
+      <h3>${escapeHTML(post.title)}</h3>
+      <p>${escapeHTML(post.description)}</p>
+      <p>🐟 ${escapeHTML(post.fish_name || "মাছের নাম উল্লেখ নেই")}</p>
+      <p>⚖️ ${escapeHTML(post.fish_weight || "ওজন উল্লেখ নেই")}</p>
+      <p>📍 ${escapeHTML(post.location || "স্থান উল্লেখ নেই")}</p>
+      <span class="status">✓ Approved</span>
+    </article>
+  `;
 }
 
-/* ADMIN: DELETE POST */
-async function deletePost(id) {
-  const isAdmin = await checkAdmin();
+async function loadApproved(){
+  const {data,error} = await db
+    .from("fishing_posts")
+    .select("*")
+    .eq("status","approved")
+    .order("created_at",{ascending:false});
 
-  if (!isAdmin) {
-    toast('অ্যাডমিন অনুমতি পাওয়া যায়নি।');
+  if(error){
+    el("reportList").innerHTML =
+      '<div class="empty">রিপোর্ট লোড হয়নি। পরে আবার চেষ্টা করুন।</div>';
+    el("recordList").innerHTML =
+      '<div class="empty">রেকর্ড লোড করা যায়নি।</div>';
     return;
   }
 
-  if (!confirm('আপনি কি পোস্টটি মুছে ফেলতে চান?')) return;
+  if(!data || data.length===0){
+    el("reportList").innerHTML =
+      '<div class="empty">এখনো কোনো Approved রিপোর্ট নেই।</div>';
+    el("recordList").innerHTML =
+      '<div class="empty">এখনো কোনো রেকর্ড পোস্ট নেই।</div>';
+    return;
+  }
 
-  const { error } = await supabaseClient
-    .from('fishing_posts')
+  el("reportList").innerHTML = data.map(postCard).join("");
+  el("recordList").innerHTML = data.map(postCard).join("");
+}
+
+/* ADMIN PENDING POSTS */
+async function loadPending(){
+  const user = await getCurrentUser();
+
+  if(!user || user.id !== ADMIN_USER_ID){
+    return;
+  }
+
+  const {data,error} = await db
+    .from("fishing_posts")
+    .select("*")
+    .eq("status","pending")
+    .order("created_at",{ascending:false});
+
+  if(error){
+    el("pendingList").innerHTML =
+      '<div class="notice">Pending পোস্ট লোড হয়নি: ' +
+      escapeHTML(error.message) + '</div>';
+    return;
+  }
+
+  if(!data || data.length===0){
+    el("pendingList").innerHTML =
+      '<div class="empty">কোনো Pending পোস্ট নেই।</div>';
+    return;
+  }
+
+  el("pendingList").innerHTML = data.map(post=>{
+    return `
+      <article class="post-item" style="margin-bottom:12px">
+        <h3>${escapeHTML(post.title)}</h3>
+        <p>${escapeHTML(post.description)}</p>
+        <p>🐟 ${escapeHTML(post.fish_name || "")}</p>
+        <p>📍 ${escapeHTML(post.location || "")}</p>
+        <div class="admin-actions">
+          <button class="btn btn-small" onclick="approvePost(${Number(post.id)})">Approve</button>
+          <button class="btn btn-small btn-danger" onclick="deletePost(${Number(post.id)})">Delete</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+/* APPROVE POST */
+async function approvePost(id){
+  const user = await getCurrentUser();
+
+  if(!user || user.id !== ADMIN_USER_ID){
+    showToast("Admin অনুমতি প্রয়োজন");
+    return;
+  }
+
+  const {error} = await db
+    .from("fishing_posts")
+    .update({status:"approved"})
+    .eq("id",id);
+
+  if(error){
+    showToast("Approve হয়নি: " + error.message);
+    return;
+  }
+
+  showToast("পোস্ট Approved হয়েছে");
+  await loadPending();
+  await loadApproved();
+}
+
+/* DELETE POST */
+async function deletePost(id){
+  const user = await getCurrentUser();
+
+  if(!user || user.id !== ADMIN_USER_ID){
+    showToast("Admin অনুমতি প্রয়োজন");
+    return;
+  }
+
+  if(!confirm("তুমি কি সত্যিই এই পোস্টটি Delete করতে চাও?")){
+    return;
+  }
+
+  const {error} = await db
+    .from("fishing_posts")
     .delete()
-    .eq('id', id);
+    .eq("id",id);
 
-  if (error) {
-    toast('পোস্ট মুছতে সমস্যা: ' + error.message);
+  if(error){
+    showToast("Delete হয়নি: " + error.message);
     return;
   }
 
-  toast('পোস্ট মুছে ফেলা হয়েছে।');
-  await renderAdminPosts();
+  showToast("পোস্ট Delete হয়েছে");
+  await loadPending();
+  await loadApproved();
 }
 
-/* SHOP */
-function orderProduct(name) {
-  toast(name + ' অর্ডার করতে যোগাযোগ করুন।');
-}
+/* CONTACT FORM */
+el("contactForm").addEventListener("submit",function(event){
+  event.preventDefault();
 
-/* AUTH STATE */
-supabaseClient.auth.onAuthStateChange(() => {
-  setTimeout(checkAdmin, 0);
+  const name = el("contactName").value.trim();
+  const email = el("contactEmail").value.trim();
+  const message = el("contactMessage").value.trim();
+
+  const subject = encodeURIComponent("Bheramara Fishing Gallery Message");
+  const body = encodeURIComponent(
+    "নাম: " + name +
+    "\nইমেইল: " + email +
+    "\n\nমেসেজ:\n" + message
+  );
+
+  window.location.href =
+    "mailto:?subject=" + subject + "&body=" + body;
+});
+
+/* AUTO REFRESH WHEN AUTH CHANGES */
+db.auth.onAuthStateChange(function(event,session){
+  setTimeout(()=>{
+    checkAdmin();
+  },0);
 });
 
 /* START WEBSITE */
-renderPosts();
-checkAdmin();
+loadApproved();
 </script>
-
 </body>
 </html>
