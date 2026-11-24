@@ -3,78 +3,603 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bheramara Fishing Gallery — ভেড়ামারা ও পদ্মার মাছ ধরার গল্প, ছবি, ভিডিও এবং ফিশিং সরঞ্জাম।">
 <title>Bheramara Fishing Gallery</title>
+
 <style>
-:root{--green:#126b45;--deep:#073b2a;--lime:#d9f36a;--ink:#17352a;--muted:#64756c;--paper:#f5f8f4;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,"Noto Sans Bengali",sans-serif;background:var(--paper);color:var(--ink)}
-a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}
-.topbar{background:var(--deep);color:#eaf5ec;text-align:center;padding:8px 14px;font-size:13px}
-header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 18px #1232}
-.nav{max-width:1180px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:850;color:var(--deep);font-size:18px}
-.logo{width:55px;height:55px;object-fit:contain;border-radius:10px;background:white;display:block}
-nav{display:flex;gap:17px;flex-wrap:wrap;font-size:14px;color:#355548}nav a:hover{color:var(--green)}
-.actions{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:11px;padding:10px 15px;font-weight:700;background:var(--green);color:white}.btn.light{background:#eaf4ed;color:var(--deep)}.btn.dark{background:var(--deep)}
-.hero{background:linear-gradient(90deg,rgba(3,40,28,.91),rgba(3,40,28,.55)),url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1800&q=85') center/cover;color:white}
-.hero-inner{max-width:1180px;margin:auto;padding:82px 20px 90px}.eyebrow{color:var(--lime);font-weight:800;letter-spacing:.4px}.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.12;max-width:730px;margin:14px 0}.hero p{max-width:620px;color:#e0eee5;font-size:17px;line-height:1.8}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.wrap{max-width:1180px;margin:auto;padding:55px 20px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:22px}.section-head h2{margin:0;color:var(--deep);font-size:28px}.section-head p{margin:6px 0 0;color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:-27px;position:relative}.stat{background:white;padding:18px;border-radius:16px;box-shadow:0 8px 28px #163c2414}.stat b{display:block;font-size:24px;color:var(--green)}.stat span{font-size:13px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border-radius:17px;overflow:hidden;box-shadow:0 5px 22px #12310e0d;border:1px solid #e8eee8}.card img{width:100%;height:190px;object-fit:cover;display:block}.card-body{padding:16px}.tag{display:inline-block;background:#e9f5eb;color:var(--green);padding:5px 9px;border-radius:30px;font-size:12px;font-weight:750}.card h3{margin:10px 0 6px;font-size:19px}.muted{color:var(--muted);font-size:14px;line-height:1.65}.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin-top:12px}
-.shop-card img{height:175px}.price{font-size:20px;color:var(--green);font-weight:850}.card-actions{display:flex;gap:8px;margin-top:13px}.card-actions .btn{flex:1}
-.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center}.feature-panel{background:var(--deep);color:white;padding:28px;border-radius:20px}.feature-panel h3{font-size:25px;margin-top:0}.feature-panel p{color:#d5e6dc;line-height:1.8}
-form{display:grid;gap:11px}.field{width:100%;padding:12px 13px;border:1px solid #dce6dd;border-radius:10px;background:white;color:var(--ink)}textarea.field{min-height:95px;resize:vertical}
-.form-card{background:#fff;border:1px solid #e5eee6;border-radius:17px;padding:20px}
-.notice{background:#fff7dc;border:1px solid #f3df9e;padding:12px 14px;border-radius:12px;color:#735b15;font-size:13px;line-height:1.6}
-footer{background:#062f22;color:#d9e9df}.footer-inner{max-width:1180px;margin:auto;padding:38px 20px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footer-inner p{color:#b7cbbd;line-height:1.7}.footer-bottom{border-top:1px solid #ffffff24;text-align:center;padding:15px;font-size:12px;color:#b7cbbd}
-.modal{display:none;position:fixed;inset:0;background:#001b12a8;z-index:30;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:white;border-radius:18px;padding:22px;max-width:480px;width:100%;max-height:90vh;overflow:auto}.modal-top{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#edf3ee;border-radius:9px;padding:7px 11px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--deep);color:white;padding:12px 18px;border-radius:12px;display:none;z-index:50;box-shadow:0 8px 25px #0003}.toast.show{display:block}
-.empty{padding:24px;text-align:center;color:var(--muted);background:#fff;border-radius:14px}
-@media(max-width:850px){nav{display:none}.grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero-inner{padding:60px 20px}.hero p{font-size:15px}.section-head{align-items:start;flex-direction:column}.footer-inner{grid-template-columns:1fr}.brand{font-size:15px}.actions .light{display:none}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f8f6;color:#18332b;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+img{max-width:100%}
+.container{width:92%;max-width:1150px;margin:auto}
+
+header{background:#063d32;color:white;position:sticky;top:0;z-index:1000;box-shadow:0 3px 12px #0002}
+.navbar{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:10px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:55px;height:55px;object-fit:contain;border-radius:10px;background:white}
+.brand h1{font-size:19px;line-height:1.3}
+.brand small{display:block;font-size:11px;color:#c9e8dc;font-weight:normal}
+nav{display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+nav a{color:white;font-size:14px}
+nav a:hover{color:#a9e8bd}
+.cart-button{border:0;background:#f3b52b;color:#173529;padding:9px 14px;border-radius:25px;font-weight:bold}
+
+.hero{min-height:470px;display:flex;align-items:center;text-align:center;color:white;background:linear-gradient(#001d18aa,#001d18aa),url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat}
+.hero-content{width:100%;padding:65px 10px}
+.hero h2{font-size:clamp(30px,6vw,55px);margin-bottom:15px}
+.hero p{max-width:700px;margin:0 auto 25px;font-size:17px}
+.btn{display:inline-block;border:0;border-radius:7px;padding:12px 22px;background:#f3b52b;color:#173529;font-weight:bold;margin:5px}
+.btn:hover{background:#ffd36b}
+.btn-green{background:#087b56;color:white}
+.btn-green:hover{background:#065e42}
+
+section{padding:55px 0}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{color:#07533d;font-size:29px;margin-bottom:7px}
+.section-title p{color:#65756d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px #00000012}
+.card img{width:100%;height:210px;object-fit:cover;display:block}
+.card-content{padding:18px}
+.card h3{color:#07533d;margin-bottom:8px}
+.card p{color:#59685f;font-size:14px;margin-bottom:12px}
+.date{color:#839087;font-size:12px;margin-bottom:8px}
+
+.info-box{background:#e2f1e9;padding:25px;border-radius:12px;text-align:center}
+.info-box h3{color:#07533d;margin-bottom:10px}
+.info-box p{margin-bottom:8px}
+
+.form-box{max-width:650px;margin:auto;background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px #00000012}
+input,textarea,select{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccd8d0;border-radius:7px;font-size:15px;font-family:inherit}
+textarea{min-height:110px;resize:vertical}
+label{font-weight:bold}
+.form-box button{width:100%;padding:13px;border:0;border-radius:7px;background:#087b56;color:white;font-size:16px;font-weight:bold}
+.form-box button:hover{background:#065e42}
+
+.price{font-size:19px;font-weight:bold;color:#087b56;margin:8px 0}
+.shop-card button{border:0;background:#087b56;color:white;padding:10px 15px;border-radius:6px;font-weight:bold}
+.shop-card button:hover{background:#065e42}
+
+.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #ddd;padding:12px 0;flex-wrap:wrap}
+.remove-btn{background:#b52c2c;color:white;border:0;border-radius:5px;padding:5px 10px}
+.empty{text-align:center;color:#77847d;padding:20px}
+
+footer{background:#063d32;color:white;padding:35px 0 15px;text-align:center}
+footer p{margin:7px 0}
+.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:15px 0}
+.footer-links a{color:#c9e8dc}
+.copyright{border-top:1px solid #ffffff30;margin-top:20px;padding-top:15px;font-size:13px;color:#c9e8dc}
+.notice{background:#fff4d5;border-left:4px solid #e6a817;padding:12px;margin:15px 0;font-size:13px;color:#66501d}
+
+@media(max-width:700px){
+.navbar{justify-content:center;text-align:center}
+nav{justify-content:center}
+.brand{justify-content:center}
+.hero{min-height:390px}
+section{padding:40px 0}
+.section-title h2{font-size:25px}
+}
 </style>
 </head>
 <body>
-<div class="topbar">🎣 ভেড়ামারা ও বাংলাদেশের মাছ ধরার খবর, অভিজ্ঞতা এবং সরঞ্জাম—এক ঠিকানায়</div>
-<header><div class="nav">
-  <a class="brand" href="#home"><span class="logo">🐟</span><span>Bheramara Fishing Gallery<small style="display:block;font-size:10px;color:#668074;font-weight:600">মাছ ধরা • শেখা • কেনাবেচা</small></span></a>
-  <nav><a href="#updates">ফিশিং আপডেট</a><a href="#locations">লোকেশন</a><a href="#catches">ক্যাচ রিপোর্ট</a><a href="#shop">শপ</a><a href="#share">পোস্ট করুন</a></nav>
-  <div class="actions"><button class="btn light" onclick="openCart()">🛒 কার্ট <span id="cartCount">0</span></button><img src="IMG_4485.PNG" alt="Bheramara Fishing Gallery Logo" class="logo"><button class="btn" onclick="document.querySelector('#share').scrollIntoView()">পোস্ট দিন</button></div>
-</div></header>
-<main id="home">
-<section class="hero"><div class="hero-inner"><div class="eyebrow">WELCOME TO THE FISHING COMMUNITY</div><h1>মাছ ধরার গল্প হোক<br>সবার সঙ্গে, এক জায়গায়।</h1><p>কোথায় মাছ হচ্ছে, কী টোপে মাছ উঠছে, আপনার সেরা ক্যাচ এবং প্রয়োজনীয় ফিশিং সরঞ্জাম—সবকিছু খুঁজে নিন Bheramara Fishing Gallery-তে।</p><div class="hero-buttons"><a class="btn" href="#updates">আজকের আপডেট দেখুন</a><a class="btn light" href="#shop">ফিশিং শপ ঘুরে দেখুন</a></div></div></section>
-<div class="wrap" style="padding-top:0;padding-bottom:15px"><div class="stats">
- <div class="stat"><b>📍 ভেড়ামারা</b><span>আমাদের শুরুর ঠিকানা</span></div><div class="stat"><b>🎣 ক্যাচ রিপোর্ট</b><span>মাছ ধরার অভিজ্ঞতা শেয়ার</span></div><div class="stat"><b>🛍️ অনলাইন শপ</b><span>ফিশিং পণ্য কেনাবেচা</span></div><div class="stat"><b>🤝 কমিউনিটি</b><span>সব অ্যাঙ্গলারের মিলনমেলা</span></div>
-</div></div>
-<section class="wrap" id="updates"><div class="section-head"><div><h2>সর্বশেষ ফিশিং আপডেট</h2><p>নদী, খাল, বিল ও পুকুরের মাছ ধরার খবর</p></div><span class="tag">নমুনা পোস্ট</span></div><div class="grid" id="updatesGrid">
- <article class="card"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=80" alt="নদী"><div class="card-body"><span class="tag">নদীর খবর</span><h3>পদ্মা নদীতে মাছ ধরার নতুন স্পট</h3><p class="muted">নদীর পানি, স্রোত ও স্থানীয় জেলেদের অভিজ্ঞতা জেনে তারপর মাছ ধরতে যান। এটি একটি নমুনা আপডেট।</p><div class="meta"><span>📍 পদ্মা নদী</span><span>আজ</span></div></div></article>
- <article class="card"><img src="https://images.unsplash.com/photo-1498654200943-1088dd4438ae?auto=format&fit=crop&w=900&q=80" alt="মাছ ধরার সরঞ্জাম"><div class="card-body"><span class="tag">টিপস</span><h3>টোপ বাছাইয়ের কিছু সহজ কৌশল</h3><p class="muted">টার্গেট মাছ, পানির ধরন এবং আবহাওয়া অনুযায়ী টোপ বেছে নিন। নিজের অভিজ্ঞতাও শেয়ার করুন।</p><div class="meta"><span>🎯 ফিশিং টিপস</span><span>নমুনা</span></div></div></article>
- <article class="card"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=900&q=80" alt="প্রকৃতি"><div class="card-body"><span class="tag">কমিউনিটি</span><h3>আপনার মাছ ধরার গল্প জানান</h3><p class="muted">কোথায় গিয়েছিলেন, কী মাছ পেয়েছেন, কোন টোপ ব্যবহার করেছেন—সব তথ্য লিখে পোস্ট করুন।</p><div class="meta"><span>📸 ছবি শেয়ার</span><span>আপনিও লিখুন</span></div></div></article>
-</div></section>
-<section class="wrap" id="locations" style="padding-top:10px"><div class="two-col"><div><span class="tag">FISHING LOCATIONS</span><h2 style="font-size:28px;color:var(--deep)">কোথায় মাছ হচ্ছে?</h2><p class="muted">ভেড়ামারা, কুষ্টিয়া এবং বাংলাদেশের বিভিন্ন নদী, খাল, বিল ও পুকুরের মাছ ধরার জায়গা সম্পর্কে তথ্য যোগ করা হবে। লোকেশন পোস্ট করার সময় সঠিক জায়গা, তারিখ এবং পানির অবস্থা উল্লেখ করুন।</p><p class="muted">⚠️ ব্যক্তিগত জমি, নিষিদ্ধ এলাকা বা ঝুঁকিপূর্ণ স্থানে অনুমতি ছাড়া মাছ ধরবেন না।</p><a class="btn" href="#share">নতুন লোকেশন যোগ করুন</a></div><div class="feature-panel"><h3>📍 লোকেশন আপডেট</h3><p><b>ভেড়ামারা, কুষ্টিয়া</b><br>এখানে স্থানীয় মাছ ধরার স্পট, কোন সময়ে মাছ পাওয়া যাচ্ছে এবং অ্যাঙ্গলারদের সাম্প্রতিক রিপোর্ট দেখানো হবে।</p><p>লোকেশন তথ্য ব্যবহারকারীর দেওয়া রিপোর্টের ভিত্তিতে প্রকাশিত হবে; মাছ পাওয়ার নিশ্চয়তা নয়।</p></div></div></section>
-<section class="wrap" id="catches"><div class="section-head"><div><h2>সাম্প্রতিক ক্যাচ রিপোর্ট</h2><p>আপনার ধরা মাছের ছবি ও তথ্য সবার সঙ্গে শেয়ার করুন</p></div></div><div id="catchGrid" class="grid"><div class="empty">এখনো কোনো ক্যাচ রিপোর্ট নেই। প্রথম রিপোর্টটি আপনিই দিন!</div></div></section>
-<section class="wrap" id="shop" style="padding-top:10px"><div class="section-head"><div><h2>ফিশিং শপ</h2><p>মাছ ধরার প্রয়োজনীয় সরঞ্জাম</p></div><span class="tag">ডেমো পণ্য</span></div><div class="grid" id="productGrid">
- <article class="card shop-card"><div class="card-body"><span class="tag">ফিশিং রড</span><h3>স্পিনিং ফিশিং রড</h3><p class="muted">দৈনন্দিন মাছ ধরার জন্য নমুনা পণ্য <img src="fishing rod.jpeg" alt="></p><div class="price">৳ 00</div><div class="card-actions"><button class="btn" onclick="addToCart('স্পিনিং ফিশিং রড',1200)">কার্টে যোগ করুন</button></div></div></article>
- <article class="card shop-card"><img src="fishing reel.jpeg" alt="রিল"><div class="card-body"><span class="tag">রিল</span><h3>ফিশিং রিল</h3><p class="muted">মসৃণ লাইন ব্যবহারের জন্য নমুনা পণ্য।</p><div class="price">৳ 00</div><div class="card-actions"><button class="btn" onclick="addToCart('ফিশিং রিল',00)">কার্টে যোগ করুন</button></div></div></article>
- <article class="card shop-card">V<div class="card-body"><span class="tag">অ্যাকসেসরিজ</span><img src="fishing items.jpeg" alt="ফিশিং আইটেমস"><p class="muted">হুক ও অন্যান্য সরঞ্জামের নমুনা সেট।</p><div class="price">৳ ৩৫০</div><div class="card-actions"><button class="btn" onclick="addToCart('ফিশিং অ্যাকসেসরিজ সেট',350)">কার্টে যোগ করুন</button></div></div></article>
-</div><p class="notice" style="margin-top:16px">এখানে দেখানো পণ্য ও দাম শুধু ডেমো। এগুলো এখনো বাস্তব বিক্রির তালিকা নয়। নিজের পণ্য যোগ করার জন্য অ্যাডমিন প্যানেল ও ডেটাবেস পরবর্তী ধাপে যুক্ত হবে।</p></section>
-<section class="wrap" id="share"><div class="section-head"><div><h2>আপনার পোস্ট শেয়ার করুন</h2><p>মাছ ধরার আপডেট অথবা নিজের ক্যাচ রিপোর্ট জমা দিন</p></div></div><div class="two-col"><div class="form-card"><form id="postForm"><select class="field" id="postType"><option value="ক্যাচ রিপোর্ট">ক্যাচ রিপোর্ট</option><option value="ফিশিং আপডেট">ফিশিং আপডেট</option><option value="লোকেশন আপডেট">লোকেশন আপডেট</option><option value="ফিশিং টিপস">ফিশিং টিপস</option></select><input class="field" id="postTitle" required placeholder="পোস্টের শিরোনাম"><input class="field" id="postPlace" placeholder="স্থান / লোকেশন"><textarea class="field" id="postDesc" required placeholder="বিস্তারিত লিখুন—মাছের নাম, ওজন, টোপ, সময় ইত্যাদি"></textarea><input class="field" id="postImage" placeholder="ছবির URL (ঐচ্ছিক)"><button class="btn" type="submit">পোস্ট প্রকাশ করুন</button></form><p class="muted" style="font-size:12px">এই ডেমোতে পোস্ট আপনার এই ব্রাউজারেই সংরক্ষিত হবে। সবার জন্য প্রকাশ ও ছবি আপলোডের সুবিধা দিতে সার্ভার লাগবে।</p></div><div class="feature-panel"><h3>🎣 কমিউনিটির নিয়ম</h3><p>১. সঠিক তথ্য ও নিজের অভিজ্ঞতা শেয়ার করুন।<br>২. অন্যের ছবি বা লেখা অনুমতি ছাড়া ব্যবহার করবেন না।<br>৩. নিষিদ্ধ মাছ ধরা বা ক্ষতিকর পদ্ধতি উৎসাহিত করবেন না।<br>৪. লোকেশন দিলে নিরাপত্তা ও ব্যক্তিগত জমির বিষয়টি বিবেচনা করুন।</p></div></div></section>
-</main>
-<footer><div class="footer-inner"><div><h3>Bheramara Fishing Gallery</h3><p>মাছ ধরার আনন্দ, অভিজ্ঞতা ও প্রয়োজনীয় সরঞ্জাম নিয়ে গড়ে উঠুক একটি সুন্দর বাংলা ফিশিং কমিউনিটি।</p></div><div><h4>দ্রুত লিংক</h4><p><a href="#updates">ফিশিং আপডেট</a><br><a href="#locations">ফিশিং লোকেশন</a><br><a href="#shop">অনলাইন শপ</a></p></div><div><h4>যোগাযোগ</h4><p>ভেড়ামারা, কুষ্টিয়া, বাংলাদেশ<br>ইমেইল:rakiburtomal@gmail.com</p></div></div><div class="footer-bottom">© ২০২৬ Bheramara Fishing Gallery. সর্বস্বত্ব সংরক্ষিত।</div></footer>
-<div class="modal" id="cartModal"><div class="modal-box"><div class="modal-top"><h3>আপনার শপিং কার্ট</h3><button class="close" onclick="closeCart()">✕</button></div><div id="cartItems"></div><h3 id="cartTotal">মোট: ৳ ০</h3><form id="checkoutForm"><input class="field" id="buyerName" required placeholder="আপনার নাম"><input class="field" id="buyerPhone" required placeholder="মোবাইল নম্বর"><textarea class="field" id="buyerAddress" required placeholder="সম্পূর্ণ ডেলিভারি ঠিকানা"></textarea><label><input type="radio" name="pay" value="Cash on Delivery" checked> ক্যাশ অন ডেলিভারি</label><p class="notice">bKash ও Nagad পেমেন্ট পরবর্তী ধাপে যুক্ত হবে। আপাতত কোনো অনলাইন টাকা পাঠাবেন না।</p><button class="btn" type="submit">ডেমো অর্ডার নিশ্চিত করুন</button></form></div></div>
-<div class="toast" id="toast"></div>
+
+<!-- HEADER -->
+<header>
+<div class="container navbar">
+  <div class="brand">
+    <img src="IMG_4485.PNG" alt="Bheramara Fishing Gallery Logo" class="logo">
+    <div>
+      <h1>Bheramara Fishing Gallery</h1>
+      <small>মাছ ধরার গল্প, ছবি ও অভিজ্ঞতা</small>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#updates">আপডেট</a>
+    <a href="#locations">ফিশিং স্পট</a>
+    <a href="#catches">মাছের গ্যালারি</a>
+    <a href="#shop">শপ</a>
+    <a href="#post">পোস্ট করুন</a>
+  </nav>
+
+  <button class="cart-button" onclick="document.getElementById('cart').scrollIntoView()">
+    🛒 কার্ট <span id="cartCount">0</span>
+  </button>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-content">
+  <h2>Welcome to Bheramara Fishing Gallery</h2>
+  <p>ভেড়ামারা ও পদ্মার নদীতে মাছ ধরার রোমাঞ্চকর গল্প, সুন্দর মুহূর্ত, মাছের ছবি এবং ফিশিং অভিজ্ঞতার এক জায়গা।</p>
+  <a href="#catches" class="btn">মাছের গ্যালারি দেখুন</a>
+  <a href="#post" class="btn btn-green">আপনার অভিজ্ঞতা শেয়ার করুন</a>
+</div>
+</section>
+
+<!-- FISHING UPDATES -->
+<section id="updates">
+<div class="container">
+  <div class="section-title">
+    <h2>🎣 Fishing Updates</h2>
+    <p>ভেড়ামারা ও আশপাশের মাছ ধরার সর্বশেষ খবর</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=80" alt="নদীর দৃশ্য">
+      <div class="card-content">
+        <h3>পদ্মা নদীতে মাছ ধরার অভিজ্ঞতা</h3>
+        <p>নদীর পরিবেশ, মাছ ধরার পয়েন্ট এবং দারুণ কিছু মুহূর্ত নিয়ে আমাদের গল্প।</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1498654200943-1088dd4438ae?auto=format&fit=crop&w=900&q=80" alt="মাছ ধরা">
+      <div class="card-content">
+        <h3>মাছ ধরার নতুন কৌশল</h3>
+        <p>টোপ, বরশি এবং মাছ ধরার বিভিন্ন অভিজ্ঞতা শেয়ার করুন।</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=900&q=80" alt="নদীর প্রকৃতি">
+      <div class="card-content">
+        <h3>নদী ও প্রকৃতির সৌন্দর্য</h3>
+        <p>প্রকৃতির মাঝে মাছ ধরার সুন্দর মুহূর্তগুলো উপভোগ করুন।</p>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+<div class="container">
+  <div class="section-title">
+    <h2>📍 Fishing Locations</h2>
+    <p>ভেড়ামারা ও আশপাশের মাছ ধরার জায়গা</p>
+  </div>
+
+  <div class="grid">
+    <div class="info-box">
+      <h3>পদ্মা নদী</h3>
+      <p>ভেড়ামারা, কুষ্টিয়া</p>
+      <p>নদীর বিভিন্ন পয়েন্টে মাছ ধরার অভিজ্ঞতা শেয়ার করুন।</p>
+    </div>
+
+    <div class="info-box">
+      <h3>গড়াই নদী</h3>
+      <p>কুষ্টিয়া অঞ্চল</p>
+      <p>নদীর পরিবেশ ও মাছ ধরার গল্প তুলে ধরুন।</p>
+    </div>
+
+    <div class="info-box">
+      <h3>স্থানীয় পুকুর</h3>
+      <p>ভেড়ামারা ও আশপাশ</p>
+      <p>পুকুরে মাছ ধরার ছবি ও অভিজ্ঞতা প্রকাশ করুন।</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CATCH GALLERY -->
+<section id="catches">
+<div class="container">
+  <div class="section-title">
+    <h2>🐟 Fishing Gallery</h2>
+    <p>মাছ ধরার সুন্দর মুহূর্ত ও ক্যাচের ছবি</p>
+  </div>
+
+  <div class="grid" id="catchGrid">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80" alt="ধরা মাছ">
+      <div class="card-content">
+        <h3>Fishing Memories</h3>
+        <p>মাছ ধরার স্মরণীয় মুহূর্ত।</p>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+<div class="container">
+  <div class="section-title">
+    <h2>🛒 Fishing Shop</h2>
+    <p>মাছ ধরার প্রয়োজনীয় সরঞ্জাম</p>
+  </div>
+
+  <div class="grid" id="productGrid">
+
+    <article class="card shop-card">
+      <img src="Fishing%20rod.jpeg" alt="ফিশিং রড">
+      <div class="card-content">
+        <h3>Fishing Rod</h3>
+        <p>মাছ ধরার জন্য ফিশিং রড।</p>
+        <div class="price">৳ ১,২০০</div>
+        <button onclick="addToCart('Fishing Rod',1200)">কার্টে যোগ করুন</button>
+      </div>
+    </article>
+
+    <article class="card shop-card">
+      <img src="Fishing%20reel.jpeg" alt="ফিশিং রিল">
+      <div class="card-content">
+        <h3>Fishing Reel</h3>
+        <p>মাছ ধরার জন্য ফিশিং রিল।</p>
+        <div class="price">৳ ৮০০</div>
+        <button onclick="addToCart('Fishing Reel',800)">কার্টে যোগ করুন</button>
+      </div>
+    </article>
+
+    <article class="card shop-card">
+      <img src="Fishing%20iteams.jpeg" alt="ফিশিং আইটেমস">
+      <div class="card-content">
+        <h3>Fishing Items</h3>
+        <p>মাছ ধরার বিভিন্ন প্রয়োজনীয় সরঞ্জাম।</p>
+        <div class="price">৳ ৫০০</div>
+        <button onclick="addToCart('Fishing Items',500)">কার্টে যোগ করুন</button>
+      </div>
+    </article>
+
+  </div>
+</div>
+</section>
+
+<!-- POST FORM -->
+<section id="post">
+<div class="container">
+  <div class="section-title">
+    <h2>📸 Share Your Fishing Story</h2>
+    <p>আপনার মাছ ধরার ছবি ও অভিজ্ঞতা শেয়ার করুন</p>
+  </div>
+
+  <div class="form-box">
+    <form id="catchForm">
+      <label for="fisherName">আপনার নাম</label>
+      <input type="text" id="fisherName" placeholder="আপনার নাম লিখুন" required>
+
+      <label for="catchTitle">পোস্টের শিরোনাম</label>
+      <input type="text" id="catchTitle" placeholder="যেমন: পদ্মায় বড় মাছ ধরলাম" required>
+
+      <label for="catchLocation">কোথায় মাছ ধরেছেন?</label>
+      <input type="text" id="catchLocation" placeholder="নদী / পুকুর / জায়গার নাম">
+
+      <label for="catchDescription">আপনার অভিজ্ঞতা</label>
+      <textarea id="catchDescription" placeholder="আপনার মাছ ধরার গল্প লিখুন..." required></textarea>
+
+      <label for="catchImage">মাছের ছবি নির্বাচন করুন</label>
+      <input type="file" id="catchImage" accept="image/*" required>
+
+      <button type="submit">পোস্ট প্রকাশ করুন</button>
+    </form>
+
+    <div class="notice">
+      আপনার পোস্ট আপাতত এই ব্রাউজারেই সংরক্ষিত হবে। সবার ওয়েবসাইটে পোস্ট দেখাতে পরবর্তীতে অনলাইন ডেটাবেজ যুক্ত করতে হবে।
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SHOPPING CART -->
+<section id="cart">
+<div class="container">
+  <div class="section-title">
+    <h2>🛒 Your Shopping Cart</h2>
+    <p>আপনার নির্বাচিত পণ্যগুলো এখানে দেখুন</p>
+  </div>
+
+  <div class="form-box">
+    <div id="cartItems">
+      <p class="empty">আপনার কার্ট এখন খালি।</p>
+    </div>
+
+    <h3 id="cartTotal">মোট: ৳ ০</h3>
+
+    <button class="btn btn-green" onclick="showCheckout()" style="width:100%">
+      অর্ডার করুন
+    </button>
+  </div>
+</div>
+</section>
+
+<!-- CHECKOUT -->
+<section id="checkout" style="display:none">
+<div class="container">
+  <div class="section-title">
+    <h2>📦 Checkout</h2>
+    <p>অর্ডারের জন্য আপনার তথ্য দিন</p>
+  </div>
+
+  <div class="form-box">
+    <form id="checkoutForm">
+      <label for="customerName">আপনার নাম</label>
+      <input type="text" id="customerName" required>
+
+      <label for="customerPhone">মোবাইল নম্বর</label>
+      <input type="tel" id="customerPhone" required>
+
+      <label for="customerAddress">সম্পূর্ণ ঠিকানা</label>
+      <textarea id="customerAddress" required></textarea>
+
+      <label for="paymentMethod">পেমেন্ট পদ্ধতি</label>
+      <select id="paymentMethod">
+        <option value="Cash on Delivery">Cash on Delivery</option>
+      </select>
+
+      <button type="submit">অর্ডার নিশ্চিত করুন</button>
+    </form>
+
+    <div class="notice">
+      এটি বর্তমানে ডেমো অর্ডার ব্যবস্থা। বাস্তবে অর্ডার গ্রহণ ও পেমেন্টের জন্য আলাদা সার্ভার এবং পেমেন্ট ব্যবস্থা প্রয়োজন।
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+  <h2>Bheramara Fishing Gallery</h2>
+  <p>মাছ ধরার গল্প, অভিজ্ঞতা এবং ভালোবাসার একটি অনলাইন ঠিকানা।</p>
+
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#updates">Updates</a>
+    <a href="#catches">Gallery</a>
+    <a href="#shop">Shop</a>
+    <a href="#post">Share Story</a>
+  </div>
+
+  <p>📍 ভেড়ামারা, কুষ্টিয়া, বাংলাদেশ</p>
+
+  <div class="copyright">
+    © <span id="year"></span> Bheramara Fishing Gallery. All Rights Reserved.
+  </div>
+</div>
+</footer>
+
 <script>
-const cart=[];let catches=JSON.parse(localStorage.getItem('bfg_catches')||'[]');let posts=JSON.parse(localStorage.getItem('bfg_posts')||'[]');
-function money(n){return '৳ '+n.toLocaleString('en-BD')}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
-function addToCart(name,price){cart.push({name,price});document.getElementById('cartCount').textContent=cart.length;toast(name+' কার্টে যোগ হয়েছে')}
-function openCart(){renderCart();document.getElementById('cartModal').classList.add('show')}
-function closeCart(){document.getElementById('cartModal').classList.remove('show')}
-function renderCart(){const el=document.getElementById('cartItems');el.innerHTML=cart.length?cart.map((x,i)=>`<p>${x.name} — ${money(x.price)} <button class="close" onclick="removeItem(${i})">বাদ দিন</button></p>`).join(''):'<p class="muted">কার্ট খালি।</p>';document.getElementById('cartTotal').textContent='মোট: '+money(cart.reduce((s,x)=>s+x.price,0))}
-function removeItem(i){cart.splice(i,1);document.getElementById('cartCount').textContent=cart.length;renderCart()}
-function renderCatches(){const el=document.getElementById('catchGrid');el.innerHTML=catches.length?catches.map(x=>`<article class="card">${x.image?`<img src="${escapeHtml(x.image)}" alt="ক্যাচ">`:''}<div class="card-body"><span class="tag">${escapeHtml(x.type)}</span><h3>${escapeHtml(x.title)}</h3><p class="muted">${escapeHtml(x.desc)}</p><div class="meta"><span>📍 ${escapeHtml(x.place||'স্থান উল্লেখ নেই')}</span><span>${escapeHtml(x.date)}</span></div></div></article>`).join(''):'<div class="empty">এখনো কোনো ক্যাচ রিপোর্ট নেই। প্রথম রিপোর্টটি আপনিই দিন!</div>'}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-document.getElementById('postForm').addEventListener('submit',e=>{e.preventDefault();const p={type:document.getElementById('postType').value,title:document.getElementById('postTitle').value,place:document.getElementById('postPlace').value,desc:document.getElementById('postDesc').value,image:document.getElementById('postImage').value,date:new Date().toLocaleDateString('bn-BD')};posts.unshift(p);if(p.type==='ক্যাচ রিপোর্ট')catches.unshift(p);localStorage.setItem('bfg_posts',JSON.stringify(posts));localStorage.setItem('bfg_catches',JSON.stringify(catches));renderCatches();e.target.reset();toast('আপনার পোস্ট এই ডিভাইসে সংরক্ষিত হয়েছে')});
-document.getElementById('checkoutForm').addEventListener('submit',e=>{e.preventDefault();if(!cart.length){toast('আপনার কার্ট খালি');return}const order={name:document.getElementById('buyerName').value,phone:document.getElementById('buyerPhone').value,address:document.getElementById('buyerAddress').value,items:[...cart],total:cart.reduce((s,x)=>s+x.price,0),payment:'Cash on Delivery',created:new Date().toISOString()};let orders=JSON.parse(localStorage.getItem('bfg_orders')||'[]');orders.push(order);localStorage.setItem('bfg_orders',JSON.stringify(orders));cart.length=0;document.getElementById('cartCount').textContent='0';closeCart();e.target.reset();toast('ডেমো অর্ডার সংরক্ষিত হয়েছে—এটি বাস্তব অর্ডার নয়')});
-renderCatches();
+/* CURRENT YEAR */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* SHOPPING CART */
+let cart = JSON.parse(localStorage.getItem("bfg_cart")) || [];
+
+function saveCart() {
+  localStorage.setItem("bfg_cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function addToCart(name, price) {
+  const item = cart.find(product => product.name === name);
+
+  if (item) {
+    item.quantity += 1;
+  } else {
+    cart.push({ name, price, quantity: 1 });
+  }
+
+  saveCart();
+  alert(name + " কার্টে যোগ হয়েছে!");
+}
+
+function removeFromCart(name) {
+  cart = cart.filter(item => item.name !== name);
+  saveCart();
+}
+
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+  const cartCount = document.getElementById("cartCount");
+
+  let total = 0;
+  let count = 0;
+
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="empty">আপনার কার্ট এখন খালি।</p>';
+  }
+
+  cart.forEach(item => {
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+    count += item.quantity;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+
+    const name = document.createElement("strong");
+    name.textContent = item.name + " × " + item.quantity;
+
+    const price = document.createElement("span");
+    price.textContent = "৳ " + subtotal.toLocaleString("en-IN");
+
+    const remove = document.createElement("button");
+    remove.className = "remove-btn";
+    remove.textContent = "বাদ দিন";
+    remove.addEventListener("click", () => removeFromCart(item.name));
+
+    div.append(name, price, remove);
+    cartItems.appendChild(div);
+  });
+
+  cartTotal.textContent = "মোট: ৳ " + total.toLocaleString("en-IN");
+  cartCount.textContent = count;
+}
+
+function showCheckout() {
+  if (cart.length === 0) {
+    alert("আপনার কার্টে কোনো পণ্য নেই!");
+    return;
+  }
+
+  const checkout = document.getElementById("checkout");
+  checkout.style.display = "block";
+  checkout.scrollIntoView({ behavior: "smooth" });
+}
+
+/* CHECKOUT FORM */
+document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (cart.length === 0) {
+    alert("আপনার কার্ট খালি!");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("সব তথ্য পূরণ করুন।");
+    return;
+  }
+
+  const order = {
+    customer: name,
+    phone: phone,
+    address: address,
+    payment: "Cash on Delivery",
+    products: cart,
+    date: new Date().toLocaleString()
+  };
+
+  let orders = JSON.parse(localStorage.getItem("bfg_orders")) || [];
+  orders.push(order);
+  localStorage.setItem("bfg_orders", JSON.stringify(orders));
+
+  alert("ডেমো অর্ডার সংরক্ষিত হয়েছে। ধন্যবাদ!");
+
+  cart = [];
+  saveCart();
+
+  this.reset();
+  document.getElementById("checkout").style.display = "none";
+});
+
+/* CATCH POSTS */
+let savedPosts = JSON.parse(localStorage.getItem("bfg_posts")) || [];
+
+function renderPosts() {
+  const gallery = document.getElementById("catchGrid");
+
+  savedPosts.forEach((post, index) => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = post.image;
+    img.alt = post.title;
+
+    const content = document.createElement("div");
+    content.className = "card-content";
+
+    const date = document.createElement("div");
+    date.className = "date";
+    date.textContent = post.date;
+
+    const title = document.createElement("h3");
+    title.textContent = post.title;
+
+    const description = document.createElement("p");
+    description.textContent = post.description;
+
+    const location = document.createElement("p");
+    location.textContent = "📍 " + post.location;
+
+    const author = document.createElement("p");
+    author.textContent = "পোস্ট করেছেন: " + post.name;
+
+    content.append(date, title, description, location, author);
+    card.append(img, content);
+
+    gallery.appendChild(card);
+  });
+}
+
+document.getElementById("catchForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("fisherName").value.trim();
+  const title = document.getElementById("catchTitle").value.trim();
+  const location = document.getElementById("catchLocation").value.trim();
+  const description = document.getElementById("catchDescription").value.trim();
+  const file = document.getElementById("catchImage").files[0];
+
+  if (!name || !title || !description || !file) {
+    alert("সব প্রয়োজনীয় তথ্য পূরণ করুন।");
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    alert("অনুগ্রহ করে একটি ছবি নির্বাচন করুন।");
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("ছবির সাইজ ২ MB-এর কম রাখুন।");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+    const post = {
+      name: name,
+      title: title,
+      location: location || "উল্লেখ করা হয়নি",
+      description: description,
+      image: reader.result,
+      date: new Date().toLocaleDateString("bn-BD")
+    };
+
+    savedPosts.unshift(post);
+
+    try {
+      localStorage.setItem("bfg_posts", JSON.stringify(savedPosts));
+    } catch (error) {
+      savedPosts.shift();
+      alert("ব্রাউজারের জায়গা পূর্ণ হয়ে গেছে। ছোট ছবি ব্যবহার করুন।");
+      return;
+    }
+
+    const gallery = document.getElementById("catchGrid");
+    gallery.innerHTML = "";
+
+    const originalCard = document.createElement("article");
+    originalCard.className = "card";
+    originalCard.innerHTML = `
+      <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80" alt="Fishing">
+      <div class="card-content">
+        <h3>Fishing Memories</h3>
+        <p>মাছ ধরার স্মরণীয় মুহূর্ত।</p>
+      </div>
+    `;
+    gallery.appendChild(originalCard);
+
+    renderPosts();
+    document.getElementById("catchForm").reset();
+
+    alert("আপনার পোস্ট সফলভাবে প্রকাশিত হয়েছে!");
+    document.getElementById("catches").scrollIntoView({ behavior: "smooth" });
+  };
+
+  reader.readAsDataURL(file);
+});
+
+/* INITIAL LOAD */
+renderCart();
+renderPosts();
+
 </script>
-</body></html>
+</body>
+</html>
