@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#092820">
+<meta name="description" content="Bheramara Fishing Gallery — ভেড়ামারার নদী, পুকুর, মাছ ধরার স্পট, ক্যাচ রিপোর্ট ও ফিশিং কমিউনিটি।">
+<title>Bheramara Fishing Gallery | ভেড়ামারা ফিশিং গ্যালারি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#081f19;--bg2:#0d2b21;--panel:#12392c;--panel2:#194735;--gold:#e5bd70;--gold2:#ffe0a0;--cream:#fffaf0;--muted:#c2d2c6;--line:rgba(255,224,160,.2);--green:#a9e2b8;--shadow:0 18px 55px rgba(0,0,0,.3)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:var(--bg);color:var(--cream);font-family:'Hind Siliguri',sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.topline{height:4px;background:linear-gradient(90deg,#8a642c,#ffe0a0,#8a642c)}
+header{position:sticky;top:0;z-index:30;background:rgba(7,29,23,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand img{width:48px;height:48px;border-radius:13px;object-fit:cover;background:white}.brand b{display:block;font:800 14px Manrope,sans-serif}.brand small{display:block;color:var(--gold2);font-size:12px}.navlinks{display:flex;align-items:center;gap:19px;font-size:14px;color:#e4eee5}.navlinks a:hover{color:var(--gold2)}.menu{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 12px;border-radius:9px}
+.btn,.nav-cta{display:inline-block;border:0;border-radius:30px;padding:11px 19px;background:linear-gradient(135deg,#ffe2a0,#c99b4c);color:#17271e;font-weight:700;box-shadow:0 8px 24px #0003}.btn:hover,.nav-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-outline{display:inline-block;border:1px solid #ffffff80;color:white;padding:10px 18px;border-radius:30px;background:#ffffff0c}
+.hero{min-height:590px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(4,24,17,.94),rgba(4,24,17,.65) 55%,rgba(4,24,17,.22)),url('https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1900&q=85') center/cover}.hero:after{content:"";position:absolute;inset:auto 0 0;height:150px;background:linear-gradient(transparent,var(--bg))}.hero-content{position:relative;z-index:2;max-width:740px;padding:85px 0 115px}.eyebrow,.kicker{color:var(--gold2);font:700 11px Manrope,sans-serif;letter-spacing:2px;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}h1{font-size:clamp(38px,6vw,68px);line-height:1.15;margin:22px 0 17px;text-shadow:0 3px 18px #000}h1 span{color:var(--gold2)}.hero p{max-width:610px;color:#f1f5ed;font-size:18px;text-shadow:0 2px 9px #000;margin:0 0 27px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero-note{margin-top:27px;color:#e0e9df;font-size:13px}
+section{padding:76px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:28px}.section-head h2{font-size:clamp(27px,4vw,41px);line-height:1.25;margin:8px 0 0}.section-head p{color:var(--muted);max-width:470px;margin:0}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:21px}.category{position:relative;min-height:340px;overflow:hidden;border-radius:22px;border:1px solid var(--line);display:flex;align-items:end;box-shadow:var(--shadow)}.category>img{position:absolute;width:100%;height:100%;object-fit:cover;transition:.5s}.category:hover>img{transform:scale(1.05)}.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,20,14,.97),rgba(3,20,14,.05) 85%)}.cat-content{position:relative;z-index:1;padding:27px;width:100%;text-shadow:0 2px 9px #000}.cat-tag{display:inline-block;background:#102b20e8;border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:4px 11px;font-size:12px;margin-bottom:9px}.cat-content h3{font-size:29px;color:#ffe2a0;margin:0 0 4px}.cat-content p{color:white;margin:0 0 15px}.cat-link{display:inline-block;background:#102b20;border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:7px 13px;font-weight:700}
+.search-panel{background:linear-gradient(140deg,#153d2e,#0c2b21);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:12px;margin-bottom:25px}.field label{display:block;color:#e4d6b6;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#081f19;border:1px solid #ffffff30;border-radius:10px;padding:12px;color:white;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px #e5bd7020}.field input::placeholder,.field textarea::placeholder{color:#9eafa3}.field select option{background:#0c2b21;color:white}.search-panel button{align-self:end}
+.spot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.spot-card{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.25s}.spot-card:hover{transform:translateY(-4px);border-color:var(--gold)}.spot-img{height:190px;position:relative;background:#194735}.spot-img img{width:100%;height:100%;object-fit:cover}.spot-type{position:absolute;top:12px;left:12px;background:#071f19ed;border:1px solid var(--gold);border-radius:25px;padding:4px 10px;color:var(--gold2);font-size:12px}.spot-body{padding:17px}.spot-body h3{font-size:21px;margin:0 0 3px;color:#fff0cf}.spot-body p{color:var(--muted);font-size:14px;margin:0 0 12px}.meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}.meta span{font-size:12px;color:#edf3e9;background:#ffffff12;padding:4px 9px;border-radius:20px}.details-btn{width:100%;background:#0b2a20;border:1px solid var(--gold);color:var(--gold2);padding:9px;border-radius:10px;font-weight:700}.details-btn:hover{background:#204b36}.map-card-link{display:block;text-align:center;margin-top:9px;border:1px solid #72c99a;color:#b5efc8;padding:8px;border-radius:9px;font-size:13px;font-weight:700}.empty{grid-column:1/-1;text-align:center;border:1px dashed #e5bd7060;border-radius:18px;padding:40px 20px;color:var(--muted);background:#ffffff05}.empty strong{display:block;color:var(--cream);font-size:19px;margin-bottom:5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.step{padding:24px;border:1px solid var(--line);background:var(--panel);border-radius:17px}.step-num{font:800 28px Manrope;color:var(--gold)}.step h3{margin:8px 0 4px;font-size:20px}.step p{color:var(--muted);margin:0;font-size:14px}.submit-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:start}.submit-copy{position:sticky;top:105px}.submit-copy h2{font-size:38px;line-height:1.2;margin:12px 0}.submit-copy p{color:var(--muted)}.note{border-left:3px solid var(--gold);padding:11px 14px;background:#e5bd7010;color:#e8e9d9;border-radius:0 10px 10px 0;font-size:13px}.form-card{background:var(--panel);border:1px solid var(--line);border-radius:21px;padding:24px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}.field textarea{min-height:110px;resize:vertical}.form-card>.btn{width:100%;margin-top:18px}.status-msg{font-size:13px;margin-top:11px;color:var(--green)}
+.upload-hint{color:var(--muted);font-size:13px;margin:8px 0 14px}
+.shop-section{background:linear-gradient(180deg,#0a251c,#12382a 50%,#0a251c);border-block:1px solid var(--line)}.shop-intro{text-align:center;max-width:700px;margin:0 auto 30px}.shop-intro h2{font-size:clamp(28px,4vw,40px);margin:9px 0}.shop-intro p{color:var(--muted)}.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.shop-card{background:#0b281f;border:1px solid var(--line);border-radius:19px;overflow:hidden;text-align:center}.shop-card img{width:100%;height:205px;object-fit:cover;display:block}.shop-card-body{padding:18px}.shop-card h3{font-size:22px;margin:0 0 5px;color:var(--gold2)}.shop-card p{color:var(--muted);font-size:14px;margin:0 0 12px}.coming{display:inline-block;background:#e5bd7018;border:1px solid #e5bd7070;color:#ffe0a0;border-radius:30px;padding:6px 13px;font-size:12px;font-weight:700}.shop-notice{text-align:center;margin-top:22px;padding:15px;border:1px dashed #e5bd7070;border-radius:13px;color:#f4e4c2}
+.about{background:linear-gradient(180deg,transparent,#153a2b70,transparent)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about-visual{position:relative}.about-visual img{width:100%;height:360px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}.about-badge{position:absolute;right:12px;bottom:18px;background:var(--gold);color:#17271e;padding:12px 16px;border-radius:12px;font-weight:700}.about-copy h2{font-size:38px;line-height:1.2;margin:10px 0}.about-copy p{color:var(--muted)}.developer{display:flex;align-items:center;gap:14px;margin-top:23px;padding-top:20px;border-top:1px solid var(--line)}.developer img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:2px solid var(--gold)}.developer b{display:block}.developer small{color:var(--gold2)}
+.contact{background:#102f24;border-block:1px solid var(--line)}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:22px}.contact-box h2{font-size:31px;margin:7px 0}.contact-box p{color:var(--muted);margin:0}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{border:1px solid var(--line);padding:10px 15px;border-radius:11px;color:var(--gold2)}
+footer{padding:32px 0;background:#041710}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-brand{display:flex;align-items:center;gap:10px}.footer-brand img{width:40px;height:40px;border-radius:9px;object-fit:cover}.footer-brand b{font:700 13px Manrope}.footer-links{display:flex;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:13px}.copyright{color:#91a69a;font-size:12px;margin-top:20px;padding-top:17px;border-top:1px solid #ffffff18;text-align:center}
+.modal{display:none;position:fixed;inset:0;z-index:60;background:#000c;padding:18px;overflow:auto}.modal.show{display:flex;align-items:center;justify-content:center}.modal-box{width:min(650px,100%);background:#0d3023;border:1px solid var(--gold);border-radius:20px;padding:24px;position:relative}.close{position:absolute;right:14px;top:9px;background:none;border:0;color:white;font-size:28px}.modal-box h2{margin:0 35px 10px 0;color:var(--gold2)}.modal-box p{color:var(--muted);white-space:pre-wrap}.modal-actions{display:flex;gap:9px;flex-wrap:wrap}.modal-actions a{color:var(--gold2);border:1px solid var(--line);padding:8px 12px;border-radius:9px}
+.admin-area{background:#061a13;border:1px solid var(--line);border-radius:18px;padding:21px;margin-top:15px}.admin-area summary{cursor:pointer;color:var(--gold2);font-weight:700}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-actions button{border:1px solid var(--line);border-radius:8px;background:#194735;color:white;padding:7px 11px}.admin-actions .delete{color:#ffb2a9}.admin-item{padding:13px 0;border-bottom:1px solid var(--line)}.admin-item:last-child{border:0}.admin-item b{display:block}.admin-item small{color:var(--muted)}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.admin-tabs button{border:1px solid var(--gold);background:#194735;color:var(--gold2);padding:8px 13px;border-radius:9px}
+@media(max-width:900px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#071f19;padding:18px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav-cta{display:none}.search-panel{grid-template-columns:1fr 1fr}.search-panel .field:first-child{grid-column:1/-1}.spot-grid{grid-template-columns:repeat(2,1fr)}.submit-layout{grid-template-columns:1fr}.submit-copy{position:static}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}.nav{height:68px}.navlinks{top:68px}.brand img{width:42px;height:42px}.brand b{font-size:11px}.brand small{font-size:10px}.hero{min-height:535px}.hero-content{padding:70px 0 105px}.hero p{font-size:16px}section{padding:60px 0}.section-head{display:block}.section-head p{margin-top:10px}.categories,.spot-grid,.steps,.shop-grid,.about-grid{grid-template-columns:1fr}.category{min-height:290px}.search-panel{grid-template-columns:1fr}.search-panel .field:first-child{grid-column:auto}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:17px}.about-visual img{height:275px}.about-copy h2,.submit-copy h2{font-size:31px}.contact-box{align-items:flex-start;flex-direction:column}.footer-row{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><img src="logo.jpeg.PNG" alt="Bheramara Fishing Gallery logo"><span><b>BHERAMARA FISHING GALLERY</b><small>ভেড়ামারা ফিশিং গ্যালারি</small></span></a>
+<nav class="navlinks" id="navLinks"><a href="#home">হোম</a><a href="#categories">ফিশিং স্পট</a><a href="#spots">স্পট খুঁজুন</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#about">আমাদের সম্পর্কে</a><a href="#contact">যোগাযোগ</a></nav>
+<a class="nav-cta" href="#submit">নতুন স্পট যোগ করুন ↗️</a><button class="menu" id="menuBtn" aria-label="মেনু">☰</button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap"><div class="hero-content">
+<div class="eyebrow">THE FISHING COMMUNITY OF BHERAMARA</div>
+<h1><span>BHERAMARA</span><br>FISHING GALLERY</h1>
+<p>ভেড়ামারা ও আশপাশের নদী, ঘাট, চর এবং টিকিট পুকুরের ফিশিং স্পট খুঁজুন। নিজের জানা স্পটের তথ্য ও ছবি দিয়ে গড়ে তুলুন মাছ শিকারিদের নির্ভরযোগ্য কমিউনিটি।</p>
+<div class="hero-actions"><a class="btn" href="#spots">স্পট খুঁজে দেখুন ↗️</a><a class="btn-outline" href="#submit">নতুন স্পট জমা দিন</a></div>
+<div class="hero-note">একটি উন্মুক্ত ফিশিং কমিউনিটি · সবার জন্য ফ্রি ব্রাউজিং</div>
+</div></div></section>
+<section id="categories"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Explore fishing locations</div><h2>আপনার পছন্দের স্পট বেছে নিন</h2></div><p>নদী ও টিকিট পুকুরের স্পট আলাদা করে সাজানো হয়েছে, যাতে প্রয়োজনীয় তথ্য সহজে খুঁজে পান।</p></div>
+<div class="categories">
+<a class="category" href="#spots" data-category="river"><img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1400&q=85" alt="নদীর প্রাকৃতিক দৃশ্য"><div class="cat-content"><span class="cat-tag">CATEGORY 01</span><h3>নদীর স্পট</h3><p>নদী, ঘাট, চর ও উন্মুক্ত পানির মাছ ধরার জায়গা</p><span class="cat-link">নদীর স্পট দেখুন ↗️</span></div></a>
+<a class="category" href="#spots" data-category="ticket"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85" alt="গ্রামীণ পুকুর ও প্রকৃতি"><div class="cat-content"><span class="cat-tag">CATEGORY 02</span><h3>টিকিট পুকুরের স্পট</h3><p>টিকিট, তারিখ, মাছ ও পুকুরের নিয়মসহ তথ্য</p><span class="cat-link">টিকিট পুকুর দেখুন ↗️</span></div></a>
+</div></div></section>
+<section id="spots"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Fishing spot directory</div><h2>ফিশিং স্পট খুঁজুন</h2></div><p>কমিউনিটির সদস্যদের জমা দেওয়া প্রকাশিত স্পটগুলো এখানে দেখতে পারবেন।</p></div>
+<div class="search-panel"><div class="field"><label for="searchInput">স্পট / নদী / এলাকার নাম</label><input id="searchInput" placeholder="যেমন: ঘাট, নদী বা এলাকার নাম"></div><div class="field"><label for="typeFilter">স্পটের ধরন</label><select id="typeFilter"><option value="">সব ধরনের স্পট</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div><div class="field"><label for="districtFilter">জেলা</label><select id="districtFilter"><option value="">সব জেলা</option><option>কুষ্টিয়া</option><option>পাবনা</option><option>রাজশাহী</option><option>অন্যান্য</option></select></div><button class="btn" id="searchBtn">খুঁজুন</button></div>
+<div class="spot-grid" id="spotGrid"><div class="empty"><strong>স্পট লোড হচ্ছে…</strong>প্রকাশিত ফিশিং স্পটগুলো আনা হচ্ছে।</div></div>
+</div></section>
+<section><div class="wrap"><div class="section-head"><div><div class="kicker">How it works</div><h2>কমিউনিটিতে যুক্ত হবেন যেভাবে</h2></div></div><div class="steps">
+<div class="step"><div class="step-num">01</div><h3>স্পট খুঁজুন</h3><p>নদী অথবা টিকিট পুকুর বেছে নিয়ে এলাকার তথ্য দেখুন।</p></div>
+<div class="step"><div class="step-num">02</div><h3>স্পট ও অভিজ্ঞতা শেয়ার করুন</h3><p>আপনার জানা স্পট, মাছের ধরন, নিয়ম ও যোগাযোগের তথ্য জমা দিন।</p></div>
+<div class="step"><div class="step-num">03</div><h3>সরাসরি প্রকাশ</h3><p>স্পট জমা দিলেই প্রকাশ হবে। ভুল তথ্য দেখলে অ্যাডমিনকে জানান।</p></div>
+</div></div></section>
+<section id="submit"><div class="wrap submit-layout">
+<div class="submit-copy"><div class="kicker">Contribute to the gallery</div><h2>আপনার জানা স্পটটি যুক্ত করুন</h2><p>ভেড়ামারা ও আশপাশের ভালো ফিশিং স্পট সম্পর্কে তথ্য দিয়ে অন্য মাছ শিকারিদের সাহায্য করুন। কোনো অ্যাকাউন্ট লাগবে না।</p><div class="note">আপনার জমা দেওয়া স্পট সঙ্গে সঙ্গেই সবার জন্য প্রকাশ হবে। তাই সঠিক ও যাচাই করা তথ্য দিন।</div></div>
+<form class="form-card" id="spotForm"><div class="form-grid">
+<div class="field"><label for="spotType">স্পটের ধরন *</label><select id="spotType" required><option value="">নির্বাচন করুন</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div>
+<div class="field"><label for="spotTitle">স্পটের নাম *</label><input id="spotTitle" required placeholder="স্পটের পরিচিত নাম"></div>
+<div class="field"><label for="waterName">নদী / পুকুরের নাম</label><input id="waterName" placeholder="নদী বা পুকুরের নাম"></div>
+<div class="field"><label for="spotLocation">এলাকা ও জেলা *</label><input id="spotLocation" required placeholder="এলাকা, উপজেলা, জেলা"></div>
+<div class="field"><label for="fishName">কোন মাছ পাওয়া যায়</label><input id="fishName" placeholder="রুই, কাতলা, মৃগেল ইত্যাদি"></div>
+<div class="field"><label for="ticketPrice">টিকিট মূল্য (টিকিট পুকুর হলে)</label><input id="ticketPrice" placeholder="যেমন: ৫০০ টাকা"></div>
+<div class="field" id="dateField" hidden><label for="fishingDate">মাছ ধরার তারিখ (টিকিট পুকুর)</label><input id="fishingDate" type="date"></div>
+<div class="field"><label for="contactInfo">যোগাযোগ নম্বর</label><input id="contactInfo" placeholder="মালিক / দায়িত্বশীল ব্যক্তির নম্বর"></div>
+<div class="field"><label for="mapLink">Google Maps লিংক (ঐচ্ছিক)</label><input id="mapLink" type="url" placeholder="https://maps.google.com/..."></div>
+<div class="field full"><label for="spotImage">স্পটের ছবি আপলোড করুন (ঐচ্ছিক)</label><input id="spotImage" type="file" accept="image/*"><div class="upload-hint">নদী বা পুকুরের একটি পরিষ্কার ছবি নির্বাচন করুন। সর্বোচ্চ ১০ MB।</div></div>
+<div class="field full"><label for="spotDescription">বিস্তারিত তথ্য ও নিয়ম</label><textarea id="spotDescription" placeholder="পানির অবস্থা, মাছ ধরার সময়, টিকিটের নিয়ম, অনুমতি বা বিশেষ সতর্কতা লিখুন"></textarea></div>
+<div class="field full"><label for="submitterName">আপনার নাম (ঐচ্ছিক)</label><input id="submitterName" placeholder="নাম"></div>
+</div><button class="btn" type="submit" id="submitBtn">স্পট জমা দিন ↗️</button><div class="status-msg" id="formMessage" role="status"></div></form>
+</div></section>
+<section class="shop-section" id="shop"><div class="wrap">
+<div class="shop-intro"><div class="kicker">Fishing Shop Corner</div><h2>ফিশিং শপ কর্নার</h2><p>মাছ ধরার প্রয়োজনীয় সরঞ্জামের বিভাগগুলো এখানে দেখতে পারবেন। আমাদের পণ্য বিক্রির কার্যক্রম এখনো শুরু হয়নি।</p></div>
+<div class="shop-grid">
+<article class="shop-card"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=85" alt="ফিশিং রড" loading="lazy"><div class="shop-card-body"><h3>🎣 ফিশিং রড</h3><p>বিভিন্ন ধরনের মাছ ধরার রড</p><span class="coming">এখনো কোনো প্রোডাক্ট যোগ করা হয়নি</span></div></article>
+<article class="shop-card"><img src="https://images.unsplash.com/photo-1517504734587-2890819debab?auto=format&fit=crop&w=900&q=85" alt="ফিশিং রিল" loading="lazy"><div class="shop-card-body"><h3>⚙️ ফিশিং রিল</h3><p>মাছ ধরার জন্য প্রয়োজনীয় রিল</p><span class="coming">এখনো কোনো প্রোডাক্ট যোগ করা হয়নি</span></div></article>
+<article class="shop-card"><img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=900&q=85" alt="ফিশিং এক্সেসরিজ" loading="lazy"><div class="shop-card-body"><h3>🪝 ফিশিং এক্সেসরিজ</h3><p>সুতা, বড়শি, ফাতনা ও অন্যান্য সরঞ্জাম</p><span class="coming">এখনো কোনো প্রোডাক্ট যোগ করা হয়নি</span></div></article>
+</div><div class="shop-notice">🛍️ আমাদের শপের বেচাকেনা এখনো শুরু হয়নি। পণ্য যুক্ত হলে এখানেই আপডেট দেওয়া হবে। সঙ্গে থাকুন।</div>
+</div></section>
+<section class="about" id="about"><div class="wrap about-grid">
+<div class="about-visual"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1100&q=85" alt="নদী ও পানির প্রাকৃতিক দৃশ্য"><div class="about-badge">Fishing • Community • Knowledge</div></div>
+<div class="about-copy"><div class="kicker">About the gallery</div><h2>মাছ শিকারিদের জন্য, মাছ শিকারিদের হাতেই</h2><p>Bheramara Fishing Gallery একটি কমিউনিটি-ভিত্তিক উদ্যোগ। এর লক্ষ্য হলো ভেড়ামারা ও আশপাশের নদী, ঘাট, চর এবং টিকিট পুকুরের নির্ভরযোগ্য তথ্য এক জায়গায় তুলে ধরা।</p><p>এখানে সবাই স্পটের তথ্য দেখতে পারবেন এবং নতুন স্পটের তথ্য ও ছবি সরাসরি যোগ করতে পারবেন।</p><div class="developer"><img src="tomal.jpeg.jpeg" alt="মোঃ রাকিবুর রহমান তমাল"><div><b>মোঃ রাকিবুর রহমান তমাল</b><small>Founder &amp; Website Developer</small></div></div></div>
+</div></section>
+<section class="contact" id="contact"><div class="wrap contact-box"><div><div class="kicker">Get in touch</div><h2>যোগাযোগ করুন</h2><p>ওয়েবসাইট, স্পটের তথ্য বা কমিউনিটি বিষয়ে যোগাযোগ করতে পারেন।</p></div><div class="contact-links"><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener">↗️ Facebook</a><a href="mailto:rakiburtomal@gmail.com">✉ rakiburtomal@gmail.com</a></div></div></section>
+<section id="admin" style="padding-top:40px;padding-bottom:40px"><div class="wrap"><details class="admin-area"><summary>অ্যাডমিন প্যানেল (শুধু ওয়েবসাইট পরিচালকের জন্য)</summary>
+<div id="adminLogin"><p style="color:var(--muted)">অ্যাডমিন ইমেইল ও পাসওয়ার্ড দিয়ে প্রবেশ করুন। সাধারণ ভিজিটরদের লগইন প্রয়োজন নেই।</p><div class="form-grid"><div class="field"><label for="adminEmail">ইমেইল</label><input id="adminEmail" type="email" autocomplete="username"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" autocomplete="current-password"></div></div><button class="btn" id="adminLoginBtn" style="margin-top:14px">অ্যাডমিন লগইন</button><div class="status-msg" id="adminMessage"></div></div>
+<div id="adminPanel" hidden><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h3>অ্যাডমিন ম্যানেজমেন্ট</h3><button class="btn-outline" id="adminLogoutBtn">লগআউট</button></div><div class="admin-tabs"><button type="button" data-admin-tab="spots">সব স্পট</button></div><div id="adminList">লোড হচ্ছে…</div></div>
+</details></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-row"><a class="footer-brand" href="#home"><img src="logo.jpeg.PNG" alt="লোগো"><b>BHERAMARA FISHING GALLERY</b></a><div class="footer-links"><a href="#categories">ফিশিং স্পট</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#contact">যোগাযোগ</a><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></div></div><div class="copyright">©️ <span id="year"></span> Bheramara Fishing Gallery. All rights reserved. · Created by মোঃ রাকিবুর রহমান তমাল</div></div></footer>
+<div class="modal" id="spotModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="close" id="modalClose" aria-label="বন্ধ করুন">×</button><h2 id="modalTitle"></h2><div id="modalMeta" class="meta"></div><p id="modalDescription"></p><div class="modal-actions" id="modalActions"></div></div></div>
+<script>
+(() => {
+ const SUPABASE_URL='https://onuaxegnzfyxzdwwoxvp.supabase.co';
+ const SUPABASE_ANON_KEY='sb_publishable_RjA74-eEkHkSJ_gwdztIg_XyLwq_-m';
+ const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+ const $=id=>document.getElementById(id);
+ let allSpots=[],adminTab='spots';
+ $('year').textContent=new Date().getFullYear();
+ $('menuBtn').addEventListener('click',()=>$('navLinks').classList.toggle('open'));
+ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>$('navLinks').classList.remove('open')));
+ document.querySelectorAll('.category').forEach(a=>a.addEventListener('click',()=>{$('typeFilter').value=a.dataset.category;setTimeout(renderSpots,100)}));
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const typeLabel=t=>t==='ticket'?'টিকিট পুকুর':'নদীর স্পট';
+ const fallback='https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=900&q=80';
+ function safeUrl(v){try{const u=new URL(v);return ['https:','http:'].includes(u.protocol)?u.href:''}catch{return ''}}
+ const weekdays=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+ function dateLabel(value){if(!value)return '';const [y,m,d]=value.split('-').map(Number);const dt=new Date(y,m-1,d);return `${d.toString().padStart(2,'0')}-${m.toString().padStart(2,'0')}-${y} (${weekdays[dt.getDay()]})`}
+ $('spotType').addEventListener('change',()=>{$('dateField').hidden=$('spotType').value!=='ticket';$('fishingDate').required=$('spotType').value==='ticket'});
+ function renderSpots(){
+  const q=$('searchInput').value.trim().toLowerCase(),type=$('typeFilter').value,district=$('districtFilter').value;
+  const filtered=allSpots.filter(s=>{const t=[s.title,s.water_name,s.location,s.fish_name,s.description].join(' ').toLowerCase();return(!q||t.includes(q))&&(!type||s.spot_type===type)&&(!district||(s.location||'').includes(district))});
+  if(!filtered.length){$('spotGrid').innerHTML='<div class="empty"><strong>এখনো কোনো প্রকাশিত স্পট পাওয়া যায়নি</strong>আপনার জানা স্পটটি জমা দিন। জমা দিলেই প্রকাশ হবে।</div>';return}
+  $('spotGrid').innerHTML=filtered.map(s=>{const map=safeUrl(s.map_link),img=safeUrl(s.image_url)||fallback;return `<article class="spot-card"><div class="spot-img"><img src="${esc(img)}" alt="${esc(s.title)}" loading="lazy" onerror="this.src='${fallback}'"><span class="spot-type">${typeLabel(s.spot_type)}</span></div><div class="spot-body"><h3>${esc(s.title)}</h3><p>📍 ${esc(s.location||'অবস্থান উল্লেখ নেই')}</p><div class="meta">${s.water_name?`<span>${esc(s.water_name)}</span>`:''}${s.fish_name?`<span>🐟 ${esc(s.fish_name)}</span>`:''}${s.spot_type==='ticket'&&s.ticket_price?`<span>🎟 ${esc(s.ticket_price)}</span>`:''}${s.spot_type==='ticket'&&s.fishing_date?`<span>📅 ${esc(dateLabel(s.fishing_date))}</span>`:''}</div><button class="details-btn" data-id="${esc(s.id)}">বিস্তারিত দেখুন ↗️</button>${map?`<a class="map-card-link" href="${esc(map)}" target="_blank" rel="noopener noreferrer">📍 Google Maps-এ লোকেশন দেখুন ↗️</a>`:''}</div></article>`}).join('');
+  $('spotGrid').querySelectorAll('.details-btn').forEach(b=>b.addEventListener('click',()=>openSpot(b.dataset.id)));
+ }
+ function openSpot(id){
+  const s=allSpots.find(x=>String(x.id)===String(id));if(!s)return;
+  $('modalTitle').textContent=s.title||'ফিশিং স্পট';
+  $('modalMeta').innerHTML=`<span>${typeLabel(s.spot_type)}</span><span>📍 ${esc(s.location||'অবস্থান উল্লেখ নেই')}</span>${s.water_name?`<span>${esc(s.water_name)}</span>`:''}${s.fish_name?`<span>🐟 ${esc(s.fish_name)}</span>`:''}${s.ticket_price?`<span>🎟 ${esc(s.ticket_price)}</span>`:''}${s.spot_type==='ticket'&&s.fishing_date?`<span>📅 ${esc(dateLabel(s.fishing_date))}</span>`:''}`;
+  $('modalDescription').textContent=s.description||'এই স্পটের জন্য অতিরিক্ত কোনো বিবরণ দেওয়া হয়নি।';
+  const links=[],map=safeUrl(s.map_link);if(map)links.push(`<a href="${esc(map)}" target="_blank" rel="noopener noreferrer">📍 Google Maps-এ লোকেশন দেখুন ↗️</a>`);if(s.contact)links.push(`<a href="tel:${esc(s.contact)}">যোগাযোগ: ${esc(s.contact)}</a>`);$('modalActions').innerHTML=links.join('');$('spotModal').classList.add('show');
+ }
+ $('modalClose').addEventListener('click',()=>$('spotModal').classList.remove('show'));
+ $('spotModal').addEventListener('click',e=>{if(e.target===$('spotModal'))$('spotModal').classList.remove('show')});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')$('spotModal').classList.remove('show')});
+ $('searchBtn').addEventListener('click',renderSpots);$('searchInput').addEventListener('input',renderSpots);$('typeFilter').addEventListener('change',renderSpots);$('districtFilter').addEventListener('change',renderSpots);
+ async function loadSpots(){
+  if(!db){$('spotGrid').innerHTML='<div class="empty"><strong>ডেটাবেস সংযোগ করা যায়নি</strong>পেজটি রিফ্রেশ করে আবার চেষ্টা করুন।</div>';return}
+  const {data,error}=await db.from('fishing_posts').select('*').eq('status','approved').order('created_at',{ascending:false});
+  if(error){console.error(error);$('spotGrid').innerHTML='<div class="empty"><strong>তথ্য লোড করা যায়নি</strong>Supabase public read policy পরীক্ষা করতে হবে।</div>';return}
+  allSpots=data||[];renderSpots();
+ }
+ $('spotForm').addEventListener('submit',async e=>{
+  e.preventDefault();const msg=$('formMessage'),btn=$('submitBtn'),imageFile=$('spotImage').files[0],spotType=$('spotType').value;
+  if(!db){msg.textContent='ডেটাবেস সংযোগ করা যায়নি।';return}
+  const mapInput=$('mapLink').value.trim();
+  if(mapInput&&!safeUrl(mapInput)){msg.textContent='Google Maps-এর সঠিক http বা https লিংক দিন।';return}
+  if(imageFile&& !imageFile.type.startsWith('image/')){msg.textContent='শুধু ছবির ফাইল নির্বাচন করুন।';return}
+  if(imageFile&&imageFile.size>10*1024*1024){msg.textContent='ছবির সাইজ ১০ MB-এর বেশি। ছোট ছবি নির্বাচন করুন।';return}
+  if(spotType==='ticket'&&!$('fishingDate').value){msg.textContent='টিকিট পুকুরের মাছ ধরার তারিখ নির্বাচন করুন।';return}
+  btn.disabled=true;btn.textContent='তথ্য জমা হচ্ছে…';msg.textContent='';let uploadedPath=null,imageUrl=null;
+  try{
+   if(imageFile){
+    const ext=(imageFile.name.split('.').pop()||'jpg').replace(/[^a-zA-Z0-9]/g,'').toLowerCase()||'jpg';
+    uploadedPath=`spots/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const {error:uploadError}=await db.storage.from('fishing-media').upload(uploadedPath,imageFile,{upsert:false,contentType:imageFile.type});
+    if(uploadError)throw new Error('ছবি আপলোড হয়নি: '+uploadError.message);
+    imageUrl=db.storage.from('fishing-media').getPublicUrl(uploadedPath).data.publicUrl;
+   }
+   const payload={spot_type:spotType,title:$('spotTitle').value.trim(),water_name:$('waterName').value.trim()||null,location:$('spotLocation').value.trim(),fish_name:$('fishName').value.trim()||null,ticket_price:$('ticketPrice').value.trim()||null,fishing_date:spotType==='ticket'?$('fishingDate').value:null,contact:$('contactInfo').value.trim()||null,map_link:mapInput||null,image_url:imageUrl,description:$('spotDescription').value.trim()||null,submitter:$('submitterName').value.trim()||null,status:'approved'};
+   const {error}=await db.from('fishing_posts').insert(payload);
+   if(error){if(uploadedPath)await db.storage.from('fishing-media').remove([uploadedPath]);throw new Error('স্পট জমা দেওয়া যায়নি: '+error.message)}
+   $('spotForm').reset();$('dateField').hidden=true;$('fishingDate').required=false;msg.textContent='সফলভাবে প্রকাশ হয়েছে! ধন্যবাদ।';await loadSpots();
+  }catch(error){console.error(error);msg.textContent=error.message||'দুঃখিত, স্পট জমা দেওয়া যায়নি।'}
+  finally{btn.disabled=false;btn.textContent='স্পট জমা দিন ↗️'}
+ });
+ async function checkAdmin(){
+  if(!db)return;const {data:{session}}=await db.auth.getSession();
+  if(!session){$('adminLogin').hidden=false;$('adminPanel').hidden=true;return}
+  const {data,error}=await db.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();
+  if(error||!data){$('adminMessage').textContent='এই অ্যাকাউন্টের অ্যাডমিন অনুমতি নেই।';await db.auth.signOut();$('adminLogin').hidden=false;$('adminPanel').hidden=true;return}
+  $('adminLogin').hidden=true;$('adminPanel').hidden=false;loadAdminList();
+ }
+ $('adminLoginBtn').addEventListener('click',async()=>{if(!db){$('adminMessage').textContent='ডেটাবেস সংযোগ করা যায়নি।';return}$('adminMessage').textContent='লগইন হচ্ছে…';const {error}=await db.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});if(error){$('adminMessage').textContent='লগইন হয়নি: '+error.message;return}$('adminMessage').textContent='';await checkAdmin()});
+ $('adminLogoutBtn').addEventListener('click',async()=>{await db.auth.signOut();$('adminPanel').hidden=true;$('adminLogin').hidden=false});
+ document.querySelectorAll('[data-admin-tab]').forEach(b=>b.addEventListener('click',()=>{adminTab=b.dataset.adminTab;loadAdminList()}));
+ async function loadAdminList(){
+  const box=$('adminList');box.textContent='লোড হচ্ছে…';
+  const {data,error}=await db.from('fishing_posts').select('*').order('created_at',{ascending:false});
+  if(error){box.textContent='স্পট আনা যায়নি: '+error.message;return}
+  if(!data?.length){box.textContent='এখনো কোনো স্পট নেই।';return}
+  box.innerHTML=data.map(s=>`<div class="admin-item"><b>${esc(s.title)} <small>(${s.status==='approved'?'প্রকাশিত':esc(s.status)})</small></b><small>${esc(s.location||'')} · ${typeLabel(s.spot_type)}</small><p>${esc(s.description||'')}</p><div class="admin-actions"><button class="delete" data-delete-spot="${esc(s.id)}">স্পট মুছুন</button></div></div>`).join('');
+  box.querySelectorAll('[data-delete-spot]').forEach(b=>b.addEventListener('click',()=>deleteSpot(b.dataset.deleteSpot)));
+ }
+ async function deleteSpot(id){if(!confirm('এই স্পটটি স্থায়ীভাবে মুছবেন?'))return;const {data:spot}=await db.from('fishing_posts').select('image_url').eq('id',id).maybeSingle();if(spot?.image_url){const marker='/storage/v1/object/public/fishing-media/';const at=spot.image_url.indexOf(marker);if(at>=0){const path=decodeURIComponent(spot.image_url.slice(at+marker.length));const {error:storageError}=await db.storage.from('fishing-media').remove([path]);if(storageError)console.error(storageError)}}const {error}=await db.from('fishing_posts').delete().eq('id',id);if(error)alert('মুছতে সমস্যা: '+error.message);else{await loadSpots();await loadAdminList()}}
+ loadSpots();checkAdmin();
+})();
+</script>
+</body>
+</html>
