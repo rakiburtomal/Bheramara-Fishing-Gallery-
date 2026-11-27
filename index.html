@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070B0F">
+<meta name="description" content="ভেড়ামারা ফিশিং গ্যালারি — ভেড়ামারার নদী ও টিকিট পুকুরের ফিশিং স্পট, ৭ দিনের আবহাওয়া ও আজকের ফিশিং স্কোর এক জায়গায়।"><meta property="og:type" content="website"><meta property="og:locale" content="bn_BD"><meta property="og:title" content="ভেড়ামারা ফিশিং গ্যালারি"><meta property="og:description" content="ভেড়ামারার সেরা ফিশিং স্পট, ফোরকাস্ট ও মাছ শিকারিদের কমিউনিটি।">
+<title>ভেড়ামারা ফিশিং গ্যালারি — স্পট, ফোরকাস্ট ও কমিউনিটি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<style>
+:root{--bg:#0B111B;--bg2:#0D1816;--panel:#172334;--panel2:#202F42;--gold:#D7B56D;--gold2:#F2DDAA;--cream:#F7F3EA;--muted:#B4BECA;--line:rgba(215,181,109,.25);--green:#8BC3A8;--shadow:0 22px 60px rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1c2a3b 0%,var(--bg) 48%);color:var(--cream);font-family:'Hind Siliguri',sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.topline{height:4px;background:linear-gradient(90deg,#765629,#D7B56D,#F2DDAA,#A47D42,#765629)}
+header{position:sticky;top:0;z-index:30;background:rgba(9,15,24,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand img{width:48px;height:48px;border-radius:13px;object-fit:cover;background:white}.brand b{display:block;font:800 14px Manrope,sans-serif}.brand small{display:block;color:var(--gold2);font-size:12px}.navlinks{display:flex;align-items:center;gap:19px;font-size:14px;color:#E5E0D6}.navlinks a:hover{color:var(--gold2)}.menu{display:none;background:none;border:1px solid var(--line);color:var(--gold2);padding:8px 12px;border-radius:9px}
+.btn,.nav-cta{display:inline-block;border:1px solid #F4DFAE;border-radius:30px;padding:11px 19px;background:linear-gradient(135deg,#F2DDAA 0%,#D7B56D 52%,#B88D4B 100%);color:#17130C;font-weight:700;box-shadow:0 9px 28px rgba(215,181,109,.2)}.btn:hover,.nav-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-outline{display:inline-block;border:1px solid rgba(242,221,170,.65);color:#F7E9C9;padding:10px 18px;border-radius:30px;background:rgba(255,255,255,.045)}
+.hero{min-height:590px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(5,10,17,.96),rgba(9,17,27,.76) 55%,rgba(9,17,27,.25)),var(--bg-hero)}.hero:after{content:"";position:absolute;inset:auto 0 0;height:150px;background:linear-gradient(transparent,var(--bg))}.hero-content{position:relative;z-index:2;max-width:740px;padding:85px 0 115px}.eyebrow,.kicker{color:var(--gold2);font:700 11px Manrope,sans-serif;letter-spacing:2px;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}h1{font-size:clamp(38px,6vw,68px);line-height:1.15;margin:22px 0 17px;text-shadow:0 3px 18px #000}h1 span{color:var(--gold2)}.hero p{max-width:610px;color:#F5F0E7;font-size:18px;text-shadow:0 2px 9px #000;margin:0 0 27px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero-note{margin-top:27px;color:#D6D0C4;font-size:13px}
+section{padding:76px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:28px}.section-head h2{font-size:clamp(27px,4vw,41px);line-height:1.25;margin:8px 0 0}.section-head p{color:var(--muted);max-width:470px;margin:0}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:21px}.category{position:relative;min-height:340px;overflow:hidden;border-radius:22px;border:1px solid var(--line);display:flex;align-items:end;box-shadow:var(--shadow)}.category>img{position:absolute;width:100%;height:100%;object-fit:cover;transition:.5s}.category:hover>img{transform:scale(1.05)}.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,10,17,.97),rgba(9,17,27,.02) 85%)}.cat-content{position:relative;z-index:1;padding:27px;width:100%;text-shadow:0 2px 9px #000}.cat-tag{display:inline-block;background:rgba(17,27,41,.91);border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:4px 11px;font-size:12px;margin-bottom:9px}.cat-content h3{font-size:29px;color:var(--gold2);margin:0 0 4px}.cat-content p{color:white;margin:0 0 15px}.cat-link{display:inline-block;background:rgba(17,27,41,.91);border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:7px 13px;font-weight:700}
+.field label{display:block;color:#E5D9C1;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#09110F;border:1px solid rgba(215,181,109,.25);border-radius:10px;padding:12px;color:var(--cream);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,181,109,.13)}.field input::placeholder,.field textarea::placeholder{color:#8996A5}.field select option{background:#172334;color:var(--cream)}
+.empty{grid-column:1/-1;text-align:center;border:1px dashed rgba(215,181,109,.42);border-radius:18px;padding:40px 20px;color:var(--muted);background:rgba(255,255,255,.025)}.empty strong{display:block;color:var(--cream);font-size:19px;margin-bottom:5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.step{padding:24px;border:1px solid var(--line);background:linear-gradient(145deg,#1B293B,#121D2B);border-radius:17px;box-shadow:var(--shadow)}.step-num{font:800 28px Manrope;color:var(--gold)}.step h3{margin:8px 0 4px;font-size:20px}.step p{color:var(--muted);margin:0;font-size:14px}
+.submit-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:start}.submit-copy{position:sticky;top:105px}.submit-copy h2{font-size:38px;line-height:1.2;margin:12px 0}.submit-copy p{color:var(--muted)}.note{border-left:3px solid var(--gold);padding:11px 14px;background:rgba(215,181,109,.09);color:#E8DFCF;border-radius:0 10px 10px 0;font-size:13px}.form-card{background:linear-gradient(145deg,#1B293B,#121D2B);border:1px solid var(--line);border-radius:21px;padding:24px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}.field textarea{min-height:110px;resize:vertical}.form-card>.btn{width:100%;margin-top:18px}.status-msg{font-size:13px;margin-top:11px;color:var(--green);white-space:pre-wrap}.upload-hint{color:var(--muted);font-size:13px;margin:8px 0 14px}
+.spots-section{background:linear-gradient(180deg,#0D1724,#172334 52%,#0D1724);border-block:1px solid var(--line)}.spot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.spot-card{overflow:hidden;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#1B293B,#121D2B);box-shadow:var(--shadow)}.spot-card img{width:100%;height:190px;object-fit:cover;display:block;background:#0c1521}.spot-card-body{padding:17px}.spot-card h3{margin:0 0 6px;color:var(--gold2);font-size:21px}.spot-card p{color:var(--muted);font-size:14px;margin:7px 0;white-space:pre-wrap;overflow-wrap:anywhere}.spot-meta{display:flex;flex-wrap:wrap;gap:7px}.spot-meta span{font-size:12px;padding:4px 9px;border-radius:20px;background:rgba(215,181,109,.1);color:#F0E5D0}.spot-search{display:grid;grid-template-columns:1fr 220px;gap:12px;margin-bottom:20px}.spot-search input,.spot-search select{width:100%;background:#09110F;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--cream)}
+.weather-section{background:linear-gradient(180deg,#0D1724,#172334 52%,#0D1724);border-block:1px solid var(--line)}.weather-panel{background:linear-gradient(145deg,#1B293B,#111B29);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.weather-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}.weather-place{display:flex;align-items:center;gap:10px;color:var(--gold2);font-weight:700}.weather-actions{display:flex;gap:9px;flex-wrap:wrap}.weather-link,.weather-refresh{border:1px solid var(--gold);border-radius:24px;padding:8px 14px;color:var(--gold2);background:rgba(215,181,109,.08);font-weight:700;font-size:13px}.weather-refresh:disabled{opacity:.55;cursor:wait}.weather-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.weather-day{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:15px 10px;text-align:center;min-width:0}.weather-day.today{border-color:var(--gold);background:rgba(215,181,109,.11);box-shadow:inset 0 0 0 1px rgba(215,181,109,.12)}.weather-day .day-name{font-weight:700;color:var(--gold2);font-size:14px}.weather-icon{font-size:31px;line-height:1.5;margin:7px 0}.weather-desc{color:var(--muted);font-size:12px;min-height:38px}.weather-temps{display:flex;justify-content:center;gap:8px;margin:8px 0;font-weight:700;font-size:14px}.weather-rain{color:#9BC9D8;font-size:12px;margin:5px 0}.weather-wind{color:var(--muted);font-size:11px}.weather-status{color:var(--muted);font-size:13px;margin-top:14px;text-align:center}.weather-error{border:1px dashed rgba(215,181,109,.4);border-radius:14px;padding:22px;text-align:center;color:var(--muted)}
+.shop-section{background:linear-gradient(180deg,#0B111B,#172334 50%,#0B111B);border-block:1px solid var(--line)}.shop-intro{text-align:center;max-width:700px;margin:0 auto 30px}.shop-intro h2{font-size:clamp(28px,4vw,40px);margin:9px 0}.shop-intro p{color:var(--muted)}.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.shop-card{background:linear-gradient(145deg,#1B293B,#121D2B);border:1px solid var(--line);border-radius:19px;overflow:hidden;text-align:center}.shop-card img{width:100%;height:205px;object-fit:cover;display:block}.shop-card-body{padding:18px}.shop-card h3{font-size:22px;margin:0 0 5px;color:var(--gold2)}.shop-card p{color:var(--muted);font-size:14px;margin:0 0 12px}.coming{display:inline-block;background:rgba(215,181,109,.1);border:1px solid rgba(215,181,109,.45);color:var(--gold2);border-radius:30px;padding:6px 13px;font-size:12px;font-weight:700}.shop-notice{text-align:center;margin-top:22px;padding:15px;border:1px dashed rgba(215,181,109,.4);border-radius:13px;color:#E5D9C1}
+.about{background:linear-gradient(180deg,transparent,rgba(23,35,52,.5),transparent)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about-visual{position:relative}.about-visual img{width:100%;height:360px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}.about-badge{position:absolute;right:12px;bottom:18px;background:linear-gradient(135deg,#F2DDAA,#B88D4B);color:#17130C;padding:12px 16px;border-radius:12px;font-weight:700}.about-copy h2{font-size:38px;line-height:1.2;margin:10px 0}.about-copy p{color:var(--muted)}.developer{display:flex;align-items:center;gap:14px;margin-top:23px;padding-top:20px;border-top:1px solid var(--line)}.developer img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:2px solid var(--gold)}.developer b{display:block}.developer small{color:var(--gold2)}
+.contact{background:linear-gradient(135deg,#172334,#0D1816);border-block:1px solid var(--line)}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:22px}.contact-box h2{font-size:31px;margin:7px 0}.contact-box p{color:var(--muted);margin:0}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{border:1px solid rgba(215,181,109,.35);padding:10px 15px;border-radius:11px;color:var(--gold2);background:rgba(255,255,255,.035)}
+footer{padding:32px 0;background:#080D15;border-top:1px solid var(--line)}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-brand{display:flex;align-items:center;gap:10px}.footer-brand img{width:40px;height:40px;border-radius:9px;object-fit:cover}.footer-brand b{font:700 13px Manrope}.footer-links{display:flex;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:13px}.footer-links a:hover{color:var(--gold2)}.copyright{color:#8996A5;font-size:12px;margin-top:20px;padding-top:17px;border-top:1px solid rgba(215,181,109,.16);text-align:center}
+.admin-area{background:#0D1816;border:1px solid var(--line);border-radius:18px;padding:21px;margin-top:15px}.admin-area summary{cursor:pointer;color:var(--gold2);font-weight:700}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-actions button{border:1px solid rgba(215,181,109,.3);border-radius:8px;background:#202F42;color:white;padding:7px 11px}.admin-actions .delete{color:#F0A79B}.admin-item{padding:13px 0;border-bottom:1px solid var(--line)}.admin-item:last-child{border:0}.admin-item b{display:block}.admin-item small{color:var(--muted)}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.admin-tabs button{border:1px solid rgba(215,181,109,.3);background:#202F42;color:var(--gold2);padding:8px 13px;border-radius:9px}
+@media(max-width:900px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#0B111B;padding:18px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav-cta{display:none}.submit-layout{grid-template-columns:1fr}.submit-copy{position:static}.weather-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.spot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}.nav{height:68px}.navlinks{top:68px}.brand img{width:42px;height:42px}.brand b{font-size:11px}.brand small{font-size:10px}.hero{min-height:535px}.hero-content{padding:70px 0 105px}.hero p{font-size:16px}section{padding:60px 0}.section-head{display:block}.section-head p{margin-top:10px}.categories,.steps,.shop-grid,.about-grid,.spot-grid{grid-template-columns:1fr}.category{min-height:290px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:17px}.about-visual img{height:275px}.about-copy h2,.submit-copy h2{font-size:31px}.contact-box{align-items:flex-start;flex-direction:column}.footer-row{align-items:flex-start;flex-direction:column}.weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-day{padding:13px 8px}.weather-top{align-items:flex-start}.spot-search{grid-template-columns:1fr}}
+
+.shop-art{height:205px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#2a3d55,#0f1926 75%);border-bottom:1px solid var(--line)}.shop-art svg{width:100%;height:100%;transition:transform .5s}.shop-card:hover .shop-art svg{transform:scale(1.06)}
+.shop-card,.spot-card,.category,.form-card,.weather-day{transition:transform .35s,border-color .35s,box-shadow .35s}.shop-card:hover,.spot-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px rgba(215,181,109,.25)}.category:hover{border-color:var(--gold)}.weather-day:hover{transform:translateY(-4px);border-color:rgba(215,181,109,.6)}
+.section-head h2:after{content:"";display:block;width:56px;height:3px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+h1 span{background:linear-gradient(90deg,#F2DDAA,#D7B56D,#F2DDAA);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(0,0,0,.7))}
+::selection{background:var(--gold);color:#17130C}:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+header{box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
+#toTop{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);background:rgba(11,17,27,.92);color:var(--gold2);font-size:20px;opacity:0;pointer-events:none;transition:.3s;z-index:40}#toTop.show{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+:root{--teal:#3FB6A8;--bg-hero:url(images/hero.jpg) center/cover,url(https://images.pexels.com/photos/14021577/pexels-photo-14021577.jpeg?auto=compress&cs=tinysrgb&w=1920) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDcwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzA2MGIxNCIvPjxzdG9wIG9mZnNldD0iMC40NSIgc3RvcC1jb2xvcj0iIzFiMmY0NSIvPjxzdG9wIG9mZnNldD0iMC43NCIgc3RvcC1jb2xvcj0iI2M5OGY0YSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2YyYzc3ZCIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJ3IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzk4ZjRhIi8+PHN0b3Agb2Zmc2V0PSIwLjIyIiBzdG9wLWNvbG9yPSIjMmI0YTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGExNTIyIi8+PC9saW5lYXJHcmFkaWVudD48cmFkaWFsR3JhZGllbnQgaWQ9ImciPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjJjOSIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjZjJjNzdkIiBzdG9wLW9wYWNpdHk9Ii41NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2YyYzc3ZCIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iNzAwIiBmaWxsPSJ1cmwoI3MpIi8+PGNpcmNsZSBjeD0iOTAwIiBjeT0iNDIwIiByPSIyNjAiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSI5MDAiIGN5PSI0MjAiIHI9IjQ4IiBmaWxsPSIjZmZmMGM0Ii8+PHBhdGggZD0iTTAgNDMwUTIyMCAzNzAgNDQwIDQyMFQ5MDAgNDEwVDEzMDAgMzg1VDE2MDAgNDE1VjQ4MEgwWiIgZmlsbD0iIzBmMWMyYiIgb3BhY2l0eT0iLjkiLz48cmVjdCB5PSI0NTUiIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjI0NSIgZmlsbD0idXJsKCN3KSIvPjxnIHN0cm9rZT0iI2Y3ZGNhMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii41Ij48cGF0aCBkPSJNODAwIDQ3NWgyMDBNODMwIDQ5OGgxNDBNNzgwIDUyNWgyNDBNODIwIDU1NWgxNjBNODYwIDU5MGg5MCIvPjwvZz48cGF0aCBkPSJNMTE2MCA3MDBRMTE4MCA1NjAgMTMwMCA1MjBRMTQ1MCA0OTAgMTYwMCA1MjBWNzAwWiIgZmlsbD0iIzA1MGExMiIvPjxjaXJjbGUgY3g9IjEzNTIiIGN5PSI0NTIiIHI9IjE1IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTEzMzAgNDc0cTIyLTEwIDQ0IDBsMTAgNThoLTY0eiIgZmlsbD0iIzA1MGExMiIvPjxwYXRoIGQ9Ik0xMzQwIDQ4MkwxMDEwIDM0MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMTAxMCAzNDBROTUwIDQzMCA5NjIgNTQwIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIi8+PGNpcmNsZSBjeD0iOTYyIiBjeT0iNTQzIiByPSI2IiBmaWxsPSIjZTA1NTNmIi8+PGVsbGlwc2UgY3g9Ijk2MiIgY3k9IjU1MiIgcng9IjI2IiByeT0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMjMwIDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTEyNjIgNjQwcS0xNCAtNjAuMCAtOCAtMTIwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNTAwIDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE1NDAgNjQwcS0xNCAtNjAuMCAtOCAtMTIwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNTc1IDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+) center/cover}
+body{background:radial-gradient(900px 520px at 88% -4%,rgba(63,182,168,.16),transparent 60%),radial-gradient(800px 520px at -5% 18%,rgba(215,181,109,.11),transparent 60%),linear-gradient(180deg,#070B0F,#0B1613 50%,#070B0F);background-attachment:fixed}
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:2px;font-size:clamp(46px,8vw,92px);line-height:1.02}
+.section-head h2,.submit-copy h2,.about-copy h2,.contact-box h2,.shop-intro h2,.cat-content h3,.spot-card h3,.shop-card h3,.step h3{font-family:'Noto Serif Bengali','Hind Siliguri',serif;font-weight:700}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--teal)}.kicker:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+.hero{min-height:660px;background:linear-gradient(90deg,rgba(5,10,17,.9),rgba(9,17,27,.5) 52%,rgba(9,17,27,.05)),var(--bg-hero)}
+.hero p{font-size:19px;line-height:1.9}.hero-note{color:var(--gold2);letter-spacing:.3px}
+.strip{position:relative;z-index:3;margin-top:-58px}.strip-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(16,26,40,.88);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.strip-row>div{padding:18px 22px;border-right:1px solid var(--line)}.strip-row>div:last-child{border:0}.strip-row b{display:block;color:var(--gold2);font-size:16px}.strip-row span{color:var(--muted);font-size:13px}
+.scene{background-size:cover;background-position:center;transition:transform .6s}
+.category>.scene{position:absolute;inset:0}.category:hover>.scene{transform:scale(1.06)}
+.scene-river{background:url(images/river.jpg) center/cover,url(https://images.pexels.com/photos/32371607/pexels-photo-32371607/free-photo-of-man-fishing-by-river-in-lush-green-forest.jpeg?auto=compress&cs=tinysrgb&w=1400) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMTAyMDJmIi8+PHN0b3Agb2Zmc2V0PSIwLjYiIHN0b3AtY29sb3I9IiM3YTVhNDYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmMGI4NmIiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0idyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2YwYjg2YiIvPjxzdG9wIG9mZnNldD0iMC4yIiBzdG9wLWNvbG9yPSIjMzU1NjZhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIxODI0Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjcykiLz48Y2lyY2xlIGN4PSI1NjAiIGN5PSIyMzUiIHI9IjQyIiBmaWxsPSIjZmZmMGM0Ii8+PHBhdGggZD0iTTAgMjUwUTE1MCAyMDUgMzIwIDI0NVQ2MjAgMjM1VDgwMCAyNTBWMjgwSDBaIiBmaWxsPSIjMGYxYzJiIiBvcGFjaXR5PSIuODUiLz48cmVjdCB5PSIyNjIiIHdpZHRoPSI4MDAiIGhlaWdodD0iMjM4IiBmaWxsPSJ1cmwoI3cpIi8+PGcgc3Ryb2tlPSIjZjdkY2EwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjUiPjxwYXRoIGQ9Ik01MDAgMjg1aDEyME01MjAgMzA1aDgwTTQ5MCAzMzBoMTUwTTUzMCAzNjBoNzAiLz48L2c+PHBhdGggZD0iTTE1MCAzOTBoMTkwbC0yNiAyOEgxNzZ6IiBmaWxsPSIjMDUwYTEyIi8+PGNpcmNsZSBjeD0iMjUwIiBjeT0iMzUyIiByPSIxMSIgZmlsbD0iIzA1MGExMiIvPjxwYXRoIGQ9Ik0yMzQgMzY2cTE2LTggMzIgMGw4IDI2aC00OHoiIGZpbGw9IiMwNTBhMTIiLz48cGF0aCBkPSJNMjYyIDM3Mkw0MDAgMjk2IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik00MDAgMjk2UTQzMCAzNTAgNDI0IDQxMCIgc3Ryb2tlPSIjZjdkY2EwIiBzdHJva2Utd2lkdGg9IjEuNCIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjQyNCIgY3k9IjQxMiIgcj0iNCIgZmlsbD0iI2UwNTUzZiIvPjxwYXRoIGQ9Ik0zMCA1MDBxMTQgLTcwLjAgOCAtMTQwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik01OCA1MDBxLTE0IC03MC4wIC04IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkwIDUwMHExNCAtNzAuMCA4IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTc0MCA1MDBxLTE0IC03MC4wIC04IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTc3MCA1MDBxMTQgLTcwLjAgOCAtMTQwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==) center/cover}.scene-pond{background:url(images/pond.jpg) center/cover,url(https://images.pexels.com/photos/4997361/pexels-photo-4997361.jpeg?auto=compress&cs=tinysrgb&w=1400) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGMxYzJhIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMmQ2YTY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDljMDhhIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzYjdmNzgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTFkMjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjY0MCIgY3k9IjE3MCIgcj0iMzQiIGZpbGw9IiNmZmYzY2YiIG9wYWNpdHk9Ii45Ii8+PHBhdGggZD0iTTcwIDMwMFE5MCAyMTAgMTIwIDEzME0xMjAgMTMwcS01MC0xMC04MCAyME0xMjAgMTMwcTQwLTMwIDg1LTEwTTEyMCAxMzBxLTEwLTQwIDIwLTYwTTEyMCAxMzBxNDAtOCA3MCAyNCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik02OTAgMzAwUTcwMCAyMzAgNzIwIDE3ME03MjAgMTcwcS00MC0xMC02NSAxNE03MjAgMTcwcTM1LTI2IDcwLTRNNzIwIDE3MHEtNi0zNCAxNi01MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHk9IjI5MCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMTAiIGZpbGw9InVybCgjdykiLz48ZyBmaWxsPSIjMmY4YTViIiBvcGFjaXR5PSIuOSI+PGVsbGlwc2UgY3g9IjE3MCIgY3k9IjM4MCIgcng9IjQ0IiByeT0iMTIiLz48ZWxsaXBzZSBjeD0iNjIwIiBjeT0iMzUwIiByeD0iMzgiIHJ5PSIxMCIvPjxlbGxpcHNlIGN4PSI1MjAiIGN5PSI0NDAiIHJ4PSI1NCIgcnk9IjE0Ii8+PGVsbGlwc2UgY3g9IjI2MCIgY3k9IjQ1MCIgcng9IjM2IiByeT0iOSIvPjwvZz48cGF0aCBkPSJNNTAwIDQzMnExMC0yNCAyMC00cTEwLTIyIDIwIDRxLTIwIDgtNDAgMHoiIGZpbGw9IiNmNGE5YzAiLz48cGF0aCBkPSJNMCA0MEw0MzAgMzQ1IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMy41IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQzMCAzNDVRNDQwIDM4MCA0MzYgNDAyIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS40IiBmaWxsPSJub25lIi8+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjM5NCIgcng9IjUiIHJ5PSI5IiBmaWxsPSIjZTA1NTNmIi8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiI+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjQwOCIgcng9IjIyIiByeT0iNSIvPjxlbGxpcHNlIGN4PSI0MzYiIGN5PSI0MDgiIHJ4PSI0MCIgcnk9IjkiIG9wYWNpdHk9Ii41Ii8+PC9nPjwvc3ZnPg==) center/cover}.scene-fish{background:url(images/fishing.jpg) center/cover,url(https://images.pexels.com/photos/8671734/pexels-photo-8671734.jpeg?auto=compress&cs=tinysrgb&w=1400) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGExMjIwIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjNWIzZjRkIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjBhOTY0Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlOWExNWYiLz48c3RvcCBvZmZzZXQ9IjAuMTgiIHN0b3AtY29sb3I9IiMyYzQzNTgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOTEzMWYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjU2MCIgY3k9IjI3MCIgcj0iNzAiIGZpbGw9IiNmZmUyYTgiIG9wYWNpdHk9Ii45Ii8+PHJlY3QgeT0iMjkwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIxMCIgZmlsbD0idXJsKCN3KSIvPjxnIHN0cm9rZT0iI2ZmZDlhMCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii40NSI+PHBhdGggZD0iTTQ3MCAzMTBoMTgwTTUwMCAzMzJoMTIwTTQ1MCAzNThoMjIwIi8+PC9nPjxwYXRoIGQ9Ik0wIDUwMFY0MDBRNjAgMzcwIDE1MCAzODVMMjMwIDUwMFoiIGZpbGw9IiMwNTBhMTIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMTgiIHI9IjE0IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTEyOCAzMzhxMjItMTAgNDQgMGwxMCA1MmgtNjR6IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTE2OCAzNDZRMzMwIDIwMCA0NzAgMTcwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik00NzAgMTcwUTUyMCAyMzAgNTIwIDI2MiIgc3Ryb2tlPSIjZmZlMmE4IiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIvPjxnIHRyYW5zZm9ybT0icm90YXRlKC0yOCA1MzAgMjUwKSI+PGVsbGlwc2UgY3g9IjUzMCIgY3k9IjI1MCIgcng9IjQ2IiByeT0iMTciIGZpbGw9IiNmMmM3N2QiLz48cGF0aCBkPSJNNTc0IDI1MGwzMi0xOHYzNnoiIGZpbGw9IiNmMmM3N2QiLz48Y2lyY2xlIGN4PSI1MDgiIGN5PSIyNDUiIHI9IjMiIGZpbGw9IiMwYTEyMjAiLz48L2c+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZlMmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii44Ij48cGF0aCBkPSJNNDg2IDMwMHEtMTgtMjAtMzAtOE01NjIgMzAwcTE0LTIyIDI4LTEyTTUxMCAzMDZxLTQtMTYtMi0yNk01NDAgMzA2cTQtMTYgMi0yNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGVsbGlwc2UgY3g9IjUyNCIgY3k9IjMxMiIgcng9IjYwIiByeT0iOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==) center/cover}
+.about-visual .scene{height:380px;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.category{min-height:380px}.category:after{background:linear-gradient(0deg,rgba(5,10,17,.95),rgba(5,10,17,.35) 45%,transparent 80%)}
+.cat-link{background:linear-gradient(135deg,#F2DDAA,#D7B56D);color:#17130C;border:0}
+.spots-section,.weather-section{background:linear-gradient(180deg,#0B1420,#11303a 52%,#0B1420)}.shop-section{background:linear-gradient(180deg,#0B1420,#2a2213 50%,#0B1420)}
+.contact{background:linear-gradient(135deg,#12303a,#0D1816 60%,#2a2213)}
+.spot-card,.shop-card,.form-card,.weather-panel,.step{background:linear-gradient(145deg,rgba(32,48,68,.85),rgba(15,25,38,.92))}
+.weather-day.today{background:linear-gradient(160deg,rgba(215,181,109,.2),rgba(63,182,168,.1))}
+.btn{position:relative;overflow:hidden}.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}.btn:hover:after{transform:translateX(120%)}
+.about-badge{font-family:Manrope,sans-serif;font-size:13px}
+@media(max-width:900px){.strip-row{grid-template-columns:1fr}.strip-row>div{border-right:0;border-bottom:1px solid var(--line)}.strip{margin-top:-40px}}
+@media(max-width:600px){.hero{min-height:600px}.category{min-height:320px}.about-visual .scene{height:280px}}
+
+html{scroll-behavior:smooth}section[id]{scroll-margin-top:84px}
+h1{font-family:'Noto Serif Bengali','Hind Siliguri',serif;font-weight:800;letter-spacing:0;font-size:clamp(40px,7.4vw,86px);line-height:1.18}
+.brand b{background:linear-gradient(90deg,#F2DDAA,#D7B56D);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:'Noto Serif Bengali',serif;letter-spacing:0;font-size:18px}.brand small{letter-spacing:1.5px}
+.strip-row>a{display:block;padding:18px 22px;border-right:1px solid var(--line);color:inherit;transition:background .3s}.strip-row>a:last-child{border:0}.strip-row>a:hover{background:rgba(215,181,109,.12)}.strip-row>a b{display:block;color:var(--gold2);font-size:16px}.strip-row>a span{color:var(--muted);font-size:13px}
+@media(max-width:900px){.strip-row>a{border-right:0;border-bottom:1px solid var(--line)}}
+.sub-title{font-family:'Noto Serif Bengali',serif;color:var(--gold2);margin:30px 0 14px;font-size:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips label{position:relative;cursor:pointer;margin:0}.chips input{position:absolute;opacity:0;inset:0}.chips span{display:inline-block;padding:8px 15px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-size:14px;transition:.25s}.chips input:checked+span{background:linear-gradient(135deg,#F2DDAA,#D7B56D);color:#17130C;border-color:transparent;font-weight:700}.chips input:focus-visible+span{outline:2px solid var(--gold2)}
+.bite{background:linear-gradient(145deg,rgba(215,181,109,.14),rgba(63,182,168,.1) 55%,rgba(15,25,38,.9));border:1px solid rgba(215,181,109,.45);border-radius:26px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.bite-main{display:flex;gap:26px;align-items:center;flex-wrap:wrap}.ring{--p:0;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.09) 0);display:grid;place-items:center;flex:none;box-shadow:0 0 40px rgba(215,181,109,.2)}.ring>div{width:118px;height:118px;border-radius:50%;background:#0F1926;display:grid;place-content:center;text-align:center}.ring b{font-size:40px;color:var(--gold2);line-height:1}.ring small{color:var(--muted)}
+.bite-info{flex:1;min-width:240px}.bite-tag{font-weight:700;font-size:14px;letter-spacing:.5px}.bite-info h3{font-family:'Noto Serif Bengali',serif;font-size:clamp(20px,3.4vw,28px);margin:6px 0}.bite-info p{color:var(--muted);margin:0 0 12px}.bite-meta{display:flex;flex-wrap:wrap;gap:8px}.bite-meta span{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:13px}
+.bite-days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px}.bd{text-align:center}.bd .bar{height:90px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:flex-end;overflow:hidden}.bd .bar i{display:block;width:100%;border-radius:10px 10px 0 0}.bd b{display:block;margin-top:6px;color:var(--gold2)}.bd small{color:var(--muted);font-size:11px}
+.bite-note,.bite-load{color:var(--muted);font-size:12.5px;margin-top:16px}
+.dev{padding:70px 0;background:linear-gradient(180deg,#0B1420,#11303a 60%,#070B0F)}.dev-card{max-width:860px;margin:auto;display:flex;gap:34px;align-items:center;padding:34px;border-radius:28px;border:1px solid rgba(215,181,109,.5);background:linear-gradient(145deg,rgba(32,48,68,.9),rgba(12,20,31,.95));box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.dev-photo{flex:none;padding:5px;border-radius:50%;background:linear-gradient(135deg,#F2DDAA,#D7B56D,#3FB6A8);box-shadow:0 0 50px rgba(215,181,109,.3)}.dev-photo img{display:block;width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid #0F1926}
+.dev-tag{color:var(--teal);font-size:13px;letter-spacing:1.5px;font-weight:700}.dev-info h2{font-family:'Noto Serif Bengali',serif;font-size:clamp(24px,4vw,34px);margin:6px 0;background:linear-gradient(90deg,#fff,#F2DDAA);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.4}.dev-role{color:var(--gold2);font-weight:600}.dev-info p{color:var(--muted)}.dev-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.dev-links a{padding:9px 18px;border-radius:999px;border:1px solid var(--gold);color:var(--gold2);transition:.3s}.dev-links a:hover{background:var(--gold);color:#17130C}
+@media(max-width:700px){.dev-card{flex-direction:column;text-align:center;padding:26px 20px}.dev-links{justify-content:center}.dev-photo img{width:140px;height:140px}.ring{width:130px;height:130px}.ring>div{width:100px;height:100px}.bite-days{gap:4px}}
+
+.tips-section,.faq-section{padding:84px 0}.tips-section{background:linear-gradient(180deg,#070B0F,#12303a 50%,#070B0F)}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.tip{padding:24px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(32,48,68,.85),rgba(15,25,38,.92));transition:transform .35s,border-color .35s}.tip:hover{transform:translateY(-6px);border-color:var(--gold)}.tip-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(215,181,109,.25),rgba(63,182,168,.18));font-size:26px;margin-bottom:12px}.tip h3{font-family:'Noto Serif Bengali',serif;color:var(--gold2);margin:0 0 6px}.tip p{color:var(--muted);margin:0;line-height:1.8}
+.faq-list{max-width:820px;margin:auto;display:grid;gap:12px}.faq-list details{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);padding:4px 20px;transition:border-color .3s}.faq-list details[open]{border-color:var(--gold);background:rgba(215,181,109,.07)}.faq-list summary{cursor:pointer;padding:14px 0;font-weight:700;color:var(--gold2);list-style:none;display:flex;justify-content:space-between;gap:12px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";font-size:22px;line-height:1}.faq-list details[open] summary:after{content:"–"}.faq-list p{margin:0 0 14px;color:var(--muted);line-height:1.8}
+.facts{list-style:none;margin:10px 0;padding:0;display:grid;gap:6px}.facts li{display:flex;flex-wrap:wrap;gap:4px 10px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.05);font-size:14px}.facts b{color:var(--gold2);font-weight:600}.facts span{color:var(--text,#eee)}
+.spot-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.spot-actions a,.spot-actions button{font:inherit;font-size:13.5px;cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold2);transition:.25s}.spot-actions a:hover,.spot-actions button:hover{background:var(--gold);color:#17130C}
+.fab{position:fixed;left:16px;bottom:18px;z-index:40;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#F2DDAA,#D7B56D);color:#17130C;font-weight:700;font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,.45);transition:transform .3s}.fab:hover{transform:translateY(-3px)}
+
+/* ===== প্রিমিয়াম ডার্ক থিম: নেভি + গোল্ড + টিল ===== */
+:root{--bg:#070B0F;--bg2:#0B1613;--panel:#111D19;--panel2:#1C2C40;--gold:#D7B56D;--gold2:#F2DDAA;--cream:#F6F2E9;--muted:#A9B6C3;--line:rgba(215,181,109,.22);--shadow:0 20px 50px rgba(0,0,0,.4);--orange:#F2DDAA;--orange2:#D7B56D;--ocean:#F2DDAA;--teal:#38C79A}
+body{background:radial-gradient(900px 520px at 88% -4%,rgba(63,182,168,.14),transparent 60%),radial-gradient(800px 520px at -5% 18%,rgba(215,181,109,.1),transparent 60%),linear-gradient(180deg,#070B0F,#0B1613 50%,#070B0F);background-attachment:fixed;color:var(--cream);font-size:17px}
+.topline{background:linear-gradient(90deg,#765629,#D7B56D,#F2DDAA,#3FB6A8,#765629)}
+header{background:rgba(9,15,24,.92)}.brand b{color:var(--gold2)}.brand small{color:var(--muted)}.navlinks a:hover{color:var(--gold2)}
+.btn,.nav-cta,.fab{background:linear-gradient(135deg,#F2DDAA,#D7B56D 52%,#B88D4B);color:#17130C;border:1px solid #F4DFAE;box-shadow:0 10px 28px rgba(215,181,109,.22)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-outline{color:var(--gold2);border-color:var(--gold);background:transparent}
+.hero{background:linear-gradient(90deg,rgba(5,10,17,.92),rgba(9,17,27,.55) 55%,rgba(9,17,27,.08)),var(--bg-hero)}.hero,.hero h1,.hero p{color:#fff}.eyebrow,.hero-note{color:var(--gold2)}
+.hero .btn-outline{color:#fff;border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.hero-score{display:inline-block;margin-top:18px;padding:11px 20px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);backdrop-filter:blur(10px);color:#fff;font-size:15px}.hero-score b{color:var(--gold2);font-size:18px}
+.strip-row{background:rgba(16,26,40,.9)}.strip-row>a b{color:var(--gold2)}.strip-row>a span{color:var(--muted)}.strip-row>a:hover{background:rgba(215,181,109,.08)}
+.category,.category h3,.category p{color:#fff}.category:after{background:linear-gradient(0deg,rgba(5,10,17,.95),rgba(5,10,17,.08) 75%)}.cat-tag{background:rgba(10,16,25,.7);color:var(--gold2);border-color:var(--gold)}
+.spots-section,.weather-section,.shop-section{background:linear-gradient(180deg,#070B0F,#0E1D19 52%,#070B0F);border-block:1px solid var(--line)}.tips-section{background:linear-gradient(180deg,#070B0F,#0D1C18 50%,#070B0F)}.dev{background:linear-gradient(180deg,#070B0F,#0E1D19)}
+.step,.form-card,.spot-card,.shop-card,.weather-panel,.tip,.faq-list details,.dev-card,.product{background:linear-gradient(145deg,#16231F,#0C1512);border:1px solid var(--line);box-shadow:var(--shadow)}
+.bite{background:linear-gradient(145deg,rgba(215,181,109,.12),rgba(63,182,168,.08) 55%,#0C1512);border-color:rgba(215,181,109,.4)}
+.ring>div{background:#0C1512}.ring b,.bd b{color:var(--gold2)}.bd .bar{background:rgba(255,255,255,.07)}
+.bite-meta span,.facts li{background:rgba(215,181,109,.08);border-color:var(--line)}.facts b{color:var(--gold2)}.facts span{color:var(--cream)}
+.weather-day{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}.weather-day.today{background:rgba(215,181,109,.12);border-color:var(--gold)}
+.weather-link,.weather-refresh{background:rgba(215,181,109,.08);color:var(--gold2);border:1px solid var(--gold)}
+.spot-card img,.p-img{background:#09110F}.spot-meta span,.p-cat{background:rgba(215,181,109,.12);color:var(--gold2)}
+.spot-actions a,.spot-actions button{color:var(--gold2);border-color:var(--gold);background:rgba(215,181,109,.06)}.spot-actions a:hover,.spot-actions button:hover{background:var(--gold);color:#17130C}
+.field input,.field select,.field textarea,.spot-search input,.spot-search select{background:#09110F;border:1px solid rgba(215,181,109,.28);color:var(--cream)}.field select option{background:#111D19;color:var(--cream)}
+.chips span{background:#09110F;color:var(--muted);border-color:rgba(215,181,109,.28)}.chips input:checked+span{background:linear-gradient(135deg,#F2DDAA,#D7B56D);color:#17130C;border-color:#F2DDAA}
+.empty{background:rgba(255,255,255,.03);border-color:rgba(215,181,109,.4)}.note{background:rgba(215,181,109,.09);color:#E8DFCF}
+.tip h3,.faq-list summary,.sub-title{color:var(--gold2)}.tip-ic{background:rgba(215,181,109,.14)}.faq-list details[open]{background:rgba(215,181,109,.07);border-color:var(--gold)}
+.about-badge{background:linear-gradient(135deg,#F2DDAA,#B88D4B);color:#17130C}
+.contact{background:linear-gradient(135deg,#0F231D,#0C1A28)}.contact h2{color:#fff}.contact p{color:var(--muted)}.contact .kicker{color:var(--teal)}.contact-links a{color:var(--gold2);background:rgba(255,255,255,.04);border-color:rgba(215,181,109,.35)}
+.dev-photo{background:linear-gradient(135deg,#F2DDAA,#D7B56D,#3FB6A8)}.dev-photo img{border-color:#070B0F}.dev-info h2{background:linear-gradient(90deg,#F2DDAA,#D7B56D);-webkit-background-clip:text;background-clip:text;color:transparent}.dev-tag{color:var(--teal)}.dev-role{color:var(--gold2)}.dev-links a{color:var(--gold2);border-color:var(--gold)}.dev-links a:hover{background:var(--gold);color:#17130C}
+footer{background:#050806;color:var(--muted)}.footer-links a,.footer-brand b{color:#E3DCCB}.footer-links a:hover{color:var(--gold2)}.copyright{color:#8996A5}
+.admin-area{background:#0D1816}#admin{display:none}#admin:target{display:block}
+#toTop{background:rgba(11,17,27,.92);color:var(--gold2);border-color:var(--gold)}::selection{background:var(--gold);color:#17130C}
+@media(max-width:700px){body{font-size:16.5px}.hero-score{font-size:14px}.btn,.nav-cta{padding:13px 22px}}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}.shop-filter{margin-bottom:22px;display:flex;justify-content:center}
+.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .35s,box-shadow .35s}.product:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(14,60,90,.2)}
+.p-img{position:relative;aspect-ratio:4/3;background:#DFF1F4;overflow:hidden}.p-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.product:hover .p-img img{transform:scale(1.06)}.p-out{position:absolute;inset:auto 10px 10px auto;background:#C0392B;color:#fff;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.p-body{padding:16px 18px 18px}.p-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--gold2);background:rgba(14,154,167,.12);padding:3px 11px;border-radius:999px}.p-body h3{font-family:'Noto Serif Bengali',serif;margin:8px 0 4px;font-size:18px;color:var(--ocean)}.p-body p{color:var(--muted);font-size:14px;margin:0 0 10px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.p-price{font-size:21px;color:var(--orange);font-weight:800}.p-foot .btn{padding:10px 16px;font-size:14px}.p-foot .btn:disabled{background:#B7C4CC;box-shadow:none;cursor:not-allowed}
+.order-dialog{border:1px solid var(--line);border-radius:24px;padding:0;width:min(560px,calc(100% - 20px));max-height:92vh;background:linear-gradient(145deg,#16231F,#0F1926);color:var(--cream);box-shadow:0 30px 90px rgba(0,0,0,.7)}.order-dialog::backdrop{background:rgba(4,8,14,.78);backdrop-filter:blur(5px)}.order-dialog form{padding:22px}
+.od-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.od-head h3{margin:0;font-family:'Noto Serif Bengali',serif;color:var(--gold2)}.od-x{border:1px solid var(--line);background:rgba(255,255,255,.06);width:36px;height:36px;border-radius:50%;font-size:16px;color:var(--gold2)}
+.od-prod{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);margin-bottom:14px}.od-prod img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.paybox{margin:14px 0;padding:14px 16px;border-radius:14px;background:rgba(215,181,109,.09);border:1px dashed var(--gold);line-height:1.8}.paybox b{font-size:21px;color:var(--gold2);letter-spacing:1px}.copy-btn{border:1px solid var(--gold);background:rgba(215,181,109,.1);color:var(--gold2);border-radius:999px;padding:3px 12px;margin-left:6px}
+.od-total{display:flex;justify-content:space-between;align-items:center;margin:14px 0;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,#12303F,#0E1F2E);border:1px solid var(--line);color:#fff;font-size:17px}.od-total b{font-size:22px;color:var(--gold2)}
+.admin-tabs button.on{background:var(--gold);color:#17130C}.order-item{border-left:5px solid var(--gold)}.order-item.st-new{border-left-color:#F2DDAA}.order-item.st-delivered{border-left-color:#2E9E5B}.order-item.st-cancelled{opacity:.6;border-left-color:#C0392B}
+
+/* ===== প্রিমিয়াম ফিশিং স্কোর + শপ ছবি ===== */
+.bite{position:relative;overflow:hidden;padding:34px;border-radius:30px;background:radial-gradient(600px 300px at 0 0,rgba(215,181,109,.18),transparent 60%),linear-gradient(160deg,#14221E,#09100E);border:1px solid rgba(215,181,109,.4);box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(242,221,170,.2)}.bite:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#F2DDAA,transparent)}
+.ring{width:190px;height:190px;padding:9px;background:conic-gradient(from -90deg,var(--c) calc(var(--p)*1%),rgba(255,255,255,.07) 0);box-shadow:0 0 0 1px rgba(215,181,109,.35),0 0 60px color-mix(in srgb,var(--c) 30%,transparent)}.ring>div{width:100%;height:100%;background:radial-gradient(circle at 50% 30%,#16251F,#070C0A);box-shadow:inset 0 0 0 1px rgba(215,181,109,.25)}.ring b{font:700 64px 'Cormorant Garamond','Noto Serif Bengali',serif;background:linear-gradient(180deg,#FFF3D2,#D7B56D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bite-tag{display:inline-block;padding:5px 14px;border:1px solid currentColor;border-radius:999px;font-size:13px;background:rgba(255,255,255,.04)}.bite-info h3{font-size:clamp(22px,3.6vw,32px);color:var(--gold2)}
+.bite-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.bite-meta span{border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(215,181,109,.2);font-size:13.5px}
+.bite-days{padding:18px;border-radius:20px;background:rgba(0,0,0,.3);border:1px solid rgba(215,181,109,.15);gap:12px}.bd .bar{height:110px;max-width:34px;margin:auto;border-radius:999px;background:rgba(255,255,255,.06)}.bd .bar i{border-radius:999px;box-shadow:0 0 14px rgba(215,181,109,.3)}
+.shop-art{position:relative;height:230px;overflow:hidden;background:linear-gradient(145deg,#16231F,#0A1210)}.shop-art:before{content:attr(data-ic);position:absolute;inset:0;display:grid;place-items:center;font-size:64px;opacity:.35}.shop-art img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .6s}.shop-card:hover .shop-art img{transform:scale(1.07)}
+@media(max-width:600px){.bite{padding:22px}.ring{width:160px;height:160px;margin:auto}.ring b{font-size:52px}.bite-days{gap:5px;padding:12px}.bd .bar{max-width:24px;height:90px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><img src="logo.jpeg.PNG" alt="ভেড়ামারা ফিশিং গ্যালারি লোগো"><span><b>ভেড়ামারা ফিশিং গ্যালারি</b><small>Fishing Community</small></span></a>
+<nav class="navlinks" id="navLinks"><a href="#home">হোম</a><a href="#categories">স্পটের ধরন</a><a href="#spots">স্পট খুঁজুন</a><a href="#weather">ফিশিং ফোরকাস্ট</a><a href="#tips">টিপস</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#about">আমাদের সম্পর্কে</a><a href="#contact">যোগাযোগ</a></nav>
+<a class="nav-cta" href="#submit">নতুন স্পট যোগ করুন ↗️</a><button class="menu" id="menuBtn" aria-label="মেনু">☰</button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap"><div class="hero-content">
+<div class="eyebrow">ভেড়ামারার মাছ শিকারিদের ঠিকানা</div>
+<h1><span>ভেড়ামারা</span><br>ফিশিং গ্যালারি</h1>
+<p>নদীর তীর থেকে গ্রামের টিকিট পুকুর — ভেড়ামারা ও আশপাশের সেরা ফিশিং স্পটের যাচাই করা তথ্য, ছবি আর ৭ দিনের আবহাওয়া এখন এক ঠিকানায়।</p>
+<div class="hero-actions"><a class="btn" href="#weather">ফিশিং ফোরকাস্ট দেখুন ↗️</a><a class="btn-outline" href="#submit">নতুন স্পট জমা দিন</a></div>
+<div class="hero-note">✦ সবার জন্য উন্মুক্ত &nbsp;·&nbsp; ✦ সম্পূর্ণ বিনামূল্যে &nbsp;·&nbsp; ✦ অ্যাডমিন-যাচাইকৃত তথ্য</div>
+<a class="hero-score" id="heroScore" href="#weather">🎣 আজকের ফিশিং স্কোর হিসাব হচ্ছে…</a>
+</div></div></section>
+
+<div class="strip"><div class="wrap strip-row"><a href="#spots"><b>📍 যাচাইকৃত স্পট</b><span id="spotCount">অ্যাডমিন অনুমোদিত তথ্য</span></a><a href="#weather"><b>🎣 ফিশিং ফোরকাস্ট</b><span>৭ দিনের আবহাওয়া ও বাইট স্কোর</span></a><a href="#submit"><b>🤝 কমিউনিটির তথ্য</b><span>শিকারিদের হাতেই গড়া</span></a></div></div>
+
+<section id="categories"><div class="wrap">
+<div class="section-head"><div><div class="kicker">স্পট আবিষ্কার</div><h2>আপনার পছন্দের স্পট বেছে নিন</h2></div><p>নদী আর টিকিট পুকুর — দুই ধরনের স্পট আলাদা করে সাজানো, যাতে আপনার পছন্দের জায়গাটি খুঁজে নিতে একটুও সময় না লাগে।</p></div>
+<div class="categories">
+<a class="category" href="#submit" data-category="river"><div class="scene scene-river" role="img" aria-label="নদীর প্রাকৃতিক দৃশ্য"></div><div class="cat-content"><span class="cat-tag">ক্যাটাগরি ০১</span><h3>নদীর স্পট</h3><p>খোলা জলের রোমাঞ্চ — নদী, ঘাট আর চরের সেরা জায়গা</p><span class="cat-link">নদীর স্পটের তথ্য দিন ↗️</span></div></a>
+<a class="category" href="#submit" data-category="ticket"><div class="scene scene-pond" role="img" aria-label="গ্রামীণ পুকুর ও প্রকৃতি"></div><div class="cat-content"><span class="cat-tag">ক্যাটাগরি ০২</span><h3>টিকিট পুকুরের স্পট</h3><p>টিকিটের দাম, তারিখ, মাছের ধরন ও পুকুরের নিয়ম — সব এক নজরে</p><span class="cat-link">টিকিট পুকুরের তথ্য দিন ↗️</span></div></a>
+</div></div></section>
+
+<section class="spots-section" id="spots"><div class="wrap">
+<div class="section-head"><div><div class="kicker">যাচাইকৃত ফিশিং স্পট</div><h2>ভেড়ামারার ফিশিং স্পট খুঁজুন</h2></div><p>অ্যাডমিনের যাচাই শেষে অনুমোদিত স্পটগুলোই শুধু এখানে প্রকাশ পায় — তাই তথ্যে ভরসা রাখতে পারেন।</p></div>
+<div class="spot-search"><input id="spotSearch" type="search" placeholder="স্পটের নাম বা এলাকার নাম লিখুন…" aria-label="স্পট খুঁজুন"><select id="spotFilter" aria-label="স্পটের ধরন"><option value="all">সব ধরনের স্পট</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div>
+<div class="spot-grid" id="publicSpotList"><div class="empty"><strong>স্পটের তথ্য লোড হচ্ছে…</strong>অনুগ্রহ করে অপেক্ষা করুন।</div></div>
+</div></section>
+
+<section class="weather-section" id="weather"><div class="wrap">
+<div class="section-head"><div><div class="kicker">ফিশিং ফোরকাস্ট ও বাইট প্রেডিকশন</div><h2>আজ কি মাছ ধরার দিন?</h2></div><p>আবহাওয়া, বাতাস ও চাঁদের দশা মিলিয়ে ভেড়ামারার আগামী ৭ দিনের মাছ ধরার সম্ভাবনা — ছিপ হাতে বের হওয়ার আগে একবার দেখে নিন।</p></div>
+<div class="bite" id="bite"><div class="bite-load">ফিশিং স্কোর হিসাব করা হচ্ছে…</div></div>
+<h3 class="sub-title">৭ দিনের আবহাওয়া</h3>
+<div class="weather-panel">
+<div class="weather-top"><div class="weather-place"><span aria-hidden="true">📍</span><span>ভেড়ামারা, কুষ্টিয়া, বাংলাদেশ</span></div><div class="weather-actions"><a class="weather-link" href="https://www.google.com/search?q=weather+in+Bheramara+Bangladesh" target="_blank" rel="noopener noreferrer">Google Weather দেখুন ↗️</a><button class="weather-refresh" id="weatherRefresh" type="button">↻ আপডেট করুন</button></div></div>
+<div class="weather-grid" id="weatherGrid" aria-live="polite"><div class="weather-error" style="grid-column:1/-1">আগামী ৭ দিনের আবহাওয়া লোড হচ্ছে…</div></div>
+<div class="weather-status" id="weatherStatus">আবহাওয়ার তথ্য ইন্টারনেট থেকে স্বয়ংক্রিয়ভাবে আপডেট হবে।</div>
+</div><p class="weather-status">পূর্বাভাসের উৎস: Open-Meteo · আবহাওয়ার পূর্বাভাস পরিবর্তিত হতে পারে।</p>
+</div></section>
+
+<section class="tips-section" id="tips"><div class="wrap"><div class="section-head"><div><div class="kicker">জেনে রাখুন</div><h2>নিরাপত্তা ও শিষ্টাচার</h2></div><p>নিরাপদে ও দায়িত্বশীলভাবে মাছ ধরার চারটি জরুরি কথা।</p></div><div class="tips-grid"><article class="tip"><span class="tip-ic">⏰</span><h3>সঠিক সময়</h3><p>ভোর ও বিকেল সাধারণত সেরা। গরমে ছায়াঘেরা জায়গা ও সন্ধ্যা, শীতে বেলা বাড়লে মাছ বেশি সক্রিয় থাকে।</p></article><article class="tip"><span class="tip-ic">🌊</span><h3>নদীতে নিরাপত্তা</h3><p>ভাঙনপ্রবণ পাড়ে দাঁড়াবেন না, স্রোত ও গভীরতা বুঝে নামুন। বজ্রসহ বৃষ্টিতে সরে আসুন, সম্ভব হলে সঙ্গী নিয়ে যান।</p></article><article class="tip"><span class="tip-ic">🤝</span><h3>পুকুরের শিষ্টাচার</h3><p>টিকিটের নিয়ম মেনে চলুন, অন্যের জায়গায় গোলমাল করবেন না, আর যেখানে বসবেন সেখানে আবর্জনা ফেলবেন না।</p></article><article class="tip"><span class="tip-ic">🌿</span><h3>প্রকৃতি বাঁচান</h3><p>ছোট মাছ পানিতে ফিরিয়ে দিন। ছেঁড়া সুতা ও প্লাস্টিক ফেলে আসবেন না — ওগুলো মাছ ও পাখির ক্ষতি করে।</p></article></div></div></section>
+
+<section id="submit"><div class="wrap submit-layout">
+<div class="submit-copy"><div class="kicker">কমিউনিটিতে অবদান রাখুন</div><h2>আপনার জানা স্পট জানান</h2><p>আপনার চেনা সেরা স্পটটির কথা জানিয়ে অন্য শিকারিদের পথ দেখান। কোনো অ্যাকাউন্ট বা রেজিস্ট্রেশন লাগবে না।</p><div class="note">✔ জমা দেওয়ার পর অ্যাডমিন তথ্যটি যাচাই করবেন। অনুমোদন পেলেই সেটি সবার জন্য প্রকাশিত হবে।</div></div>
+<form class="form-card" id="spotForm">
+<div class="form-grid">
+<div class="field"><label for="spotType">স্পটের ধরন *</label><select id="spotType" required><option value="">নির্বাচন করুন</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div>
+<div class="field"><label for="spotTitle">স্পটের নাম *</label><input id="spotTitle" required maxlength="150" placeholder="স্পটের পরিচিত নাম"></div>
+<div class="field"><label for="waterName">নদী / পুকুরের নাম</label><input id="waterName" placeholder="নদী বা পুকুরের নাম"></div>
+<div class="field"><label for="spotLocation">এলাকা ও জেলা *</label><input id="spotLocation" required placeholder="এলাকা, উপজেলা, জেলা"></div>
+<div class="field"><label for="season">সেরা মৌসুম</label><select id="season"><option value="">নির্বাচন করুন</option><option>সারা বছর</option><option>বর্ষা</option><option>শরৎ-হেমন্ত</option><option>শীত</option><option>গ্রীষ্ম-বসন্ত</option></select></div>
+<div class="field"><label for="ticketPrice">প্রবেশ ফি / টিকিটের মূল্য</label><input id="ticketPrice" placeholder="যেমন: ৫০০ টাকা"></div>
+<div class="field" id="dateField" hidden><label for="fishingDate">মাছ ধরার তারিখ (টিকিট পুকুর)</label><input id="fishingDate" type="date"></div>
+<div class="field"><label for="contactInfo">যোগাযোগ নম্বর (স্পটের সাথে প্রকাশিত হবে)</label><input id="contactInfo" inputmode="tel" placeholder="মালিক / দায়িত্বশীল ব্যক্তির নম্বর"></div>
+<div class="field"><label for="mapLink">Google Maps লিংক (ঐচ্ছিক)</label><input id="mapLink" type="url" placeholder="https://maps.google.com/..."></div>
+<div class="field full"><label for="fishText">কোন কোন মাছ পাওয়া যায়</label><input id="fishText" maxlength="200" placeholder="যেমন: রুই, কাতলা, বোয়াল"></div><div class="field full"><label for="timeText">মাছ ধরার সেরা সময়</label><input id="timeText" maxlength="200" placeholder="যেমন: ভোর ও বিকেল"></div><div class="field full"><label for="facText">সুবিধাসমূহ</label><input id="facText" maxlength="200" placeholder="যেমন: পার্কিং, বসার জায়গা, নৌকা"></div><div class="field full"><label for="spotImage">স্পটের ছবি আপলোড করুন (ঐচ্ছিক)</label><input id="spotImage" type="file" accept="image/jpeg,image/png,image/webp"><div class="upload-hint">JPG, PNG অথবা WebP ছবি দিন। সর্বোচ্চ ১০ MB।</div></div>
+<div class="field full"><label for="spotDescription">রাস্তার নির্দেশনা, নিয়ম ও বিস্তারিত</label><textarea id="spotDescription" maxlength="2000" placeholder="পানির অবস্থা, মাছ ধরার সময়, টিকিটের নিয়ম, অনুমতি বা বিশেষ সতর্কতা লিখুন"></textarea></div>
+<div class="field full"><label for="submitterName">আপনার নাম (ঐচ্ছিক)</label><input id="submitterName" placeholder="নাম"></div>
+</div>
+<input id="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0"><button class="btn" type="submit" id="submitBtn">স্পট জমা দিন ↗️</button><div class="status-msg" id="formMessage" role="status" aria-live="polite"></div>
+</form>
+</div></section>
+
+<section class="shop-section" id="shop"><div class="wrap">
+<div class="shop-intro"><div class="kicker">ফিশিং শপ</div><h2>ফিশিং শপ কর্নার</h2><p>ছিপ, রিল থেকে বড়শি-ফাতনা — একজন শিকারির যা যা লাগে, খুব শিগগিরই এখানে মিলবে।</p></div>
+<div class="shop-filter" id="shopFilter" hidden><div class="chips" id="shopCats"><label><input type="radio" name="scat" value="all" checked><span>সব পণ্য</span></label><label><input type="radio" name="scat" value="rod"><span>🎣 রড</span></label><label><input type="radio" name="scat" value="reel"><span>⚙️ রিল</span></label><label><input type="radio" name="scat" value="accessories"><span>🪝 এক্সেসরিজ</span></label><label><input type="radio" name="scat" value="other"><span>অন্যান্য</span></label></div></div>
+<div class="product-grid" id="productGrid"></div>
+<div class="shop-grid" id="shopSoon">
+<article class="shop-card"><div class="shop-art" data-ic="🎣"><img src="images/rod.jpg" alt="ফিশিং রড" loading="lazy" onerror="this.remove()"></div><div class="shop-card-body"><h3>🎣 ফিশিং রড</h3><p>হালকা থেকে ভারী — সব ধরনের মাছের উপযোগী রড</p><span class="coming">শিগগিরই আসছে</span></div></article>
+<article class="shop-card"><div class="shop-art" data-ic="⚙️"><img src="images/reel.jpg" alt="ফিশিং রিল" loading="lazy" onerror="this.remove()"></div><div class="shop-card-body"><h3>⚙️ ফিশিং রিল</h3><p>মসৃণ টান আর নির্ভরযোগ্য গ্রিপের স্পিনিং রিল</p><span class="coming">শিগগিরই আসছে</span></div></article>
+<article class="shop-card"><div class="shop-art" data-ic="🪝"><img src="images/accessories.jpg" alt="ফিশিং এক্সেসরিজ" loading="lazy" onerror="this.remove()"></div><div class="shop-card-body"><h3>🪝 ফিশিং এক্সেসরিজ</h3><p>সুতা, বড়শি, ফাতনা, সিঙ্কারসহ আরও টুকিটাকি</p><span class="coming">শিগগিরই আসছে</span></div></article>
+</div><div class="shop-notice" id="shopNotice">🛍️ শপ চালু করতে আমরা কাজ করছি। পণ্য যোগ হলেই এখানে জানিয়ে দেওয়া হবে — সঙ্গে থাকুন।</div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap about-grid">
+<div class="about-visual"><div class="scene scene-fish" role="img" aria-label="নদী ও পানির প্রাকৃতিক দৃশ্য"></div><div class="about-badge">মাছ ধরা • কমিউনিটি • জ্ঞান</div></div>
+<div class="about-copy"><div class="kicker">আমাদের গল্প</div><h2>মাছ শিকারিদের জন্য, মাছ শিকারিদের হাতেই</h2><p>ভেড়ামারা ফিশিং গ্যালারি মাছ-পাগল মানুষদের একটি কমিউনিটি উদ্যোগ। আমাদের স্বপ্ন — ভেড়ামারা ও আশপাশের নদী, ঘাট, চর আর টিকিট পুকুরের ভরসাযোগ্য তথ্য এক ছাতার নিচে আনা।</p><p>যে কেউ স্পট দেখতে পারেন, আবার নিজের জানা স্পটের তথ্য ও ছবিও জমা দিতে পারেন। প্রতিটি তথ্য অ্যাডমিনের যাচাই পেরিয়ে তবেই প্রকাশিত হয়।</p></div>
+</div></section>
+
+<section class="faq-section" id="faq"><div class="wrap"><div class="section-head"><div><div class="kicker">সাধারণ জিজ্ঞাসা</div><h2>প্রায়ই জানতে চাওয়া প্রশ্ন</h2></div></div><div class="faq-list"><details><summary>স্পট জমা দিতে কি অ্যাকাউন্ট লাগে?</summary><p>না, কোনো অ্যাকাউন্ট বা রেজিস্ট্রেশন লাগবে না। ফর্ম পূরণ করে জমা দিলেই হবে।</p></details><details><summary>জমা দেওয়ার পর কখন প্রকাশ হবে?</summary><p>অ্যাডমিন তথ্যটি যাচাই করে অনুমোদন দিলেই স্পট সবার জন্য প্রকাশিত হয়।</p></details><details><summary>ফিশিং স্কোর কীভাবে হিসাব হয়?</summary><p>আবহাওয়া, বাতাস, বৃষ্টির সম্ভাবনা ও চাঁদের দশা মিলিয়ে একটি অনুমান করা হয়। এটা নিশ্চিত পূর্বাভাস নয়, সহায়ক ইঙ্গিত মাত্র।</p></details><details><summary>স্পটের ছবি দেওয়া যাবে?</summary><p>হ্যাঁ, JPG, PNG বা WebP ছবি দিতে পারবেন, সর্বোচ্চ ১০ MB।</p></details><details><summary>ভুল বা পুরোনো তথ্য দেখলে কী করব?</summary><p>যোগাযোগ অংশ থেকে আমাদের জানান, আমরা দ্রুত যাচাই করে ঠিক করে দেব।</p></details></div></div></section>
+
+<section class="contact" id="contact"><div class="wrap contact-box"><div><div class="kicker">যোগাযোগ</div><h2>যোগাযোগ করুন</h2><p>ওয়েবসাইট, নতুন স্পট বা যেকোনো পরামর্শ নিয়ে নির্দ্বিধায় যোগাযোগ করুন।</p></div><div class="contact-links"><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">↗️ Facebook</a><a href="mailto:rakiburtomal@gmail.com">✉ rakiburtomal@gmail.com</a></div></div></section>
+
+<section class="dev" id="developer"><div class="wrap"><div class="dev-card"><div class="dev-photo"><img src="tomal.jpeg.jpeg" alt="মোঃ রাকিবুর রহমান তমাল"></div><div class="dev-info"><span class="dev-tag">ওয়েবসাইট নির্মাতা</span><h2>মোঃ রাকিবুর রহমান তমাল</h2><div class="dev-role">প্রতিষ্ঠাতা ও ওয়েবসাইট ডেভেলপার</div><p>ভেড়ামারার মাছ শিকারিদের জন্য এই কমিউনিটি ওয়েবসাইটের ভাবনা, নকশা ও নির্মাণ তাঁর হাতে।</p><div class="dev-links"><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook ↗️</a><a href="mailto:rakiburtomal@gmail.com">✉ ইমেইল করুন</a></div></div></div></div></section>
+
+<dialog id="orderDialog" class="order-dialog"><form id="orderForm" novalidate>
+<div class="od-head"><h3>🛒 অর্ডার করুন</h3><button type="button" class="od-x" id="orderClose" aria-label="বন্ধ করুন">✕</button></div>
+<div class="od-prod" id="odProd"></div>
+<div class="form-grid">
+<div class="field"><label for="oQty">পরিমাণ</label><input id="oQty" type="number" min="1" max="20" value="1" inputmode="numeric"></div>
+<div class="field"><label for="oName">আপনার নাম *</label><input id="oName" maxlength="100" autocomplete="name" placeholder="পুরো নাম"></div>
+<div class="field"><label for="oPhone">মোবাইল নম্বর *</label><input id="oPhone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></div>
+<div class="field full"><label for="oAddress">ডেলিভারির ঠিকানা *</label><textarea id="oAddress" maxlength="400" placeholder="গ্রাম/মহল্লা, থানা, জেলা"></textarea></div>
+<div class="field full"><label>পেমেন্ট পদ্ধতি *</label><div class="chips" id="payChips"><label><input type="radio" name="pay" value="bkash" checked><span>📱 বিকাশ</span></label><label><input type="radio" name="pay" value="nagad"><span>📲 নগদ</span></label><label><input type="radio" name="pay" value="cod"><span>💵 ক্যাশ অন ডেলিভারি</span></label></div></div>
+</div>
+<div class="paybox" id="payBox"></div>
+<div class="form-grid" id="payExtra"><div class="field"><label for="oSender">যে নম্বর থেকে পাঠিয়েছেন *</label><input id="oSender" inputmode="tel" placeholder="01XXXXXXXXX"></div><div class="field"><label for="oTrx">TrxID *</label><input id="oTrx" maxlength="40" placeholder="যেমন: 9A7B3C2D1E"></div></div>
+<div class="field"><label for="oNote">অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label><input id="oNote" maxlength="500" placeholder="যেকোনো বিশেষ কথা"></div>
+<div class="od-total">মোট: <b id="oTotal">৳ ০</b></div>
+<button class="btn" type="submit" id="orderBtn" style="width:100%">অর্ডার নিশ্চিত করুন ↗️</button><div class="status-msg" id="orderMsg" role="status" aria-live="polite"></div>
+</form></dialog>
+<section id="admin" style="padding-top:40px;padding-bottom:40px"><div class="wrap"><details class="admin-area"><summary>অ্যাডমিন প্যানেল (শুধু ওয়েবসাইট পরিচালকের জন্য)</summary>
+<div id="adminLogin"><p style="color:var(--muted)">অ্যাডমিন ইমেইল ও পাসওয়ার্ড দিয়ে প্রবেশ করুন। সাধারণ ভিজিটরদের লগইন প্রয়োজন নেই।</p><div class="form-grid"><div class="field"><label for="adminEmail">ইমেইল</label><input id="adminEmail" type="email" autocomplete="username"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" autocomplete="current-password"></div></div><button class="btn" id="adminLoginBtn" style="margin-top:14px">অ্যাডমিন লগইন</button><div class="status-msg" id="adminMessage"></div></div>
+<div id="adminPanel" hidden><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h3>অ্যাডমিন ম্যানেজমেন্ট</h3><button class="btn-outline" id="adminLogoutBtn">লগআউট</button></div><div class="admin-tabs"><button type="button" data-admin-tab="spots" class="on">📍 স্পট</button><button type="button" data-admin-tab="orders">🛒 অর্ডার <span id="orderBadge"></span></button><button type="button" data-admin-tab="products">📦 পণ্য</button><button type="button" id="adminReloadBtn">রিফ্রেশ</button></div><div id="adminList">লোড হচ্ছে…</div>
+<div id="adminOrders" hidden>লোড হচ্ছে…</div>
+<div id="adminProducts" hidden><form id="productForm"><div class="form-grid"><div class="field"><label for="pName">পণ্যের নাম *</label><input id="pName" maxlength="150" required></div><div class="field"><label for="pCat">ক্যাটাগরি</label><select id="pCat"><option value="rod">রড</option><option value="reel">রিল</option><option value="accessories">এক্সেসরিজ</option><option value="other">অন্যান্য</option></select></div><div class="field"><label for="pPrice">দাম (টাকা) *</label><input id="pPrice" type="number" min="0" step="1" inputmode="numeric" required></div><div class="field"><label for="pImage">ছবি</label><input id="pImage" type="file" accept="image/jpeg,image/png,image/webp"></div><div class="field full"><label for="pDesc">বিবরণ</label><textarea id="pDesc" maxlength="1500"></textarea></div></div><button class="btn" type="submit" id="pBtn" style="margin-top:12px">পণ্য পোস্ট করুন</button><div class="status-msg" id="pMsg"></div></form><div id="adminProductList"></div></div></div>
+</details></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-row"><a class="footer-brand" href="#home"><img src="logo.jpeg.PNG" alt="লোগো"><b>ভেড়ামারা ফিশিং গ্যালারি</b></a><div class="footer-links"><a href="#categories">স্পটের ধরন</a><a href="#spots">স্পট খুঁজুন</a><a href="#weather">ফিশিং ফোরকাস্ট</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#contact">যোগাযোগ</a><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#admin">🔒 অ্যাডমিন</a></div></div><div class="copyright">©️ <span id="year"></span> ভেড়ামারা ফিশিং গ্যালারি। সর্বস্বত্ব সংরক্ষিত। · ছবি: Pexels · Created by মোঃ রাকিবুর রহমান তমাল</div></div></footer>
+
+<a class="fab" href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook-এ মেসেজ করুন">💬 মেসেজ করুন</a>
+<button id="toTop" type="button" aria-label="উপরে যান">↑</button>
+<script>
+(() => {
+ 'use strict';
+ const SUPABASE_URL='https://onuaxegnzfyxzdwwoxvp.supabase.co';
+ // এটি Supabase-এর publishable/anon key; কখনো service_role key এখানে বসাবেন না।
+ const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9udWF4ZWduemZ5eHpkd3dveHZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU1Mjk2NDgsImV4cCI6MjExMTEwNTY0OH0.BzhKqwj3E1AR8yaPDeVjp5_GZI7XkJUIMoHvMYTAp8U';
+ const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+ const $=id=>document.getElementById(id);
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const typeLabel=t=>t==='ticket'?'টিকিট পুকুর':'নদীর স্পট';
+ const fallback='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGMxYzJhIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMmQ2YTY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDljMDhhIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzYjdmNzgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTFkMjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjY0MCIgY3k9IjE3MCIgcj0iMzQiIGZpbGw9IiNmZmYzY2YiIG9wYWNpdHk9Ii45Ii8+PHBhdGggZD0iTTcwIDMwMFE5MCAyMTAgMTIwIDEzME0xMjAgMTMwcS01MC0xMC04MCAyME0xMjAgMTMwcTQwLTMwIDg1LTEwTTEyMCAxMzBxLTEwLTQwIDIwLTYwTTEyMCAxMzBxNDAtOCA3MCAyNCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik02OTAgMzAwUTcwMCAyMzAgNzIwIDE3ME03MjAgMTcwcS00MC0xMC02NSAxNE03MjAgMTcwcTM1LTI2IDcwLTRNNzIwIDE3MHEtNi0zNCAxNi01MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHk9IjI5MCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMTAiIGZpbGw9InVybCgjdykiLz48ZyBmaWxsPSIjMmY4YTViIiBvcGFjaXR5PSIuOSI+PGVsbGlwc2UgY3g9IjE3MCIgY3k9IjM4MCIgcng9IjQ0IiByeT0iMTIiLz48ZWxsaXBzZSBjeD0iNjIwIiBjeT0iMzUwIiByeD0iMzgiIHJ5PSIxMCIvPjxlbGxpcHNlIGN4PSI1MjAiIGN5PSI0NDAiIHJ4PSI1NCIgcnk9IjE0Ii8+PGVsbGlwc2UgY3g9IjI2MCIgY3k9IjQ1MCIgcng9IjM2IiByeT0iOSIvPjwvZz48cGF0aCBkPSJNNTAwIDQzMnExMC0yNCAyMC00cTEwLTIyIDIwIDRxLTIwIDgtNDAgMHoiIGZpbGw9IiNmNGE5YzAiLz48cGF0aCBkPSJNMCA0MEw0MzAgMzQ1IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMy41IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQzMCAzNDVRNDQwIDM4MCA0MzYgNDAyIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS40IiBmaWxsPSJub25lIi8+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjM5NCIgcng9IjUiIHJ5PSI5IiBmaWxsPSIjZTA1NTNmIi8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiI+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjQwOCIgcng9IjIyIiByeT0iNSIvPjxlbGxpcHNlIGN4PSI0MzYiIGN5PSI0MDgiIHJ4PSI0MCIgcnk9IjkiIG9wYWNpdHk9Ii41Ii8+PC9nPjwvc3ZnPg==';
+ let publicSpots=[],lastSubmit=0,products=[],shopCat='all',cur=null;
+ // ⚠️ নিচের দুটি নম্বর আপনার আসল বিকাশ ও নগদ নম্বর দিয়ে বদলান
+ const SHOP={bkash:'01775634547',nagad:'01775634547'};
+ $('year').textContent=new Date().getFullYear();
+ $('menuBtn').addEventListener('click',()=>$('navLinks').classList.toggle('open'));
+ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>$('navLinks').classList.remove('open')));
+ document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>{$('spotType').value=a.dataset.category;$('dateField').hidden=a.dataset.category!=='ticket';$('fishingDate').required=a.dataset.category==='ticket'}));
+
+ const weekdays=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+ function dateLabel(value){if(!value)return '';const [y,m,d]=value.split('-').map(Number);const dt=new Date(y,m-1,d);return `${d.toString().padStart(2,'0')}-${m.toString().padStart(2,'0')}-${y} (${weekdays[dt.getDay()]})`}
+
+ // আবহাওয়ার পূর্বাভাস
+ const weatherGrid=$('weatherGrid'),weatherStatus=$('weatherStatus'),weatherRefresh=$('weatherRefresh');
+ function weatherInfo(code){
+  if(code===0)return ['☀️','পরিষ্কার আকাশ'];
+  if([1,2].includes(code))return ['🌤️','আংশিক মেঘলা'];
+  if(code===3)return ['☁️','মেঘলা'];
+  if([45,48].includes(code))return ['🌫️','কুয়াশা'];
+  if([51,53,55,56,57].includes(code))return ['🌦️','গুঁড়ি গুঁড়ি বৃষ্টি'];
+  if([61,63,65,66,67,80,81,82].includes(code))return ['🌧️','বৃষ্টি'];
+  if([71,73,75,77,85,86].includes(code))return ['🌨️','তুষারপাত'];
+  if([95,96,99].includes(code))return ['⛈️','বজ্রবৃষ্টি'];
+  return ['🌥️','পরিবর্তনশীল আবহাওয়া'];
+ }
+ function bnDate(iso){return new Intl.DateTimeFormat('bn-BD',{weekday:'short',day:'numeric',month:'short',timeZone:'Asia/Dhaka'}).format(new Date(iso+'T12:00:00+06:00'))}
+ 
+const toBn=n=>String(n).replace(/\d/g,x=>'০১২৩৪৫৬৭৮৯'[x]);
+function renderBite(d){
+ const sc=d.time.map((day,i)=>{
+  const t=(d.temperature_2m_max[i]+d.temperature_2m_min[i])/2,r=d.precipitation_probability_max?.[i]??30,w=d.wind_speed_10m_max[i],c=Number(d.weather_code[i]);
+  let p=60;
+  p+=(t>=22&&t<=30)?15:(t>=15&&t<22)||(t>30&&t<=34)?5:(t<12||t>36)?-15:0;
+  p+=r<30?10:r<60?0:r<80?-10:-18;
+  p+=(w>=5&&w<=15)?10:w<5?3:w<=25?0:-15;
+  if(c>=95)p-=25;
+  const age=(((Date.parse(day+'T12:00:00Z')/86400000-10962.76)%29.53)+29.53)%29.53;
+  if(age<2||age>27.5||Math.abs(age-14.77)<2)p+=5;
+  return {p:Math.max(5,Math.min(98,Math.round(p))),t,r,w};
+ });
+ const lab=p=>p>=80?['চমৎকার','#4ADE80']:p>=65?['ভালো','#D7B56D']:p>=50?['মোটামুটি','#F2B35C']:['কম','#F27B6B'];
+ const x=sc[0],[l,col]=lab(x.p);
+ const win=x.t>=30?'ভোর ৫:০০–৮:০০ ও সন্ধ্যা ৫:০০–৭:০০':x.t<=18?'সকাল ৯:০০–১১:৩০ ও বিকেল ৩:৩০–৫:৩০':'ভোর ৫:৩০–৯:০০ ও বিকেল ৪:৩০–৬:৩০';
+ const tip=x.r>=70?'বৃষ্টির সম্ভাবনা বেশি — নিরাপত্তা ও ছাতা সঙ্গে রাখুন।':x.w>25?'বাতাস জোরালো — নদীতে সাবধানে থাকুন।':x.p>=80?'আজ মাছ ধরার জন্য দারুণ দিন, দেরি না করে বেরিয়ে পড়ুন!':x.p>=65?'পরিবেশ মোটামুটি অনুকূল — সেরা সময়ে ছিপ ফেলুন।':'আজ ধৈর্য লাগবে — হালকা টোপে চেষ্টা করে দেখতে পারেন।';
+ const best=sc.reduce((a,b,i)=>b.p>sc[a].p?i:a,0);
+ const ma=(((Date.parse(d.time[0]+'T12:00:00Z')/86400000-10962.76)%29.53)+29.53)%29.53;const moon=(ma<1.85||ma>27.7)?'🌑 অমাবস্যার কাছাকাছি':(ma>13.3&&ma<16.2)?'🌕 পূর্ণিমার কাছাকাছি':ma<14.77?'🌔 শুক্লপক্ষ':'🌖 কৃষ্ণপক্ষ';
+ const hs=$('heroScore');if(hs)hs.innerHTML='🎣 আজকের ফিশিং স্কোর <b>'+toBn(x.p)+'/১০০</b> · '+l+' →';
+ $('bite').innerHTML=`<div class="bite-main"><div class="ring" style="--p:${x.p};--c:${col}"><div><b>${toBn(x.p)}</b><small>/ ১০০</small></div></div><div class="bite-info"><span class="bite-tag" style="color:${col}">আজকের ফিশিং স্কোর · ${l}</span><h3>সেরা সময়: ${win}</h3><p>${tip}</p><div class="bite-meta"><span>🌡️ ${toBn(Math.round(x.t))}°C</span><span>💨 ${toBn(Math.round(x.w))} কিমি/ঘণ্টা</span><span>💧 ${toBn(Math.round(x.r))}%</span><span>${moon}</span><span>⭐ সেরা দিন: ${best===0?'আজ':bnDate(d.time[best])}</span></div></div></div><div class="bite-days">${sc.map((v,i)=>`<div class="bd"><div class="bar"><i style="height:${v.p}%;background:${lab(v.p)[1]}"></i></div><b>${toBn(v.p)}</b><small>${i===0?'আজ':bnDate(d.time[i])}</small></div>`).join('')}</div><div class="bite-note">* এটি আবহাওয়া ও চাঁদের দশা ভিত্তিক অনুমান। স্থানীয় পানির অবস্থা ও অভিজ্ঞতার সাথে মিলিয়ে সিদ্ধান্ত নিন।</div>`;
+}
+async function loadWeather(){
+  weatherRefresh.disabled=true;weatherRefresh.textContent='লোড হচ্ছে…';
+  weatherGrid.innerHTML='<div class="weather-error" style="grid-column:1/-1">ভেড়ামারার আবহাওয়ার তথ্য আনা হচ্ছে…</div>';
+  try{
+   const url='https://api.open-meteo.com/v1/forecast?latitude=24.025&longitude=88.992&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max&timezone=Asia%2FDhaka&forecast_days=7';
+   const response=await fetch(url);
+   if(!response.ok)throw new Error('আবহাওয়ার সার্ভার থেকে তথ্য পাওয়া যায়নি (HTTP '+response.status+')');
+   const d=(await response.json()).daily;
+   if(!d||!Array.isArray(d.time)||d.time.length!==7)throw new Error('সম্পূর্ণ ৭ দিনের পূর্বাভাস পাওয়া যায়নি।');
+   weatherGrid.innerHTML=d.time.map((day,i)=>{
+    const [icon,label]=weatherInfo(Number(d.weather_code[i]));
+    const rain=d.precipitation_probability_max?.[i];
+    return `<article class="weather-day ${i===0?'today':''}"><div class="day-name">${i===0?'আজ':bnDate(day)}</div><div class="weather-icon">${icon}</div><div class="weather-desc">${label}</div><div class="weather-temps"><span>${Math.round(d.temperature_2m_max[i])}°</span><span style="color:var(--muted)">${Math.round(d.temperature_2m_min[i])}°</span></div><div class="weather-rain">💧 বৃষ্টির সম্ভাবনা ${rain==null?'তথ্য নেই':Math.round(rain)+'%'}</div><div class="weather-wind">💨 বাতাস ${Math.round(d.wind_speed_10m_max[i])} কিমি/ঘণ্টা</div></article>`;
+   }).join('');
+   renderBite(d);
+   weatherStatus.textContent='সর্বশেষ আপডেট: '+new Intl.DateTimeFormat('bn-BD',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Dhaka'}).format(new Date())+' · তাপমাত্রা °C';
+  }catch(error){
+   console.error(error);
+   weatherGrid.innerHTML=`<div class="weather-error" style="grid-column:1/-1"><strong>আবহাওয়ার তথ্য লোড করা যায়নি</strong><p>${esc(error.message)}</p></div>`;
+   weatherStatus.textContent='ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+  }finally{weatherRefresh.disabled=false;weatherRefresh.textContent='↻ আপডেট করুন'}
+ }
+ weatherRefresh.addEventListener('click',loadWeather);
+
+ // টিকিট পুকুর হলে তারিখ দেখানো
+ $('spotType').addEventListener('change',()=>{
+  const ticket=$('spotType').value==='ticket';
+  $('dateField').hidden=!ticket;
+  $('fishingDate').required=ticket;
+ });
+
+ // প্রকাশিত স্পট: কেবল approved পোস্ট দেখানো হবে
+ function renderPublicSpots(){
+  const q=$('spotSearch').value.trim().toLocaleLowerCase('bn-BD');
+  const filter=$('spotFilter').value;
+  const items=publicSpots.filter(s=>{
+   const matchesType=filter==='all'||s.spot_type===filter;
+   const text=[s.title,s.location,s.description].join(' ').toLocaleLowerCase('bn-BD');
+   return matchesType&&(!q||text.includes(q));
+  });
+  const box=$('publicSpotList');
+  if(!items.length){
+   box.innerHTML='<div class="empty"><strong>কোনো অনুমোদিত স্পট পাওয়া যায়নি</strong>নতুন স্পট জমা দিন অথবা অন্য নামে খুঁজে দেখুন।</div>';
+   return;
+  }
+  box.innerHTML=items.map(s=>{
+   const image=s.image_url||fallback;
+   const mapMatch=(s.description||'').match(/Google Maps:\s*(https?:\/\/\S+)/i);
+   const mapLink=mapMatch?mapMatch[1]:'';
+   const raw=(s.description||'').replace(/Google Maps:\s*https?:\/\/\S+/i,'').trim();
+   const facts=[],notes=[];
+   raw.split('\n').forEach(l=>{const m=l.match(/^(নদী \/ পুকুর|পাওয়া যায় এমন মাছ|সেরা সময়|মৌসুম|সুবিধা|টিকিট মূল্য|মাছ ধরার তারিখ|যোগাযোগ|জমাদানকারী):\s*(.+)$/);m?facts.push([m[1],m[2]]):l.trim()&&notes.push(l.trim())});
+   const icon={'নদী / পুকুর':'💧','পাওয়া যায় এমন মাছ':'🐟','সেরা সময়':'⏰','মৌসুম':'🍂','সুবিধা':'✅','টিকিট মূল্য':'🎫','মাছ ধরার তারিখ':'📅','যোগাযোগ':'📞','জমাদানকারী':'👤'};
+   const phone=((facts.find(f=>f[0]==='যোগাযোগ')||[])[1]||'').replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d));
+   const tel=phone.replace(/[^\d+]/g,'');
+   return `<article class="spot-card"><img src="${esc(image)}" alt="${esc(s.title)}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><div class="spot-card-body"><div class="spot-meta"><span>${typeLabel(s.spot_type)}</span></div><h3>${esc(s.title)}</h3><p>📍 ${esc(s.location||'')}</p>${facts.length?`<ul class="facts">${facts.map(f=>`<li><b>${icon[f[0]]} ${f[0]}</b><span>${esc(f[1])}</span></li>`).join('')}</ul>`:''}${notes.length?`<p>${esc(notes.join(' '))}</p>`:''}<div class="spot-actions">${tel.length>=8?`<a href="tel:${tel}">📞 কল করুন</a>`:''}${mapLink?`<a href="${esc(mapLink)}" target="_blank" rel="noopener noreferrer">🗺️ ম্যাপ</a>`:''}<button type="button" data-share="${esc(s.title)}">🔗 শেয়ার</button></div></div></article>`;
+  }).join('');
+ }
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-share]');if(!b)return;const data={title:b.dataset.share+' — ভেড়ামারা ফিশিং গ্যালারি',url:location.href.split('#')[0]+'#spots'};if(navigator.share){navigator.share(data).catch(()=>{})}else if(navigator.clipboard){navigator.clipboard.writeText(data.url).then(()=>{b.textContent='✔ লিংক কপি হয়েছে'})}});
+ $('spotSearch').addEventListener('input',renderPublicSpots);
+ $('spotFilter').addEventListener('change',renderPublicSpots);
+ async function loadPublicSpots(){
+  const box=$('publicSpotList');
+  if(!db){box.innerHTML='<div class="empty"><strong>ডেটাবেস সংযোগ করা যায়নি</strong>Supabase সেটিংস পরীক্ষা করুন।</div>';return}
+  const {data,error}=await db.from('fishing_posts').select('id,title,location,spot_type,description,image_url,status,created_at').eq('status','approved').order('created_at',{ascending:false});
+  if(error){
+   console.error('Public spots:',error);
+   box.innerHTML=`<div class="empty"><strong>স্পটের তথ্য লোড করা যায়নি</strong>${esc(error.message)}</div>`;
+   return;
+  }
+  publicSpots=data||[];const sc=$('spotCount');if(sc)sc.textContent=toBn(publicSpots.length)+'টি স্পট প্রকাশিত';
+  renderPublicSpots();
+ }
+
+ // নতুন স্পট জমা: pending থাকবে, সরাসরি প্রকাশ হবে না
+ const pick=id=>[...document.querySelectorAll('#'+id+' input:checked')].map(i=>i.value).join(', ');
+$('spotForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const msg=$('formMessage'),btn=$('submitBtn');
+  if($('website').value)return;
+  if(Date.now()-lastSubmit<30000){msg.textContent='একটু অপেক্ষা করে আবার চেষ্টা করুন।';return}
+  if(!db){msg.textContent='ডেটাবেস সংযোগ করা যায়নি।';return}
+  const type=$('spotType').value,title=$('spotTitle').value.trim(),location=$('spotLocation').value.trim(),file=$('spotImage').files[0];
+  if(!type||!title||!location){msg.textContent='স্পটের ধরন, নাম ও এলাকা পূরণ করুন।';return}
+  if(file&&file.size>10*1024*1024){msg.textContent='ছবির সাইজ ১০ MB-এর বেশি হতে পারবে না।';return}
+  if(file&&!['image/jpeg','image/png','image/webp'].includes(file.type)){msg.textContent='শুধু JPG, PNG অথবা WebP ছবি আপলোড করুন।';return}
+  btn.disabled=true;btn.textContent='জমা হচ্ছে…';msg.textContent='তথ্য পাঠানো হচ্ছে…';
+  let uploadedPath=null;
+  try{
+   let imageUrl=null;
+   if(file){
+    const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
+    uploadedPath=`spots/${Date.now()}-${crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)}.${ext}`;
+    const {error:uploadError}=await db.storage.from('fishing-media').upload(uploadedPath,file,{upsert:false,contentType:file.type});
+    if(uploadError)throw new Error('ছবি আপলোড হয়নি: '+uploadError.message);
+    imageUrl=db.storage.from('fishing-media').getPublicUrl(uploadedPath).data.publicUrl;
+   }
+   const details=[
+    $('waterName').value.trim()?'নদী / পুকুর: '+$('waterName').value.trim():'',
+    $('fishText').value.trim()?'পাওয়া যায় এমন মাছ: '+$('fishText').value.trim():'',$('timeText').value.trim()?'সেরা সময়: '+$('timeText').value.trim():'',$('season').value?'মৌসুম: '+$('season').value:'',$('facText').value.trim()?'সুবিধা: '+$('facText').value.trim():'',
+    $('ticketPrice').value.trim()?'টিকিট মূল্য: '+$('ticketPrice').value.trim():'',
+    $('fishingDate').value?'মাছ ধরার তারিখ: '+dateLabel($('fishingDate').value):'',
+    $('contactInfo').value.trim()?'যোগাযোগ: '+$('contactInfo').value.trim():'',
+    $('mapLink').value.trim()?'Google Maps: '+$('mapLink').value.trim():'',
+    $('submitterName').value.trim()?'জমাদানকারী: '+$('submitterName').value.trim():'',
+    $('spotDescription').value.trim()
+   ].filter(Boolean).join('\n');
+   const {error}=await db.from('fishing_posts').insert({
+    title,location,spot_type:type,description:details,image_url:imageUrl,status:'pending'
+   });
+   if(error)throw error;
+   lastSubmit=Date.now();$('spotForm').reset();$('dateField').hidden=true;$('fishingDate').required=false;
+   msg.textContent='আপনার স্পট সফলভাবে জমা হয়েছে। অ্যাডমিন যাচাই ও অনুমোদন করলে ওয়েবসাইটে প্রকাশিত হবে।';
+  }catch(error){
+   console.error('Spot submission:',error);
+   msg.textContent='স্পট জমা দেওয়া যায়নি: '+(error.message||'অজানা সমস্যা');
+   // ডেটাবেসে পোস্ট না হলে আপলোড হওয়া ছবিটি সরিয়ে ফেলার চেষ্টা
+   if(uploadedPath){const {error:removeError}=await db.storage.from('fishing-media').remove([uploadedPath]);if(removeError)console.warn(removeError)}
+  }finally{btn.disabled=false;btn.textContent='স্পট জমা দিন ↗️'}
+ });
+
+
+ // ===== শপ: পণ্য ও অর্ডার =====
+ const bnPrice=n=>'৳ '+toBn(Number(n||0).toLocaleString('en-US'));
+ const catL={rod:'🎣 রড',reel:'⚙️ রিল',accessories:'🪝 এক্সেসরিজ',other:'অন্যান্য'};
+ const payL={bkash:'বিকাশ',nagad:'নগদ',cod:'ক্যাশ অন ডেলিভারি'};
+ const stL={new:'নতুন',confirmed:'নিশ্চিত',delivered:'ডেলিভারি হয়েছে',cancelled:'বাতিল'};
+ const normPhone=v=>String(v||'').replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d)).replace(/[\s-]/g,'');
+ const okPhone=v=>/^(?:\+?88)?01[3-9]\d{8}$/.test(normPhone(v));
+ async function loadProducts(){
+  if(!db)return;
+  const {data,error}=await db.from('shop_products').select('*').order('created_at',{ascending:false});
+  if(error||!data?.length){$('productGrid').innerHTML='';$('shopFilter').hidden=true;$('shopSoon').hidden=false;$('shopNotice').hidden=false;return}
+  products=data;$('shopSoon').hidden=true;$('shopNotice').hidden=true;$('shopFilter').hidden=false;renderProducts();
+ }
+ function renderProducts(){
+  const list=products.filter(p=>shopCat==='all'||p.category===shopCat);
+  $('productGrid').innerHTML=list.length?list.map(p=>`<article class="product reveal in"><div class="p-img"><img src="${esc(p.image_url||fallback)}" alt="${esc(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">${p.in_stock?'':'<span class="p-out">স্টক শেষ</span>'}</div><div class="p-body"><span class="p-cat">${catL[p.category]||''}</span><h3>${esc(p.name)}</h3>${p.description?`<p>${esc(p.description)}</p>`:''}<div class="p-foot"><b class="p-price">${bnPrice(p.price)}</b><button type="button" class="btn" data-order="${esc(p.id)}" ${p.in_stock?'':'disabled'}>🛒 অর্ডার করুন</button></div></div></article>`).join(''):'<div class="empty"><strong>এই বিভাগে এখনো পণ্য নেই</strong>অন্য বিভাগ দেখুন।</div>';
+ }
+ document.querySelectorAll('#shopCats input').forEach(i=>i.addEventListener('change',()=>{shopCat=i.value;renderProducts()}));
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-order]');if(b)openOrder(b.dataset.order);const c=e.target.closest('[data-copy]');if(c){navigator.clipboard?.writeText(c.dataset.copy).then(()=>{c.textContent='✔ কপি হয়েছে'})}});
+ const payMethod=()=>document.querySelector('input[name=pay]:checked').value;
+ function orderTotal(){const q=Math.max(1,Math.min(20,parseInt($('oQty').value)||1));$('oTotal').textContent=bnPrice((cur?.price||0)*q)}
+ function payUi(){
+  const m=payMethod();$('payExtra').hidden=m==='cod';
+  $('payBox').innerHTML=m==='cod'?'💵 পণ্য হাতে পেয়ে ডেলিভারির সময় টাকা দিন।':`${m==='bkash'?'📱 বিকাশ':'📲 নগদ'} (সেন্ড মানি) নম্বর: <b>${esc(SHOP[m])}</b> <button type="button" class="copy-btn" data-copy="${esc(SHOP[m])}">কপি</button><br><small>মোট টাকা এই নম্বরে পাঠিয়ে নিচে আপনার নম্বর ও TrxID লিখুন।</small>`;
+ }
+ function openOrder(id){
+  cur=products.find(p=>p.id===id);if(!cur)return;
+  $('odProd').innerHTML=`<img src="${esc(cur.image_url||fallback)}" alt=""><div><b>${esc(cur.name)}</b><div class="p-price">${bnPrice(cur.price)}</div></div>`;
+  $('orderMsg').textContent='';$('oQty').value=1;orderTotal();payUi();$('orderDialog').showModal();
+ }
+ $('oQty').addEventListener('input',orderTotal);
+ document.querySelectorAll('#payChips input').forEach(i=>i.addEventListener('change',payUi));
+ $('orderClose').addEventListener('click',()=>$('orderDialog').close());
+ $('orderDialog').addEventListener('click',e=>{if(e.target===$('orderDialog'))$('orderDialog').close()});
+ $('orderForm').addEventListener('submit',async e=>{
+  e.preventDefault();const msg=$('orderMsg'),btn=$('orderBtn'),m=payMethod();
+  const name=$('oName').value.trim(),phone=normPhone($('oPhone').value),addr=$('oAddress').value.trim(),qty=parseInt($('oQty').value),sender=normPhone($('oSender').value),trx=$('oTrx').value.trim();
+  if(!cur||!db){msg.textContent='পণ্য বা ডেটাবেস পাওয়া যায়নি।';return}
+  if(name.length<2||addr.length<5){msg.textContent='নাম ও সম্পূর্ণ ঠিকানা দিন।';return}
+  if(!okPhone(phone)){msg.textContent='সঠিক মোবাইল নম্বর দিন (যেমন 01XXXXXXXXX)।';return}
+  if(!(qty>=1&&qty<=20)){msg.textContent='পরিমাণ ১ থেকে ২০-এর মধ্যে হতে হবে।';return}
+  if(m!=='cod'&&(!okPhone(sender)||trx.length<6)){msg.textContent='যে নম্বর থেকে টাকা পাঠিয়েছেন এবং TrxID সঠিকভাবে দিন।';return}
+  btn.disabled=true;btn.textContent='পাঠানো হচ্ছে…';
+  const {error}=await db.from('shop_orders').insert({product_id:cur.id,quantity:qty,customer_name:name,phone,address:addr,payment_method:m,payment_number:m==='cod'?null:sender,trx_id:m==='cod'?null:trx,note:$('oNote').value.trim()||null});
+  btn.disabled=false;btn.textContent='অর্ডার নিশ্চিত করুন ↗️';
+  if(error){msg.textContent='অর্ডার করা যায়নি: '+(error.message||'অজানা সমস্যা');return}
+  $('orderForm').reset();payUi();orderTotal();msg.textContent='✔ আপনার অর্ডার জমা হয়েছে। আমরা শীঘ্রই ফোনে যোগাযোগ করে নিশ্চিত করব। ধন্যবাদ!';
+ });
+ // ===== অ্যাডমিন: অর্ডার ও পণ্য =====
+ document.querySelectorAll('[data-admin-tab]').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.adminTab;$('adminList').hidden=t!=='spots';$('adminOrders').hidden=t!=='orders';$('adminProducts').hidden=t!=='products';document.querySelectorAll('[data-admin-tab]').forEach(x=>x.classList.toggle('on',x===b))}));
+ $('adminReloadBtn').addEventListener('click',()=>{loadAdminOrders();loadAdminProducts()});
+ async function loadAdminOrders(){
+  const box=$('adminOrders');
+  const {data,error}=await db.from('shop_orders').select('*').order('created_at',{ascending:false});
+  if(error){box.textContent='অর্ডার আনা যায়নি: '+error.message;return}
+  const n=(data||[]).filter(o=>o.status==='new').length;$('orderBadge').textContent=n?'('+toBn(n)+' নতুন)':'';
+  if(!data?.length){box.textContent='এখনো কোনো অর্ডার আসেনি।';return}
+  box.innerHTML=data.map(o=>`<div class="admin-item order-item st-${esc(o.status)}"><b>${esc(o.product_name||'পণ্য মোছা হয়েছে')} × ${toBn(o.quantity)} = ${bnPrice(o.total)}</b><small>🕒 ${esc(new Date(o.created_at).toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'}))}</small><p>👤 ${esc(o.customer_name)}<br>📞 <a href="tel:${esc(o.phone)}" style="color:var(--gold2)">${esc(o.phone)}</a><br>📍 ${esc(o.address)}<br>💳 ${esc(payL[o.payment_method]||o.payment_method)}${o.payment_method!=='cod'?` · প্রেরক: ${esc(o.payment_number||'')} · TrxID: <b>${esc(o.trx_id||'')}</b>`:''}${o.note?`<br>📝 ${esc(o.note)}`:''}</p><div class="admin-actions"><select data-ost="${esc(o.id)}">${Object.keys(stL).map(k=>`<option value="${k}" ${k===o.status?'selected':''}>${stL[k]}</option>`).join('')}</select><button type="button" class="delete" data-odel="${esc(o.id)}">মুছুন</button></div></div>`).join('');
+  box.querySelectorAll('[data-ost]').forEach(x=>x.addEventListener('change',async()=>{const {error}=await db.from('shop_orders').update({status:x.value}).eq('id',x.dataset.ost);if(error)alert(error.message);loadAdminOrders()}));
+  box.querySelectorAll('[data-odel]').forEach(x=>x.addEventListener('click',async()=>{if(!confirm('অর্ডারটি স্থায়ীভাবে মুছবেন?'))return;const {error}=await db.from('shop_orders').delete().eq('id',x.dataset.odel);if(error)alert(error.message);loadAdminOrders()}));
+ }
+ async function loadAdminProducts(){
+  const box=$('adminProductList');
+  const {data,error}=await db.from('shop_products').select('*').order('created_at',{ascending:false});
+  if(error){box.textContent='পণ্য আনা যায়নি: '+error.message;return}
+  box.innerHTML=(data||[]).map(p=>`<div class="admin-item"><b>${esc(p.name)} — ${bnPrice(p.price)} <small>(${p.in_stock?'স্টকে আছে':'স্টক শেষ'})</small></b><small>${catL[p.category]||''}</small><div class="admin-actions"><button type="button" data-stock="${esc(p.id)}" data-v="${p.in_stock?'0':'1'}">${p.in_stock?'স্টক শেষ করুন':'স্টকে আনুন'}</button><button type="button" class="delete" data-pdel="${esc(p.id)}">মুছুন</button></div></div>`).join('')||'এখনো কোনো পণ্য নেই।';
+  box.querySelectorAll('[data-stock]').forEach(x=>x.addEventListener('click',async()=>{const {error}=await db.from('shop_products').update({in_stock:x.dataset.v==='1'}).eq('id',x.dataset.stock);if(error)alert(error.message);loadAdminProducts();loadProducts()}));
+  box.querySelectorAll('[data-pdel]').forEach(x=>x.addEventListener('click',async()=>{if(!confirm('পণ্যটি মুছবেন?'))return;const p=data.find(i=>i.id===x.dataset.pdel);const mk='/storage/v1/object/public/fishing-media/';const at=p?.image_url?p.image_url.indexOf(mk):-1;if(at>=0)await db.storage.from('fishing-media').remove([decodeURIComponent(p.image_url.slice(at+mk.length))]);const {error}=await db.from('shop_products').delete().eq('id',x.dataset.pdel);if(error)alert(error.message);loadAdminProducts();loadProducts()}));
+ }
+ $('productForm').addEventListener('submit',async e=>{
+  e.preventDefault();const msg=$('pMsg'),btn=$('pBtn'),f=$('pImage').files[0];
+  if(f&&(f.size>10*1024*1024||!['image/jpeg','image/png','image/webp'].includes(f.type))){msg.textContent='ছবি JPG/PNG/WebP এবং ১০ MB-এর মধ্যে হতে হবে।';return}
+  btn.disabled=true;msg.textContent='পোস্ট হচ্ছে…';let path=null;
+  try{
+   let url=null;
+   if(f){const ext=f.type==='image/png'?'png':f.type==='image/webp'?'webp':'jpg';path=`shop/${Date.now()}-${crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)}.${ext}`;const {error:ue}=await db.storage.from('fishing-media').upload(path,f,{contentType:f.type});if(ue)throw ue;url=db.storage.from('fishing-media').getPublicUrl(path).data.publicUrl}
+   const {error}=await db.from('shop_products').insert({name:$('pName').value.trim(),category:$('pCat').value,price:Number($('pPrice').value),description:$('pDesc').value.trim()||null,image_url:url});
+   if(error)throw error;
+   $('productForm').reset();msg.textContent='✔ পণ্য পোস্ট হয়েছে।';loadAdminProducts();loadProducts();
+  }catch(err){msg.textContent='পোস্ট করা যায়নি: '+(err.message||'অজানা সমস্যা');if(path)db.storage.from('fishing-media').remove([path])}
+  btn.disabled=false;
+ });
+ loadProducts();
+ // অ্যাডমিন যাচাই ও ব্যবস্থাপনা
+ async function checkAdmin(){
+  if(!db)return;
+  const {data:{session},error:sessionError}=await db.auth.getSession();
+  if(sessionError){$('adminMessage').textContent=sessionError.message;return}
+  if(!session){$('adminLogin').hidden=false;$('adminPanel').hidden=true;return}
+  const {data,error}=await db.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();
+  if(error||!data){
+   $('adminMessage').textContent='এই অ্যাকাউন্টের অ্যাডমিন অনুমতি নেই।';
+   await db.auth.signOut();$('adminLogin').hidden=false;$('adminPanel').hidden=true;return;
+  }
+  $('adminLogin').hidden=true;$('adminPanel').hidden=false;await loadAdminList();loadAdminOrders();loadAdminProducts();
+ }
+ $('adminLoginBtn').addEventListener('click',async()=>{
+  if(!db){$('adminMessage').textContent='ডেটাবেস সংযোগ করা যায়নি।';return}
+  $('adminMessage').textContent='লগইন হচ্ছে…';
+  const {error}=await db.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});
+  if(error){$('adminMessage').textContent='লগইন হয়নি: '+error.message;return}
+  $('adminMessage').textContent='';await checkAdmin();
+ });
+ $('adminLogoutBtn').addEventListener('click',async()=>{await db.auth.signOut();$('adminPanel').hidden=true;$('adminLogin').hidden=false;$('adminMessage').textContent='আপনি লগআউট করেছেন।'});
+ $('adminReloadBtn').addEventListener('click',loadAdminList);
+ async function loadAdminList(){
+  const box=$('adminList');box.textContent='লোড হচ্ছে…';
+  const {data,error}=await db.from('fishing_posts').select('*').order('created_at',{ascending:false});
+  if(error){box.textContent='স্পট আনা যায়নি: '+error.message;return}
+  if(!data?.length){box.textContent='এখনো কোনো স্পট নেই।';return}
+  box.innerHTML=data.map(s=>`<div class="admin-item"><b>${esc(s.title)} <small>(${s.status==='approved'?'প্রকাশিত':s.status==='pending'?'অনুমোদনের অপেক্ষায়':esc(s.status)})</small></b><small>${esc(s.location||'')} · ${typeLabel(s.spot_type)}</small><p>${esc(s.description||'')}</p>${s.image_url?`<p><a href="${esc(s.image_url)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold2)">ছবি দেখুন ↗️</a></p>`:''}<div class="admin-actions">${s.status==='approved'?'':`<button type="button" data-approve-spot="${esc(s.id)}">অনুমোদন ও প্রকাশ</button>`}<button type="button" class="delete" data-delete-spot="${esc(s.id)}">স্পট মুছুন</button></div></div>`).join('');
+  box.querySelectorAll('[data-approve-spot]').forEach(b=>b.addEventListener('click',()=>approveSpot(b.dataset.approveSpot)));
+  box.querySelectorAll('[data-delete-spot]').forEach(b=>b.addEventListener('click',()=>deleteSpot(b.dataset.deleteSpot)));
+ }
+ async function approveSpot(id){
+  if(!confirm('এই স্পটটি অনুমোদন করে ওয়েবসাইটে প্রকাশ করবেন?'))return;
+  const {error}=await db.from('fishing_posts').update({status:'approved'}).eq('id',id);
+  if(error){alert('অনুমোদন করা যায়নি: '+error.message);return}
+  alert('স্পটটি অনুমোদিত হয়েছে।');
+  await loadAdminList();await loadPublicSpots();
+ }
+ async function deleteSpot(id){
+  if(!confirm('এই স্পটটি স্থায়ীভাবে মুছবেন?'))return;
+  const {data:spot}=await db.from('fishing_posts').select('image_url').eq('id',id).maybeSingle();
+  if(spot?.image_url){
+   const marker='/storage/v1/object/public/fishing-media/';
+   const at=spot.image_url.indexOf(marker);
+   if(at>=0){const path=decodeURIComponent(spot.image_url.slice(at+marker.length));const {error:storageError}=await db.storage.from('fishing-media').remove([path]);if(storageError)console.error(storageError)}
+  }
+  const {error}=await db.from('fishing_posts').delete().eq('id',id);
+  if(error)alert('মুছতে সমস্যা: '+error.message);
+  else{await loadAdminList();await loadPublicSpots()}
+ }
+
+ document.querySelectorAll('main section .wrap > *, .shop-card, .category').forEach(el=>el.classList.add('reveal'));
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el))}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+ const toTop=$('toTop');window.addEventListener('scroll',()=>toTop.classList.toggle('show',scrollY>600),{passive:true});toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+ loadWeather();
+ loadPublicSpots();
+ checkAdmin();
+})();
+</script>
+</body>
+</html>
