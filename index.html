@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B111B">
+<meta name="description" content="Bheramara Fishing Gallery — ভেড়ামারার নদী, পুকুর, মাছ ধরার স্পট ও আগামী ৭ দিনের আবহাওয়ার পূর্বাভাস।">
+<title>Bheramara Fishing Gallery | ভেড়ামারা ফিশিং গ্যালারি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<style>
+:root{--bg:#0B111B;--bg2:#101A28;--panel:#172334;--panel2:#202F42;--gold:#D7B56D;--gold2:#F2DDAA;--cream:#F7F3EA;--muted:#B4BECA;--line:rgba(215,181,109,.25);--green:#8BC3A8;--shadow:0 22px 60px rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1c2a3b 0%,var(--bg) 48%);color:var(--cream);font-family:'Hind Siliguri',sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.topline{height:4px;background:linear-gradient(90deg,#765629,#D7B56D,#F2DDAA,#A47D42,#765629)}
+header{position:sticky;top:0;z-index:30;background:rgba(9,15,24,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand img{width:48px;height:48px;border-radius:13px;object-fit:cover;background:white}.brand b{display:block;font:800 14px Manrope,sans-serif}.brand small{display:block;color:var(--gold2);font-size:12px}.navlinks{display:flex;align-items:center;gap:19px;font-size:14px;color:#E5E0D6}.navlinks a:hover{color:var(--gold2)}.menu{display:none;background:none;border:1px solid var(--line);color:var(--gold2);padding:8px 12px;border-radius:9px}
+.btn,.nav-cta{display:inline-block;border:1px solid #F4DFAE;border-radius:30px;padding:11px 19px;background:linear-gradient(135deg,#F2DDAA 0%,#D7B56D 52%,#B88D4B 100%);color:#17130C;font-weight:700;box-shadow:0 9px 28px rgba(215,181,109,.2)}.btn:hover,.nav-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-outline{display:inline-block;border:1px solid rgba(242,221,170,.65);color:#F7E9C9;padding:10px 18px;border-radius:30px;background:rgba(255,255,255,.045)}
+.hero{min-height:590px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(5,10,17,.96),rgba(9,17,27,.76) 55%,rgba(9,17,27,.25)),var(--bg-hero)}.hero:after{content:"";position:absolute;inset:auto 0 0;height:150px;background:linear-gradient(transparent,var(--bg))}.hero-content{position:relative;z-index:2;max-width:740px;padding:85px 0 115px}.eyebrow,.kicker{color:var(--gold2);font:700 11px Manrope,sans-serif;letter-spacing:2px;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}h1{font-size:clamp(38px,6vw,68px);line-height:1.15;margin:22px 0 17px;text-shadow:0 3px 18px #000}h1 span{color:var(--gold2)}.hero p{max-width:610px;color:#F5F0E7;font-size:18px;text-shadow:0 2px 9px #000;margin:0 0 27px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero-note{margin-top:27px;color:#D6D0C4;font-size:13px}
+section{padding:76px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:28px}.section-head h2{font-size:clamp(27px,4vw,41px);line-height:1.25;margin:8px 0 0}.section-head p{color:var(--muted);max-width:470px;margin:0}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:21px}.category{position:relative;min-height:340px;overflow:hidden;border-radius:22px;border:1px solid var(--line);display:flex;align-items:end;box-shadow:var(--shadow)}.category>img{position:absolute;width:100%;height:100%;object-fit:cover;transition:.5s}.category:hover>img{transform:scale(1.05)}.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,10,17,.97),rgba(9,17,27,.02) 85%)}.cat-content{position:relative;z-index:1;padding:27px;width:100%;text-shadow:0 2px 9px #000}.cat-tag{display:inline-block;background:rgba(17,27,41,.91);border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:4px 11px;font-size:12px;margin-bottom:9px}.cat-content h3{font-size:29px;color:var(--gold2);margin:0 0 4px}.cat-content p{color:white;margin:0 0 15px}.cat-link{display:inline-block;background:rgba(17,27,41,.91);border:1px solid var(--gold);color:var(--gold2);border-radius:30px;padding:7px 13px;font-weight:700}
+.field label{display:block;color:#E5D9C1;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#0C1521;border:1px solid rgba(215,181,109,.25);border-radius:10px;padding:12px;color:var(--cream);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,181,109,.13)}.field input::placeholder,.field textarea::placeholder{color:#8996A5}.field select option{background:#172334;color:var(--cream)}
+.empty{grid-column:1/-1;text-align:center;border:1px dashed rgba(215,181,109,.42);border-radius:18px;padding:40px 20px;color:var(--muted);background:rgba(255,255,255,.025)}.empty strong{display:block;color:var(--cream);font-size:19px;margin-bottom:5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.step{padding:24px;border:1px solid var(--line);background:linear-gradient(145deg,#1B293B,#121D2B);border-radius:17px;box-shadow:var(--shadow)}.step-num{font:800 28px Manrope;color:var(--gold)}.step h3{margin:8px 0 4px;font-size:20px}.step p{color:var(--muted);margin:0;font-size:14px}
+.submit-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:start}.submit-copy{position:sticky;top:105px}.submit-copy h2{font-size:38px;line-height:1.2;margin:12px 0}.submit-copy p{color:var(--muted)}.note{border-left:3px solid var(--gold);padding:11px 14px;background:rgba(215,181,109,.09);color:#E8DFCF;border-radius:0 10px 10px 0;font-size:13px}.form-card{background:linear-gradient(145deg,#1B293B,#121D2B);border:1px solid var(--line);border-radius:21px;padding:24px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}.field textarea{min-height:110px;resize:vertical}.form-card>.btn{width:100%;margin-top:18px}.status-msg{font-size:13px;margin-top:11px;color:var(--green);white-space:pre-wrap}.upload-hint{color:var(--muted);font-size:13px;margin:8px 0 14px}
+.spots-section{background:linear-gradient(180deg,#0D1724,#172334 52%,#0D1724);border-block:1px solid var(--line)}.spot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.spot-card{overflow:hidden;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#1B293B,#121D2B);box-shadow:var(--shadow)}.spot-card img{width:100%;height:190px;object-fit:cover;display:block;background:#0c1521}.spot-card-body{padding:17px}.spot-card h3{margin:0 0 6px;color:var(--gold2);font-size:21px}.spot-card p{color:var(--muted);font-size:14px;margin:7px 0;white-space:pre-wrap;overflow-wrap:anywhere}.spot-meta{display:flex;flex-wrap:wrap;gap:7px}.spot-meta span{font-size:12px;padding:4px 9px;border-radius:20px;background:rgba(215,181,109,.1);color:#F0E5D0}.spot-search{display:grid;grid-template-columns:1fr 220px;gap:12px;margin-bottom:20px}.spot-search input,.spot-search select{width:100%;background:#0C1521;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--cream)}
+.weather-section{background:linear-gradient(180deg,#0D1724,#172334 52%,#0D1724);border-block:1px solid var(--line)}.weather-panel{background:linear-gradient(145deg,#1B293B,#111B29);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.weather-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}.weather-place{display:flex;align-items:center;gap:10px;color:var(--gold2);font-weight:700}.weather-actions{display:flex;gap:9px;flex-wrap:wrap}.weather-link,.weather-refresh{border:1px solid var(--gold);border-radius:24px;padding:8px 14px;color:var(--gold2);background:rgba(215,181,109,.08);font-weight:700;font-size:13px}.weather-refresh:disabled{opacity:.55;cursor:wait}.weather-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.weather-day{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:15px 10px;text-align:center;min-width:0}.weather-day.today{border-color:var(--gold);background:rgba(215,181,109,.11);box-shadow:inset 0 0 0 1px rgba(215,181,109,.12)}.weather-day .day-name{font-weight:700;color:var(--gold2);font-size:14px}.weather-icon{font-size:31px;line-height:1.5;margin:7px 0}.weather-desc{color:var(--muted);font-size:12px;min-height:38px}.weather-temps{display:flex;justify-content:center;gap:8px;margin:8px 0;font-weight:700;font-size:14px}.weather-rain{color:#9BC9D8;font-size:12px;margin:5px 0}.weather-wind{color:var(--muted);font-size:11px}.weather-status{color:var(--muted);font-size:13px;margin-top:14px;text-align:center}.weather-error{border:1px dashed rgba(215,181,109,.4);border-radius:14px;padding:22px;text-align:center;color:var(--muted)}
+.shop-section{background:linear-gradient(180deg,#0B111B,#172334 50%,#0B111B);border-block:1px solid var(--line)}.shop-intro{text-align:center;max-width:700px;margin:0 auto 30px}.shop-intro h2{font-size:clamp(28px,4vw,40px);margin:9px 0}.shop-intro p{color:var(--muted)}.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.shop-card{background:linear-gradient(145deg,#1B293B,#121D2B);border:1px solid var(--line);border-radius:19px;overflow:hidden;text-align:center}.shop-card img{width:100%;height:205px;object-fit:cover;display:block}.shop-card-body{padding:18px}.shop-card h3{font-size:22px;margin:0 0 5px;color:var(--gold2)}.shop-card p{color:var(--muted);font-size:14px;margin:0 0 12px}.coming{display:inline-block;background:rgba(215,181,109,.1);border:1px solid rgba(215,181,109,.45);color:var(--gold2);border-radius:30px;padding:6px 13px;font-size:12px;font-weight:700}.shop-notice{text-align:center;margin-top:22px;padding:15px;border:1px dashed rgba(215,181,109,.4);border-radius:13px;color:#E5D9C1}
+.about{background:linear-gradient(180deg,transparent,rgba(23,35,52,.5),transparent)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about-visual{position:relative}.about-visual img{width:100%;height:360px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}.about-badge{position:absolute;right:12px;bottom:18px;background:linear-gradient(135deg,#F2DDAA,#B88D4B);color:#17130C;padding:12px 16px;border-radius:12px;font-weight:700}.about-copy h2{font-size:38px;line-height:1.2;margin:10px 0}.about-copy p{color:var(--muted)}.developer{display:flex;align-items:center;gap:14px;margin-top:23px;padding-top:20px;border-top:1px solid var(--line)}.developer img{width:64px;height:64px;object-fit:cover;border-radius:50%;border:2px solid var(--gold)}.developer b{display:block}.developer small{color:var(--gold2)}
+.contact{background:linear-gradient(135deg,#172334,#101A28);border-block:1px solid var(--line)}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:22px}.contact-box h2{font-size:31px;margin:7px 0}.contact-box p{color:var(--muted);margin:0}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{border:1px solid rgba(215,181,109,.35);padding:10px 15px;border-radius:11px;color:var(--gold2);background:rgba(255,255,255,.035)}
+footer{padding:32px 0;background:#080D15;border-top:1px solid var(--line)}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-brand{display:flex;align-items:center;gap:10px}.footer-brand img{width:40px;height:40px;border-radius:9px;object-fit:cover}.footer-brand b{font:700 13px Manrope}.footer-links{display:flex;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:13px}.footer-links a:hover{color:var(--gold2)}.copyright{color:#8996A5;font-size:12px;margin-top:20px;padding-top:17px;border-top:1px solid rgba(215,181,109,.16);text-align:center}
+.admin-area{background:#101A28;border:1px solid var(--line);border-radius:18px;padding:21px;margin-top:15px}.admin-area summary{cursor:pointer;color:var(--gold2);font-weight:700}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-actions button{border:1px solid rgba(215,181,109,.3);border-radius:8px;background:#202F42;color:white;padding:7px 11px}.admin-actions .delete{color:#F0A79B}.admin-item{padding:13px 0;border-bottom:1px solid var(--line)}.admin-item:last-child{border:0}.admin-item b{display:block}.admin-item small{color:var(--muted)}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.admin-tabs button{border:1px solid rgba(215,181,109,.3);background:#202F42;color:var(--gold2);padding:8px 13px;border-radius:9px}
+@media(max-width:900px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#0B111B;padding:18px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav-cta{display:none}.submit-layout{grid-template-columns:1fr}.submit-copy{position:static}.weather-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.spot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}.nav{height:68px}.navlinks{top:68px}.brand img{width:42px;height:42px}.brand b{font-size:11px}.brand small{font-size:10px}.hero{min-height:535px}.hero-content{padding:70px 0 105px}.hero p{font-size:16px}section{padding:60px 0}.section-head{display:block}.section-head p{margin-top:10px}.categories,.steps,.shop-grid,.about-grid,.spot-grid{grid-template-columns:1fr}.category{min-height:290px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-card{padding:17px}.about-visual img{height:275px}.about-copy h2,.submit-copy h2{font-size:31px}.contact-box{align-items:flex-start;flex-direction:column}.footer-row{align-items:flex-start;flex-direction:column}.weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-day{padding:13px 8px}.weather-top{align-items:flex-start}.spot-search{grid-template-columns:1fr}}
+
+.shop-art{height:205px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#2a3d55,#0f1926 75%);border-bottom:1px solid var(--line)}.shop-art svg{width:100%;height:100%;transition:transform .5s}.shop-card:hover .shop-art svg{transform:scale(1.06)}
+.shop-card,.spot-card,.category,.form-card,.weather-day{transition:transform .35s,border-color .35s,box-shadow .35s}.shop-card:hover,.spot-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px rgba(215,181,109,.25)}.category:hover{border-color:var(--gold)}.weather-day:hover{transform:translateY(-4px);border-color:rgba(215,181,109,.6)}
+.section-head h2:after{content:"";display:block;width:56px;height:3px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+h1 span{background:linear-gradient(90deg,#F2DDAA,#D7B56D,#F2DDAA);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(0,0,0,.7))}
+::selection{background:var(--gold);color:#17130C}:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+header{box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
+#toTop{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);background:rgba(11,17,27,.92);color:var(--gold2);font-size:20px;opacity:0;pointer-events:none;transition:.3s;z-index:40}#toTop.show{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+:root{--teal:#3FB6A8;--bg-hero:url(images/hero.jpg) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDcwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzA2MGIxNCIvPjxzdG9wIG9mZnNldD0iMC40NSIgc3RvcC1jb2xvcj0iIzFiMmY0NSIvPjxzdG9wIG9mZnNldD0iMC43NCIgc3RvcC1jb2xvcj0iI2M5OGY0YSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2YyYzc3ZCIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJ3IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzk4ZjRhIi8+PHN0b3Agb2Zmc2V0PSIwLjIyIiBzdG9wLWNvbG9yPSIjMmI0YTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGExNTIyIi8+PC9saW5lYXJHcmFkaWVudD48cmFkaWFsR3JhZGllbnQgaWQ9ImciPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjJjOSIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjZjJjNzdkIiBzdG9wLW9wYWNpdHk9Ii41NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2YyYzc3ZCIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iNzAwIiBmaWxsPSJ1cmwoI3MpIi8+PGNpcmNsZSBjeD0iOTAwIiBjeT0iNDIwIiByPSIyNjAiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSI5MDAiIGN5PSI0MjAiIHI9IjQ4IiBmaWxsPSIjZmZmMGM0Ii8+PHBhdGggZD0iTTAgNDMwUTIyMCAzNzAgNDQwIDQyMFQ5MDAgNDEwVDEzMDAgMzg1VDE2MDAgNDE1VjQ4MEgwWiIgZmlsbD0iIzBmMWMyYiIgb3BhY2l0eT0iLjkiLz48cmVjdCB5PSI0NTUiIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjI0NSIgZmlsbD0idXJsKCN3KSIvPjxnIHN0cm9rZT0iI2Y3ZGNhMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii41Ij48cGF0aCBkPSJNODAwIDQ3NWgyMDBNODMwIDQ5OGgxNDBNNzgwIDUyNWgyNDBNODIwIDU1NWgxNjBNODYwIDU5MGg5MCIvPjwvZz48cGF0aCBkPSJNMTE2MCA3MDBRMTE4MCA1NjAgMTMwMCA1MjBRMTQ1MCA0OTAgMTYwMCA1MjBWNzAwWiIgZmlsbD0iIzA1MGExMiIvPjxjaXJjbGUgY3g9IjEzNTIiIGN5PSI0NTIiIHI9IjE1IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTEzMzAgNDc0cTIyLTEwIDQ0IDBsMTAgNThoLTY0eiIgZmlsbD0iIzA1MGExMiIvPjxwYXRoIGQ9Ik0xMzQwIDQ4MkwxMDEwIDM0MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMTAxMCAzNDBROTUwIDQzMCA5NjIgNTQwIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIi8+PGNpcmNsZSBjeD0iOTYyIiBjeT0iNTQzIiByPSI2IiBmaWxsPSIjZTA1NTNmIi8+PGVsbGlwc2UgY3g9Ijk2MiIgY3k9IjU1MiIgcng9IjI2IiByeT0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMjMwIDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTEyNjIgNjQwcS0xNCAtNjAuMCAtOCAtMTIwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNTAwIDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE1NDAgNjQwcS0xNCAtNjAuMCAtOCAtMTIwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xNTc1IDY0MHExNCAtNjAuMCA4IC0xMjAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PC9zdmc+) center/cover}
+body{background:radial-gradient(900px 520px at 88% -4%,rgba(63,182,168,.16),transparent 60%),radial-gradient(800px 520px at -5% 18%,rgba(215,181,109,.11),transparent 60%),linear-gradient(180deg,#0A1019,#0E1B2B 50%,#0A1019);background-attachment:fixed}
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:2px;font-size:clamp(46px,8vw,92px);line-height:1.02}
+.section-head h2,.submit-copy h2,.about-copy h2,.contact-box h2,.shop-intro h2,.cat-content h3,.spot-card h3,.shop-card h3,.step h3{font-family:'Noto Serif Bengali','Hind Siliguri',serif;font-weight:700}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--teal)}.kicker:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+.hero{min-height:660px;background:linear-gradient(90deg,rgba(5,10,17,.9),rgba(9,17,27,.5) 52%,rgba(9,17,27,.05)),var(--bg-hero)}
+.hero p{font-size:19px;line-height:1.9}.hero-note{color:var(--gold2);letter-spacing:.3px}
+.strip{position:relative;z-index:3;margin-top:-58px}.strip-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(16,26,40,.88);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.strip-row>div{padding:18px 22px;border-right:1px solid var(--line)}.strip-row>div:last-child{border:0}.strip-row b{display:block;color:var(--gold2);font-size:16px}.strip-row span{color:var(--muted);font-size:13px}
+.scene{background-size:cover;background-position:center;transition:transform .6s}
+.category>.scene{position:absolute;inset:0}.category:hover>.scene{transform:scale(1.06)}
+.scene-river{background:url(images/river.jpg) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMTAyMDJmIi8+PHN0b3Agb2Zmc2V0PSIwLjYiIHN0b3AtY29sb3I9IiM3YTVhNDYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmMGI4NmIiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0idyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2YwYjg2YiIvPjxzdG9wIG9mZnNldD0iMC4yIiBzdG9wLWNvbG9yPSIjMzU1NjZhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIxODI0Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjcykiLz48Y2lyY2xlIGN4PSI1NjAiIGN5PSIyMzUiIHI9IjQyIiBmaWxsPSIjZmZmMGM0Ii8+PHBhdGggZD0iTTAgMjUwUTE1MCAyMDUgMzIwIDI0NVQ2MjAgMjM1VDgwMCAyNTBWMjgwSDBaIiBmaWxsPSIjMGYxYzJiIiBvcGFjaXR5PSIuODUiLz48cmVjdCB5PSIyNjIiIHdpZHRoPSI4MDAiIGhlaWdodD0iMjM4IiBmaWxsPSJ1cmwoI3cpIi8+PGcgc3Ryb2tlPSIjZjdkY2EwIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjUiPjxwYXRoIGQ9Ik01MDAgMjg1aDEyME01MjAgMzA1aDgwTTQ5MCAzMzBoMTUwTTUzMCAzNjBoNzAiLz48L2c+PHBhdGggZD0iTTE1MCAzOTBoMTkwbC0yNiAyOEgxNzZ6IiBmaWxsPSIjMDUwYTEyIi8+PGNpcmNsZSBjeD0iMjUwIiBjeT0iMzUyIiByPSIxMSIgZmlsbD0iIzA1MGExMiIvPjxwYXRoIGQ9Ik0yMzQgMzY2cTE2LTggMzIgMGw4IDI2aC00OHoiIGZpbGw9IiMwNTBhMTIiLz48cGF0aCBkPSJNMjYyIDM3Mkw0MDAgMjk2IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik00MDAgMjk2UTQzMCAzNTAgNDI0IDQxMCIgc3Ryb2tlPSIjZjdkY2EwIiBzdHJva2Utd2lkdGg9IjEuNCIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjQyNCIgY3k9IjQxMiIgcj0iNCIgZmlsbD0iI2UwNTUzZiIvPjxwYXRoIGQ9Ik0zMCA1MDBxMTQgLTcwLjAgOCAtMTQwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik01OCA1MDBxLTE0IC03MC4wIC04IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkwIDUwMHExNCAtNzAuMCA4IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTc0MCA1MDBxLTE0IC03MC4wIC04IC0xNDAiIHN0cm9rZT0iIzA1MGExMiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTc3MCA1MDBxMTQgLTcwLjAgOCAtMTQwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==) center/cover}.scene-pond{background:url(images/pond.jpg) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGMxYzJhIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMmQ2YTY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDljMDhhIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzYjdmNzgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTFkMjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjY0MCIgY3k9IjE3MCIgcj0iMzQiIGZpbGw9IiNmZmYzY2YiIG9wYWNpdHk9Ii45Ii8+PHBhdGggZD0iTTcwIDMwMFE5MCAyMTAgMTIwIDEzME0xMjAgMTMwcS01MC0xMC04MCAyME0xMjAgMTMwcTQwLTMwIDg1LTEwTTEyMCAxMzBxLTEwLTQwIDIwLTYwTTEyMCAxMzBxNDAtOCA3MCAyNCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik02OTAgMzAwUTcwMCAyMzAgNzIwIDE3ME03MjAgMTcwcS00MC0xMC02NSAxNE03MjAgMTcwcTM1LTI2IDcwLTRNNzIwIDE3MHEtNi0zNCAxNi01MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHk9IjI5MCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMTAiIGZpbGw9InVybCgjdykiLz48ZyBmaWxsPSIjMmY4YTViIiBvcGFjaXR5PSIuOSI+PGVsbGlwc2UgY3g9IjE3MCIgY3k9IjM4MCIgcng9IjQ0IiByeT0iMTIiLz48ZWxsaXBzZSBjeD0iNjIwIiBjeT0iMzUwIiByeD0iMzgiIHJ5PSIxMCIvPjxlbGxpcHNlIGN4PSI1MjAiIGN5PSI0NDAiIHJ4PSI1NCIgcnk9IjE0Ii8+PGVsbGlwc2UgY3g9IjI2MCIgY3k9IjQ1MCIgcng9IjM2IiByeT0iOSIvPjwvZz48cGF0aCBkPSJNNTAwIDQzMnExMC0yNCAyMC00cTEwLTIyIDIwIDRxLTIwIDgtNDAgMHoiIGZpbGw9IiNmNGE5YzAiLz48cGF0aCBkPSJNMCA0MEw0MzAgMzQ1IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMy41IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQzMCAzNDVRNDQwIDM4MCA0MzYgNDAyIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS40IiBmaWxsPSJub25lIi8+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjM5NCIgcng9IjUiIHJ5PSI5IiBmaWxsPSIjZTA1NTNmIi8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiI+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjQwOCIgcng9IjIyIiByeT0iNSIvPjxlbGxpcHNlIGN4PSI0MzYiIGN5PSI0MDgiIHJ4PSI0MCIgcnk9IjkiIG9wYWNpdHk9Ii41Ii8+PC9nPjwvc3ZnPg==) center/cover}.scene-fish{background:url(images/fishing.jpg) center/cover,url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGExMjIwIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjNWIzZjRkIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjBhOTY0Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlOWExNWYiLz48c3RvcCBvZmZzZXQ9IjAuMTgiIHN0b3AtY29sb3I9IiMyYzQzNTgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOTEzMWYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjU2MCIgY3k9IjI3MCIgcj0iNzAiIGZpbGw9IiNmZmUyYTgiIG9wYWNpdHk9Ii45Ii8+PHJlY3QgeT0iMjkwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIxMCIgZmlsbD0idXJsKCN3KSIvPjxnIHN0cm9rZT0iI2ZmZDlhMCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii40NSI+PHBhdGggZD0iTTQ3MCAzMTBoMTgwTTUwMCAzMzJoMTIwTTQ1MCAzNThoMjIwIi8+PC9nPjxwYXRoIGQ9Ik0wIDUwMFY0MDBRNjAgMzcwIDE1MCAzODVMMjMwIDUwMFoiIGZpbGw9IiMwNTBhMTIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMTgiIHI9IjE0IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTEyOCAzMzhxMjItMTAgNDQgMGwxMCA1MmgtNjR6IiBmaWxsPSIjMDUwYTEyIi8+PHBhdGggZD0iTTE2OCAzNDZRMzMwIDIwMCA0NzAgMTcwIiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik00NzAgMTcwUTUyMCAyMzAgNTIwIDI2MiIgc3Ryb2tlPSIjZmZlMmE4IiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIvPjxnIHRyYW5zZm9ybT0icm90YXRlKC0yOCA1MzAgMjUwKSI+PGVsbGlwc2UgY3g9IjUzMCIgY3k9IjI1MCIgcng9IjQ2IiByeT0iMTciIGZpbGw9IiNmMmM3N2QiLz48cGF0aCBkPSJNNTc0IDI1MGwzMi0xOHYzNnoiIGZpbGw9IiNmMmM3N2QiLz48Y2lyY2xlIGN4PSI1MDgiIGN5PSIyNDUiIHI9IjMiIGZpbGw9IiMwYTEyMjAiLz48L2c+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZlMmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii44Ij48cGF0aCBkPSJNNDg2IDMwMHEtMTgtMjAtMzAtOE01NjIgMzAwcTE0LTIyIDI4LTEyTTUxMCAzMDZxLTQtMTYtMi0yNk01NDAgMzA2cTQtMTYgMi0yNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGVsbGlwc2UgY3g9IjUyNCIgY3k9IjMxMiIgcng9IjYwIiByeT0iOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==) center/cover}
+.about-visual .scene{height:380px;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.category{min-height:380px}.category:after{background:linear-gradient(0deg,rgba(5,10,17,.95),rgba(5,10,17,.35) 45%,transparent 80%)}
+.cat-link{background:linear-gradient(135deg,#F2DDAA,#D7B56D);color:#17130C;border:0}
+.spots-section,.weather-section{background:linear-gradient(180deg,#0B1420,#11303a 52%,#0B1420)}.shop-section{background:linear-gradient(180deg,#0B1420,#2a2213 50%,#0B1420)}
+.contact{background:linear-gradient(135deg,#12303a,#101A28 60%,#2a2213)}
+.spot-card,.shop-card,.form-card,.weather-panel,.step{background:linear-gradient(145deg,rgba(32,48,68,.85),rgba(15,25,38,.92))}
+.weather-day.today{background:linear-gradient(160deg,rgba(215,181,109,.2),rgba(63,182,168,.1))}
+.btn{position:relative;overflow:hidden}.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}.btn:hover:after{transform:translateX(120%)}
+.about-badge{font-family:Manrope,sans-serif;font-size:13px}
+@media(max-width:900px){.strip-row{grid-template-columns:1fr}.strip-row>div{border-right:0;border-bottom:1px solid var(--line)}.strip{margin-top:-40px}}
+@media(max-width:600px){.hero{min-height:600px}.category{min-height:320px}.about-visual .scene{height:280px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><img src="logo.jpeg.PNG" alt="Bheramara Fishing Gallery logo"><span><b>BHERAMARA FISHING GALLERY</b><small>ভেড়ামারা ফিশিং গ্যালারি</small></span></a>
+<nav class="navlinks" id="navLinks"><a href="#home">হোম</a><a href="#categories">স্পটের ধরন</a><a href="#spots">স্পট খুঁজুন</a><a href="#weather">৭ দিনের আবহাওয়া</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#about">আমাদের সম্পর্কে</a><a href="#contact">যোগাযোগ</a></nav>
+<a class="nav-cta" href="#submit">নতুন স্পট যোগ করুন ↗️</a><button class="menu" id="menuBtn" aria-label="মেনু">☰</button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap"><div class="hero-content">
+<div class="eyebrow">THE FISHING COMMUNITY OF BHERAMARA</div>
+<h1><span>BHERAMARA</span><br>FISHING GALLERY</h1>
+<p>নদীর তীর থেকে গ্রামের টিকিট পুকুর — ভেড়ামারা ও আশপাশের সেরা ফিশিং স্পটের যাচাই করা তথ্য, ছবি আর ৭ দিনের আবহাওয়া এখন এক ঠিকানায়।</p>
+<div class="hero-actions"><a class="btn" href="#weather">৭ দিনের আবহাওয়া দেখুন ↗️</a><a class="btn-outline" href="#submit">নতুন স্পট জমা দিন</a></div>
+<div class="hero-note">✦ সবার জন্য উন্মুক্ত &nbsp;·&nbsp; ✦ সম্পূর্ণ বিনামূল্যে &nbsp;·&nbsp; ✦ অ্যাডমিন-যাচাইকৃত তথ্য</div>
+</div></div></section>
+
+<div class="strip"><div class="wrap strip-row"><div><b>📍 যাচাইকৃত স্পট</b><span>অ্যাডমিন অনুমোদিত তথ্য</span></div><div><b>🌦️ ৭ দিনের আবহাওয়া</b><span>প্রতিদিন আপডেট</span></div><div><b>🎣 কমিউনিটির তথ্য</b><span>শিকারিদের হাতেই গড়া</span></div></div></div>
+
+<section id="categories"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Explore fishing locations</div><h2>আপনার পছন্দের স্পট বেছে নিন</h2></div><p>নদী আর টিকিট পুকুর — দুই ধরনের স্পট আলাদা করে সাজানো, যাতে আপনার পছন্দের জায়গাটি খুঁজে নিতে একটুও সময় না লাগে।</p></div>
+<div class="categories">
+<a class="category" href="#submit" data-category="river"><div class="scene scene-river" role="img" aria-label="নদীর প্রাকৃতিক দৃশ্য"></div><div class="cat-content"><span class="cat-tag">CATEGORY 01</span><h3>নদীর স্পট</h3><p>খোলা জলের রোমাঞ্চ — নদী, ঘাট আর চরের সেরা জায়গা</p><span class="cat-link">নদীর স্পটের তথ্য দিন ↗️</span></div></a>
+<a class="category" href="#submit" data-category="ticket"><div class="scene scene-pond" role="img" aria-label="গ্রামীণ পুকুর ও প্রকৃতি"></div><div class="cat-content"><span class="cat-tag">CATEGORY 02</span><h3>টিকিট পুকুরের স্পট</h3><p>টিকিটের দাম, তারিখ, মাছের ধরন ও পুকুরের নিয়ম — সব এক নজরে</p><span class="cat-link">টিকিট পুকুরের তথ্য দিন ↗️</span></div></a>
+</div></div></section>
+
+<section class="spots-section" id="spots"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Approved fishing locations</div><h2>ভেড়ামারার ফিশিং স্পট খুঁজুন</h2></div><p>অ্যাডমিনের যাচাই শেষে অনুমোদিত স্পটগুলোই শুধু এখানে প্রকাশ পায় — তাই তথ্যে ভরসা রাখতে পারেন।</p></div>
+<div class="spot-search"><input id="spotSearch" type="search" placeholder="স্পটের নাম বা এলাকার নাম লিখুন…" aria-label="স্পট খুঁজুন"><select id="spotFilter" aria-label="স্পটের ধরন"><option value="all">সব ধরনের স্পট</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div>
+<div class="spot-grid" id="publicSpotList"><div class="empty"><strong>স্পটের তথ্য লোড হচ্ছে…</strong>অনুগ্রহ করে অপেক্ষা করুন।</div></div>
+</div></section>
+
+<section class="weather-section" id="weather"><div class="wrap">
+<div class="section-head"><div><div class="kicker">7 days local forecast</div><h2>ভেড়ামারার আগামী ৭ দিনের আবহাওয়া</h2></div><p>ছিপ হাতে বের হওয়ার আগে জেনে নিন — রোদ, বৃষ্টি, তাপমাত্রা আর বাতাসের গতি।</p></div>
+<div class="weather-panel">
+<div class="weather-top"><div class="weather-place"><span aria-hidden="true">📍</span><span>ভেড়ামারা, কুষ্টিয়া, বাংলাদেশ</span></div><div class="weather-actions"><a class="weather-link" href="https://www.google.com/search?q=weather+in+Bheramara+Bangladesh" target="_blank" rel="noopener noreferrer">Google Weather দেখুন ↗️</a><button class="weather-refresh" id="weatherRefresh" type="button">↻ আপডেট করুন</button></div></div>
+<div class="weather-grid" id="weatherGrid" aria-live="polite"><div class="weather-error" style="grid-column:1/-1">আগামী ৭ দিনের আবহাওয়া লোড হচ্ছে…</div></div>
+<div class="weather-status" id="weatherStatus">আবহাওয়ার তথ্য ইন্টারনেট থেকে স্বয়ংক্রিয়ভাবে আপডেট হবে।</div>
+</div><p class="weather-status">পূর্বাভাসের উৎস: Open-Meteo · আবহাওয়ার পূর্বাভাস পরিবর্তিত হতে পারে।</p>
+</div></section>
+
+<section id="submit"><div class="wrap submit-layout">
+<div class="submit-copy"><div class="kicker">Contribute to the gallery</div><h2>আপনার জানা স্পটটি যুক্ত করুন</h2><p>আপনার চেনা সেরা স্পটটির কথা জানিয়ে অন্য শিকারিদের পথ দেখান। কোনো অ্যাকাউন্ট বা রেজিস্ট্রেশন লাগবে না।</p><div class="note">✔ জমা দেওয়ার পর অ্যাডমিন তথ্যটি যাচাই করবেন। অনুমোদন পেলেই সেটি সবার জন্য প্রকাশিত হবে।</div></div>
+<form class="form-card" id="spotForm">
+<div class="form-grid">
+<div class="field"><label for="spotType">স্পটের ধরন *</label><select id="spotType" required><option value="">নির্বাচন করুন</option><option value="river">নদীর স্পট</option><option value="ticket">টিকিট পুকুর</option></select></div>
+<div class="field"><label for="spotTitle">স্পটের নাম *</label><input id="spotTitle" required maxlength="150" placeholder="স্পটের পরিচিত নাম"></div>
+<div class="field"><label for="waterName">নদী / পুকুরের নাম</label><input id="waterName" placeholder="নদী বা পুকুরের নাম"></div>
+<div class="field"><label for="spotLocation">এলাকা ও জেলা *</label><input id="spotLocation" required placeholder="এলাকা, উপজেলা, জেলা"></div>
+<div class="field"><label for="fishName">কোন মাছ পাওয়া যায়</label><input id="fishName" placeholder="রুই, কাতলা, মৃগেল ইত্যাদি"></div>
+<div class="field"><label for="ticketPrice">টিকিট মূল্য (টিকিট পুকুর হলে)</label><input id="ticketPrice" placeholder="যেমন: ৫০০ টাকা"></div>
+<div class="field" id="dateField" hidden><label for="fishingDate">মাছ ধরার তারিখ (টিকিট পুকুর)</label><input id="fishingDate" type="date"></div>
+<div class="field"><label for="contactInfo">যোগাযোগ নম্বর</label><input id="contactInfo" inputmode="tel" placeholder="মালিক / দায়িত্বশীল ব্যক্তির নম্বর"></div>
+<div class="field"><label for="mapLink">Google Maps লিংক (ঐচ্ছিক)</label><input id="mapLink" type="url" placeholder="https://maps.google.com/..."></div>
+<div class="field full"><label for="spotImage">স্পটের ছবি আপলোড করুন (ঐচ্ছিক)</label><input id="spotImage" type="file" accept="image/jpeg,image/png,image/webp"><div class="upload-hint">JPG, PNG অথবা WebP ছবি দিন। সর্বোচ্চ ১০ MB।</div></div>
+<div class="field full"><label for="spotDescription">বিস্তারিত তথ্য ও নিয়ম</label><textarea id="spotDescription" maxlength="2000" placeholder="পানির অবস্থা, মাছ ধরার সময়, টিকিটের নিয়ম, অনুমতি বা বিশেষ সতর্কতা লিখুন"></textarea></div>
+<div class="field full"><label for="submitterName">আপনার নাম (ঐচ্ছিক)</label><input id="submitterName" placeholder="নাম"></div>
+</div>
+<input id="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0"><button class="btn" type="submit" id="submitBtn">স্পট জমা দিন ↗️</button><div class="status-msg" id="formMessage" role="status" aria-live="polite"></div>
+</form>
+</div></section>
+
+<section class="shop-section" id="shop"><div class="wrap">
+<div class="shop-intro"><div class="kicker">Fishing Shop Corner</div><h2>ফিশিং শপ কর্নার</h2><p>ছিপ, রিল থেকে বড়শি-ফাতনা — একজন শিকারির যা যা লাগে, খুব শিগগিরই এখানে মিলবে।</p></div>
+<div class="shop-grid">
+<article class="shop-card"><div class="shop-art"><svg viewBox="0 0 400 205" role="img" aria-label="ফিশিং রড"><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#F2DDAA"/><stop offset="1" stop-color="#D7B56D"/></linearGradient></defs><g fill="none" stroke-linecap="round"><path d="M62 176L128 142" stroke="#7a4e24" stroke-width="13"/><path d="M84 165L112 151" stroke="#C99A55" stroke-width="13" opacity=".55"/><path d="M128 142L222 94" stroke="url(#gr)" stroke-width="6"/><path d="M222 94L292 58" stroke="url(#gr)" stroke-width="4"/><path d="M292 58L344 32" stroke="url(#gr)" stroke-width="2.6"/><circle cx="182" cy="115" r="4" stroke="#F2DDAA" stroke-width="1.6"/><circle cx="240" cy="85" r="3.5" stroke="#F2DDAA" stroke-width="1.6"/><circle cx="290" cy="59" r="3" stroke="#F2DDAA" stroke-width="1.6"/><circle cx="332" cy="38" r="2.6" stroke="#F2DDAA" stroke-width="1.6"/><rect x="104" y="150" width="22" height="16" rx="5" fill="#172334" stroke="#D7B56D" stroke-width="2.5" transform="rotate(-27 115 158)"/><path d="M344 32Q380 62 366 124" stroke="#9BC9D8" stroke-width="1.4"/><path d="M366 124v16a8 8 0 1 1-8-8" stroke="#F2DDAA" stroke-width="2.6"/></g><g fill="#D7B56D" opacity=".35"><circle cx="40" cy="40" r="2"/><circle cx="90" cy="24" r="1.5"/><circle cx="300" cy="170" r="2"/><circle cx="360" cy="180" r="1.5"/></g></svg></div><div class="shop-card-body"><h3>🎣 ফিশিং রড</h3><p>হালকা থেকে ভারী — সব ধরনের মাছের উপযোগী রড</p><span class="coming">শিগগিরই আসছে</span></div></article>
+<article class="shop-card"><div class="shop-art"><svg viewBox="0 0 400 205" role="img" aria-label="ফিশিং রিল"><g fill="none" stroke-linecap="round"><rect x="186" y="26" width="42" height="22" rx="6" fill="#172334" stroke="#D7B56D" stroke-width="3"/><circle cx="207" cy="108" r="62" fill="#172334" stroke="#D7B56D" stroke-width="6"/><circle cx="207" cy="108" r="48" stroke="#F2DDAA" stroke-width="2" opacity=".7"/><circle cx="207" cy="108" r="38" stroke="#D7B56D" stroke-width="2" opacity=".5"/><circle cx="207" cy="108" r="28" stroke="#D7B56D" stroke-width="2" opacity=".35"/><circle cx="207" cy="108" r="12" fill="#D7B56D" stroke="#F2DDAA" stroke-width="2"/><path d="M269 108h52" stroke="#D7B56D" stroke-width="7"/><circle cx="330" cy="108" r="13" fill="#172334" stroke="#F2DDAA" stroke-width="4"/><path d="M146 66a74 74 0 0 1 46-30" stroke="#F2DDAA" stroke-width="4" opacity=".8"/><path d="M130 150h-30M120 164h-34" stroke="#9BC9D8" stroke-width="1.6" opacity=".7"/></g></svg></div><div class="shop-card-body"><h3>⚙️ ফিশিং রিল</h3><p>মসৃণ টান আর নির্ভরযোগ্য গ্রিপের স্পিনিং রিল</p><span class="coming">শিগগিরই আসছে</span></div></article>
+<article class="shop-card"><div class="shop-art"><svg viewBox="0 0 400 205" role="img" aria-label="ফিশিং এক্সেসরিজ"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M92 20v28" stroke="#F2DDAA" stroke-width="2.4"/><ellipse cx="92" cy="86" rx="18" ry="34" fill="#C0453A" stroke="#F2DDAA" stroke-width="2.4"/><path d="M74 86h36" stroke="#F7F3EA" stroke-width="5"/><path d="M92 120v36" stroke="#F2DDAA" stroke-width="2.4"/><path d="M200 36v78a22 22 0 1 1-22-22" stroke="#F2DDAA" stroke-width="5"/><path d="M200 36h-8" stroke="#F2DDAA" stroke-width="5"/><path d="M178 92l8 8" stroke="#F2DDAA" stroke-width="5"/><rect x="262" y="58" width="76" height="86" rx="10" fill="#172334" stroke="#D7B56D" stroke-width="3.5"/><path d="M262 82h76M262 104h76M262 126h76" stroke="#9BC9D8" stroke-width="2" opacity=".75"/><path d="M262 58h76M262 144h76" stroke="#F2DDAA" stroke-width="5"/><circle cx="150" cy="168" r="9" fill="#D7B56D" stroke="#F2DDAA" stroke-width="2"/><circle cx="180" cy="180" r="6" fill="#D7B56D" stroke="#F2DDAA" stroke-width="2"/><circle cx="214" cy="172" r="8" fill="#D7B56D" stroke="#F2DDAA" stroke-width="2"/></g></svg></div><div class="shop-card-body"><h3>🪝 ফিশিং এক্সেসরিজ</h3><p>সুতা, বড়শি, ফাতনা, সিঙ্কারসহ আরও টুকিটাকি</p><span class="coming">শিগগিরই আসছে</span></div></article>
+</div><div class="shop-notice">🛍️ শপ চালু করতে আমরা কাজ করছি। পণ্য যোগ হলেই এখানে জানিয়ে দেওয়া হবে — সঙ্গে থাকুন।</div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap about-grid">
+<div class="about-visual"><div class="scene scene-fish" role="img" aria-label="নদী ও পানির প্রাকৃতিক দৃশ্য"></div><div class="about-badge">Fishing • Community • Knowledge</div></div>
+<div class="about-copy"><div class="kicker">About the gallery</div><h2>মাছ শিকারিদের জন্য, মাছ শিকারিদের হাতেই</h2><p>Bheramara Fishing Gallery মাছ-পাগল মানুষদের একটি কমিউনিটি উদ্যোগ। আমাদের স্বপ্ন — ভেড়ামারা ও আশপাশের নদী, ঘাট, চর আর টিকিট পুকুরের ভরসাযোগ্য তথ্য এক ছাতার নিচে আনা।</p><p>যে কেউ স্পট দেখতে পারেন, আবার নিজের জানা স্পটের তথ্য ও ছবিও জমা দিতে পারেন। প্রতিটি তথ্য অ্যাডমিনের যাচাই পেরিয়ে তবেই প্রকাশিত হয়।</p><div class="developer"><img src="tomal.jpeg.jpeg" alt="মোঃ রাকিবুর রহমান তমাল"><div><b>মোঃ রাকিবুর রহমান তমাল</b><small>Founder &amp; Website Developer</small></div></div></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap contact-box"><div><div class="kicker">Get in touch</div><h2>যোগাযোগ করুন</h2><p>ওয়েবসাইট, নতুন স্পট বা যেকোনো পরামর্শ নিয়ে নির্দ্বিধায় যোগাযোগ করুন।</p></div><div class="contact-links"><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">↗️ Facebook</a><a href="mailto:rakiburtomal@gmail.com">✉ rakiburtomal@gmail.com</a></div></div></section>
+
+<section id="admin" style="padding-top:40px;padding-bottom:40px"><div class="wrap"><details class="admin-area"><summary>অ্যাডমিন প্যানেল (শুধু ওয়েবসাইট পরিচালকের জন্য)</summary>
+<div id="adminLogin"><p style="color:var(--muted)">অ্যাডমিন ইমেইল ও পাসওয়ার্ড দিয়ে প্রবেশ করুন। সাধারণ ভিজিটরদের লগইন প্রয়োজন নেই।</p><div class="form-grid"><div class="field"><label for="adminEmail">ইমেইল</label><input id="adminEmail" type="email" autocomplete="username"></div><div class="field"><label for="adminPassword">পাসওয়ার্ড</label><input id="adminPassword" type="password" autocomplete="current-password"></div></div><button class="btn" id="adminLoginBtn" style="margin-top:14px">অ্যাডমিন লগইন</button><div class="status-msg" id="adminMessage"></div></div>
+<div id="adminPanel" hidden><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h3>অ্যাডমিন ম্যানেজমেন্ট</h3><button class="btn-outline" id="adminLogoutBtn">লগআউট</button></div><div class="admin-tabs"><button type="button" data-admin-tab="spots">সব স্পট</button><button type="button" id="adminReloadBtn">রিফ্রেশ</button></div><div id="adminList">লোড হচ্ছে…</div></div>
+</details></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-row"><a class="footer-brand" href="#home"><img src="logo.jpeg.PNG" alt="লোগো"><b>BHERAMARA FISHING GALLERY</b></a><div class="footer-links"><a href="#categories">স্পটের ধরন</a><a href="#spots">স্পট খুঁজুন</a><a href="#weather">৭ দিনের আবহাওয়া</a><a href="#submit">স্পট জমা দিন</a><a href="#shop">শপ</a><a href="#contact">যোগাযোগ</a><a href="https://www.facebook.com/share/1A2aCou89q/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a></div></div><div class="copyright">©️ <span id="year"></span> Bheramara Fishing Gallery. All rights reserved. · Created by মোঃ রাকিবুর রহমান তমাল</div></div></footer>
+
+<button id="toTop" type="button" aria-label="উপরে যান">↑</button>
+<script>
+(() => {
+ 'use strict';
+ const SUPABASE_URL='https://onuaxegnzfyxzdwwoxvp.supabase.co';
+ // এটি Supabase-এর publishable/anon key; কখনো service_role key এখানে বসাবেন না।
+ const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9udWF4ZWduemZ5eHpkd3dveHZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU1Mjk2NDgsImV4cCI6MjExMTEwNTY0OH0.BzhKqwj3E1AR8yaPDeVjp5_GZI7XkJUIMoHvMYTAp8U';
+ const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+ const $=id=>document.getElementById(id);
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const typeLabel=t=>t==='ticket'?'টিকিট পুকুর':'নদীর স্পট';
+ const fallback='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGMxYzJhIi8+PHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMmQ2YTY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDljMDhhIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzYjdmNzgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTFkMjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjY0MCIgY3k9IjE3MCIgcj0iMzQiIGZpbGw9IiNmZmYzY2YiIG9wYWNpdHk9Ii45Ii8+PHBhdGggZD0iTTcwIDMwMFE5MCAyMTAgMTIwIDEzME0xMjAgMTMwcS01MC0xMC04MCAyME0xMjAgMTMwcTQwLTMwIDg1LTEwTTEyMCAxMzBxLTEwLTQwIDIwLTYwTTEyMCAxMzBxNDAtOCA3MCAyNCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik02OTAgMzAwUTcwMCAyMzAgNzIwIDE3ME03MjAgMTcwcS00MC0xMC02NSAxNE03MjAgMTcwcTM1LTI2IDcwLTRNNzIwIDE3MHEtNi0zNCAxNi01MCIgc3Ryb2tlPSIjMDUwYTEyIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHk9IjI5MCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMTAiIGZpbGw9InVybCgjdykiLz48ZyBmaWxsPSIjMmY4YTViIiBvcGFjaXR5PSIuOSI+PGVsbGlwc2UgY3g9IjE3MCIgY3k9IjM4MCIgcng9IjQ0IiByeT0iMTIiLz48ZWxsaXBzZSBjeD0iNjIwIiBjeT0iMzUwIiByeD0iMzgiIHJ5PSIxMCIvPjxlbGxpcHNlIGN4PSI1MjAiIGN5PSI0NDAiIHJ4PSI1NCIgcnk9IjE0Ii8+PGVsbGlwc2UgY3g9IjI2MCIgY3k9IjQ1MCIgcng9IjM2IiByeT0iOSIvPjwvZz48cGF0aCBkPSJNNTAwIDQzMnExMC0yNCAyMC00cTEwLTIyIDIwIDRxLTIwIDgtNDAgMHoiIGZpbGw9IiNmNGE5YzAiLz48cGF0aCBkPSJNMCA0MEw0MzAgMzQ1IiBzdHJva2U9IiMwNTBhMTIiIHN0cm9rZS13aWR0aD0iMy41IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQzMCAzNDVRNDQwIDM4MCA0MzYgNDAyIiBzdHJva2U9IiNmN2RjYTAiIHN0cm9rZS13aWR0aD0iMS40IiBmaWxsPSJub25lIi8+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjM5NCIgcng9IjUiIHJ5PSI5IiBmaWxsPSIjZTA1NTNmIi8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjdkY2EwIiBvcGFjaXR5PSIuNiI+PGVsbGlwc2UgY3g9IjQzNiIgY3k9IjQwOCIgcng9IjIyIiByeT0iNSIvPjxlbGxpcHNlIGN4PSI0MzYiIGN5PSI0MDgiIHJ4PSI0MCIgcnk9IjkiIG9wYWNpdHk9Ii41Ii8+PC9nPjwvc3ZnPg==';
+ let publicSpots=[],lastSubmit=0;
+ $('year').textContent=new Date().getFullYear();
+ $('menuBtn').addEventListener('click',()=>$('navLinks').classList.toggle('open'));
+ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>$('navLinks').classList.remove('open')));
+ document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>{$('spotType').value=a.dataset.category;$('dateField').hidden=a.dataset.category!=='ticket';$('fishingDate').required=a.dataset.category==='ticket'}));
+
+ const weekdays=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+ function dateLabel(value){if(!value)return '';const [y,m,d]=value.split('-').map(Number);const dt=new Date(y,m-1,d);return `${d.toString().padStart(2,'0')}-${m.toString().padStart(2,'0')}-${y} (${weekdays[dt.getDay()]})`}
+
+ // আবহাওয়ার পূর্বাভাস
+ const weatherGrid=$('weatherGrid'),weatherStatus=$('weatherStatus'),weatherRefresh=$('weatherRefresh');
+ function weatherInfo(code){
+  if(code===0)return ['☀️','পরিষ্কার আকাশ'];
+  if([1,2].includes(code))return ['🌤️','আংশিক মেঘলা'];
+  if(code===3)return ['☁️','মেঘলা'];
+  if([45,48].includes(code))return ['🌫️','কুয়াশা'];
+  if([51,53,55,56,57].includes(code))return ['🌦️','গুঁড়ি গুঁড়ি বৃষ্টি'];
+  if([61,63,65,66,67,80,81,82].includes(code))return ['🌧️','বৃষ্টি'];
+  if([71,73,75,77,85,86].includes(code))return ['🌨️','তুষারপাত'];
+  if([95,96,99].includes(code))return ['⛈️','বজ্রবৃষ্টি'];
+  return ['🌥️','পরিবর্তনশীল আবহাওয়া'];
+ }
+ function bnDate(iso){return new Intl.DateTimeFormat('bn-BD',{weekday:'short',day:'numeric',month:'short',timeZone:'Asia/Dhaka'}).format(new Date(iso+'T12:00:00+06:00'))}
+ async function loadWeather(){
+  weatherRefresh.disabled=true;weatherRefresh.textContent='লোড হচ্ছে…';
+  weatherGrid.innerHTML='<div class="weather-error" style="grid-column:1/-1">ভেড়ামারার আবহাওয়ার তথ্য আনা হচ্ছে…</div>';
+  try{
+   const url='https://api.open-meteo.com/v1/forecast?latitude=24.025&longitude=88.992&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max&timezone=Asia%2FDhaka&forecast_days=7';
+   const response=await fetch(url);
+   if(!response.ok)throw new Error('আবহাওয়ার সার্ভার থেকে তথ্য পাওয়া যায়নি (HTTP '+response.status+')');
+   const d=(await response.json()).daily;
+   if(!d||!Array.isArray(d.time)||d.time.length!==7)throw new Error('সম্পূর্ণ ৭ দিনের পূর্বাভাস পাওয়া যায়নি।');
+   weatherGrid.innerHTML=d.time.map((day,i)=>{
+    const [icon,label]=weatherInfo(Number(d.weather_code[i]));
+    const rain=d.precipitation_probability_max?.[i];
+    return `<article class="weather-day ${i===0?'today':''}"><div class="day-name">${i===0?'আজ':bnDate(day)}</div><div class="weather-icon">${icon}</div><div class="weather-desc">${label}</div><div class="weather-temps"><span>${Math.round(d.temperature_2m_max[i])}°</span><span style="color:var(--muted)">${Math.round(d.temperature_2m_min[i])}°</span></div><div class="weather-rain">💧 বৃষ্টির সম্ভাবনা ${rain==null?'তথ্য নেই':Math.round(rain)+'%'}</div><div class="weather-wind">💨 বাতাস ${Math.round(d.wind_speed_10m_max[i])} কিমি/ঘণ্টা</div></article>`;
+   }).join('');
+   weatherStatus.textContent='সর্বশেষ আপডেট: '+new Intl.DateTimeFormat('bn-BD',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Dhaka'}).format(new Date())+' · তাপমাত্রা °C';
+  }catch(error){
+   console.error(error);
+   weatherGrid.innerHTML=`<div class="weather-error" style="grid-column:1/-1"><strong>আবহাওয়ার তথ্য লোড করা যায়নি</strong><p>${esc(error.message)}</p></div>`;
+   weatherStatus.textContent='ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
+  }finally{weatherRefresh.disabled=false;weatherRefresh.textContent='↻ আপডেট করুন'}
+ }
+ weatherRefresh.addEventListener('click',loadWeather);
+
+ // টিকিট পুকুর হলে তারিখ দেখানো
+ $('spotType').addEventListener('change',()=>{
+  const ticket=$('spotType').value==='ticket';
+  $('dateField').hidden=!ticket;
+  $('fishingDate').required=ticket;
+ });
+
+ // প্রকাশিত স্পট: কেবল approved পোস্ট দেখানো হবে
+ function renderPublicSpots(){
+  const q=$('spotSearch').value.trim().toLocaleLowerCase('bn-BD');
+  const filter=$('spotFilter').value;
+  const items=publicSpots.filter(s=>{
+   const matchesType=filter==='all'||s.spot_type===filter;
+   const text=[s.title,s.location,s.description].join(' ').toLocaleLowerCase('bn-BD');
+   return matchesType&&(!q||text.includes(q));
+  });
+  const box=$('publicSpotList');
+  if(!items.length){
+   box.innerHTML='<div class="empty"><strong>কোনো অনুমোদিত স্পট পাওয়া যায়নি</strong>নতুন স্পট জমা দিন অথবা অন্য নামে খুঁজে দেখুন।</div>';
+   return;
+  }
+  box.innerHTML=items.map(s=>{
+   const image=s.image_url||fallback;
+   const mapMatch=(s.description||'').match(/Google Maps:\s*(https?:\/\/\S+)/i);
+   const mapLink=mapMatch?mapMatch[1]:'';
+   const desc=(s.description||'').replace(/Google Maps:\s*https?:\/\/\S+/i,'').trim();
+   return `<article class="spot-card"><img src="${esc(image)}" alt="${esc(s.title)}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><div class="spot-card-body"><div class="spot-meta"><span>${typeLabel(s.spot_type)}</span></div><h3>${esc(s.title)}</h3><p>📍 ${esc(s.location||'')}</p>${desc?`<p>${esc(desc)}</p>`:''}${mapLink?`<a class="cat-link" href="${esc(mapLink)}" target="_blank" rel="noopener noreferrer">Google Maps-এ দেখুন ↗️</a>`:''}</div></article>`;
+  }).join('');
+ }
+ $('spotSearch').addEventListener('input',renderPublicSpots);
+ $('spotFilter').addEventListener('change',renderPublicSpots);
+ async function loadPublicSpots(){
+  const box=$('publicSpotList');
+  if(!db){box.innerHTML='<div class="empty"><strong>ডেটাবেস সংযোগ করা যায়নি</strong>Supabase সেটিংস পরীক্ষা করুন।</div>';return}
+  const {data,error}=await db.from('fishing_posts').select('id,title,location,spot_type,description,image_url,status,created_at').eq('status','approved').order('created_at',{ascending:false});
+  if(error){
+   console.error('Public spots:',error);
+   box.innerHTML=`<div class="empty"><strong>স্পটের তথ্য লোড করা যায়নি</strong>${esc(error.message)}</div>`;
+   return;
+  }
+  publicSpots=data||[];
+  renderPublicSpots();
+ }
+
+ // নতুন স্পট জমা: pending থাকবে, সরাসরি প্রকাশ হবে না
+ $('spotForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const msg=$('formMessage'),btn=$('submitBtn');
+  if($('website').value)return;
+  if(Date.now()-lastSubmit<30000){msg.textContent='একটু অপেক্ষা করে আবার চেষ্টা করুন।';return}
+  if(!db){msg.textContent='ডেটাবেস সংযোগ করা যায়নি।';return}
+  const type=$('spotType').value,title=$('spotTitle').value.trim(),location=$('spotLocation').value.trim(),file=$('spotImage').files[0];
+  if(!type||!title||!location){msg.textContent='স্পটের ধরন, নাম ও এলাকা পূরণ করুন।';return}
+  if(file&&file.size>10*1024*1024){msg.textContent='ছবির সাইজ ১০ MB-এর বেশি হতে পারবে না।';return}
+  if(file&&!['image/jpeg','image/png','image/webp'].includes(file.type)){msg.textContent='শুধু JPG, PNG অথবা WebP ছবি আপলোড করুন।';return}
+  btn.disabled=true;btn.textContent='জমা হচ্ছে…';msg.textContent='তথ্য পাঠানো হচ্ছে…';
+  let uploadedPath=null;
+  try{
+   let imageUrl=null;
+   if(file){
+    const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';
+    uploadedPath=`spots/${Date.now()}-${crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)}.${ext}`;
+    const {error:uploadError}=await db.storage.from('fishing-media').upload(uploadedPath,file,{upsert:false,contentType:file.type});
+    if(uploadError)throw new Error('ছবি আপলোড হয়নি: '+uploadError.message);
+    imageUrl=db.storage.from('fishing-media').getPublicUrl(uploadedPath).data.publicUrl;
+   }
+   const details=[
+    $('waterName').value.trim()?'নদী / পুকুর: '+$('waterName').value.trim():'',
+    $('fishName').value.trim()?'পাওয়া যায় এমন মাছ: '+$('fishName').value.trim():'',
+    $('ticketPrice').value.trim()?'টিকিট মূল্য: '+$('ticketPrice').value.trim():'',
+    $('fishingDate').value?'মাছ ধরার তারিখ: '+dateLabel($('fishingDate').value):'',
+    $('contactInfo').value.trim()?'যোগাযোগ: '+$('contactInfo').value.trim():'',
+    $('mapLink').value.trim()?'Google Maps: '+$('mapLink').value.trim():'',
+    $('submitterName').value.trim()?'জমাদানকারী: '+$('submitterName').value.trim():'',
+    $('spotDescription').value.trim()
+   ].filter(Boolean).join('\n');
+   const {error}=await db.from('fishing_posts').insert({
+    title,location,spot_type:type,description:details,image_url:imageUrl,status:'pending'
+   });
+   if(error)throw error;
+   lastSubmit=Date.now();$('spotForm').reset();$('dateField').hidden=true;$('fishingDate').required=false;
+   msg.textContent='আপনার স্পট সফলভাবে জমা হয়েছে। অ্যাডমিন যাচাই ও অনুমোদন করলে ওয়েবসাইটে প্রকাশিত হবে।';
+  }catch(error){
+   console.error('Spot submission:',error);
+   msg.textContent='স্পট জমা দেওয়া যায়নি: '+(error.message||'অজানা সমস্যা');
+   // ডেটাবেসে পোস্ট না হলে আপলোড হওয়া ছবিটি সরিয়ে ফেলার চেষ্টা
+   if(uploadedPath){const {error:removeError}=await db.storage.from('fishing-media').remove([uploadedPath]);if(removeError)console.warn(removeError)}
+  }finally{btn.disabled=false;btn.textContent='স্পট জমা দিন ↗️'}
+ });
+
+ // অ্যাডমিন যাচাই ও ব্যবস্থাপনা
+ async function checkAdmin(){
+  if(!db)return;
+  const {data:{session},error:sessionError}=await db.auth.getSession();
+  if(sessionError){$('adminMessage').textContent=sessionError.message;return}
+  if(!session){$('adminLogin').hidden=false;$('adminPanel').hidden=true;return}
+  const {data,error}=await db.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();
+  if(error||!data){
+   $('adminMessage').textContent='এই অ্যাকাউন্টের অ্যাডমিন অনুমতি নেই।';
+   await db.auth.signOut();$('adminLogin').hidden=false;$('adminPanel').hidden=true;return;
+  }
+  $('adminLogin').hidden=true;$('adminPanel').hidden=false;await loadAdminList();
+ }
+ $('adminLoginBtn').addEventListener('click',async()=>{
+  if(!db){$('adminMessage').textContent='ডেটাবেস সংযোগ করা যায়নি।';return}
+  $('adminMessage').textContent='লগইন হচ্ছে…';
+  const {error}=await db.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});
+  if(error){$('adminMessage').textContent='লগইন হয়নি: '+error.message;return}
+  $('adminMessage').textContent='';await checkAdmin();
+ });
+ $('adminLogoutBtn').addEventListener('click',async()=>{await db.auth.signOut();$('adminPanel').hidden=true;$('adminLogin').hidden=false;$('adminMessage').textContent='আপনি লগআউট করেছেন।'});
+ $('adminReloadBtn').addEventListener('click',loadAdminList);
+ async function loadAdminList(){
+  const box=$('adminList');box.textContent='লোড হচ্ছে…';
+  const {data,error}=await db.from('fishing_posts').select('*').order('created_at',{ascending:false});
+  if(error){box.textContent='স্পট আনা যায়নি: '+error.message;return}
+  if(!data?.length){box.textContent='এখনো কোনো স্পট নেই।';return}
+  box.innerHTML=data.map(s=>`<div class="admin-item"><b>${esc(s.title)} <small>(${s.status==='approved'?'প্রকাশিত':s.status==='pending'?'অনুমোদনের অপেক্ষায়':esc(s.status)})</small></b><small>${esc(s.location||'')} · ${typeLabel(s.spot_type)}</small><p>${esc(s.description||'')}</p>${s.image_url?`<p><a href="${esc(s.image_url)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold2)">ছবি দেখুন ↗️</a></p>`:''}<div class="admin-actions">${s.status==='approved'?'':`<button type="button" data-approve-spot="${esc(s.id)}">অনুমোদন ও প্রকাশ</button>`}<button type="button" class="delete" data-delete-spot="${esc(s.id)}">স্পট মুছুন</button></div></div>`).join('');
+  box.querySelectorAll('[data-approve-spot]').forEach(b=>b.addEventListener('click',()=>approveSpot(b.dataset.approveSpot)));
+  box.querySelectorAll('[data-delete-spot]').forEach(b=>b.addEventListener('click',()=>deleteSpot(b.dataset.deleteSpot)));
+ }
+ async function approveSpot(id){
+  if(!confirm('এই স্পটটি অনুমোদন করে ওয়েবসাইটে প্রকাশ করবেন?'))return;
+  const {error}=await db.from('fishing_posts').update({status:'approved'}).eq('id',id);
+  if(error){alert('অনুমোদন করা যায়নি: '+error.message);return}
+  alert('স্পটটি অনুমোদিত হয়েছে।');
+  await loadAdminList();await loadPublicSpots();
+ }
+ async function deleteSpot(id){
+  if(!confirm('এই স্পটটি স্থায়ীভাবে মুছবেন?'))return;
+  const {data:spot}=await db.from('fishing_posts').select('image_url').eq('id',id).maybeSingle();
+  if(spot?.image_url){
+   const marker='/storage/v1/object/public/fishing-media/';
+   const at=spot.image_url.indexOf(marker);
+   if(at>=0){const path=decodeURIComponent(spot.image_url.slice(at+marker.length));const {error:storageError}=await db.storage.from('fishing-media').remove([path]);if(storageError)console.error(storageError)}
+  }
+  const {error}=await db.from('fishing_posts').delete().eq('id',id);
+  if(error)alert('মুছতে সমস্যা: '+error.message);
+  else{await loadAdminList();await loadPublicSpots()}
+ }
+
+ document.querySelectorAll('main section .wrap > *, .shop-card, .category').forEach(el=>el.classList.add('reveal'));
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el))}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+ const toTop=$('toTop');window.addEventListener('scroll',()=>toTop.classList.toggle('show',scrollY>600),{passive:true});toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+ loadWeather();
+ loadPublicSpots();
+ checkAdmin();
+})();
+</script>
+</body>
+</html>
