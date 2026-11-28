@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rakiburtomal.github.io/Bheramara-Fishing-Gallery-/sitemap.xml
